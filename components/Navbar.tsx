@@ -12,18 +12,22 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
+  const isFaqPage = normalizedPath === '/preguntas-frecuentes';
+  const homePrefix = isFaqPage ? '/' : '';
+
   const navLinks = [
-    { name: 'Venta', href: '#logistica' },
-    { name: 'Estudio', href: '#studio' },
-    { name: 'Transformaciones', href: '#studio' },
-    { name: 'FAQs', href: '#faqs' },
-    { name: 'Presupuesto', href: '#quote' },
+    { name: 'Venta', href: `${homePrefix}#logistica` },
+    { name: 'Estudio', href: `${homePrefix}#studio` },
+    { name: 'Transformaciones', href: `${homePrefix}#studio` },
+    { name: 'FAQs', href: '/preguntas-frecuentes' },
+    { name: 'Presupuesto', href: `${homePrefix}#quote` },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 py-4' : 'bg-transparent py-8'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3">
           <div className="bg-orange-600 p-2 rounded-sm">
             <Box size={24} className="text-white" />
           </div>
@@ -43,7 +47,7 @@ export const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <Button variant="outline" size="sm" onClick={() => window.location.hash = '#quote'}>
+          <Button variant="outline" size="sm" onClick={() => (window.location.href = `${homePrefix}#quote`)}>
             Solicitar Presupuesto
           </Button>
         </div>
@@ -68,7 +72,9 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <Button className="w-full" onClick={() => setIsOpen(false)}>Solicitar Presupuesto</Button>
+            <Button className="w-full" onClick={() => (window.location.href = `${homePrefix}#quote`)}>
+              Solicitar Presupuesto
+            </Button>
           </div>
         </div>
       )}
