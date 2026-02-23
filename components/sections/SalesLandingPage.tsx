@@ -4,6 +4,7 @@ const SEO_TITLE = 'Venta de Contenedores Marítimos en España | 20 y 40 Pies - 
 const SEO_DESCRIPTION =
   'Compra directa de contenedores marítimos en España con inspección técnica propia, vídeo real de unidad y entrega estimada en 5 días. Precios orientativos y transporte gestionado.';
 const CANONICAL_PATH = '/venta-contenedores-maritimos-espana';
+const WHATSAPP_BASE = 'https://wa.me/34657348078';
 
 const upsertMeta = (name: string, content: string) => {
   let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
@@ -28,6 +29,8 @@ const upsertCanonical = (href: string) => {
 
   canonical.setAttribute('href', href);
 };
+
+const buildWhatsappUrl = (message: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(message)}`;
 
 export const SalesLandingPage: React.FC = () => {
   useEffect(() => {
@@ -74,7 +77,9 @@ export const SalesLandingPage: React.FC = () => {
           </p>
           <p className="text-orange-300 font-semibold mb-8">Las unidades First Trip son limitadas y rotan semanalmente en puerto.</p>
           <a
-            href="#cotizacion"
+            href={buildWhatsappUrl('Hola, quiero consultar disponibilidad real de contenedores en puerto (20 y 40 pies).')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex rounded-xl bg-orange-600 px-7 py-4 font-bold tracking-wide hover:bg-orange-500 transition-colors"
           >
             CONSULTAR DISPONIBILIDAD REAL
@@ -95,7 +100,12 @@ export const SalesLandingPage: React.FC = () => {
             <li>• Contenedor 20 pies First Trip: desde 2.000 €</li>
           </ul>
           <p className="text-zinc-300 mb-5">Solicite precio actualizado con transporte incluido y sin costes ocultos.</p>
-          <a href="#cotizacion" className="inline-flex text-orange-400 font-semibold hover:text-orange-300 transition-colors">
+          <a
+            href={buildWhatsappUrl('Hola, quiero recibir un presupuesto cerrado con transporte incluido para un contenedor marítimo.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex text-orange-400 font-semibold hover:text-orange-300 transition-colors"
+          >
             RECIBIR PRESUPUESTO CERRADO →
           </a>
         </section>
@@ -219,7 +229,9 @@ export const SalesLandingPage: React.FC = () => {
             y asesoramiento técnico previo. (Stock sujeto a rotación portuaria.)
           </p>
           <a
-            href="/#quote"
+            href={buildWhatsappUrl('Hola, quiero solicitar cotización ahora con disponibilidad real, vídeo/fotos y transporte incluido.')}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex rounded-xl bg-orange-600 px-7 py-4 font-bold tracking-wide hover:bg-orange-500 transition-colors"
           >
             SOLICITAR COTIZACIÓN AHORA
@@ -228,7 +240,9 @@ export const SalesLandingPage: React.FC = () => {
       </div>
 
       <a
-        href="#cotizacion"
+        href={buildWhatsappUrl('Hola, quiero consultar disponibilidad real de contenedores en puerto y opciones de entrega.')}
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 rounded-full bg-orange-600 px-6 py-3 text-sm font-bold shadow-xl hover:bg-orange-500 transition-colors"
       >
         CONSULTAR DISPONIBILIDAD REAL
