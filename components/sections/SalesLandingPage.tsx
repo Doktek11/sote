@@ -52,7 +52,7 @@ export const SalesLandingPage: React.FC = () => {
     <section className="bg-zinc-950 text-white" aria-labelledby="landing-main-title">
       <div className="container mx-auto px-6 pt-32 pb-24 max-w-6xl">
         <header className="mb-14">
-          <h1 id="landing-main-title" className="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-5">
+          <h1 id="landing-main-title" className="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-5">
             Venta de Contenedores Marítimos en España | 20 y 40 Pies - Nuevos y Usados
           </h1>
           <p className="text-xl text-orange-400 font-semibold mb-6">
