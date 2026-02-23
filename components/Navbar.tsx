@@ -13,21 +13,22 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
-  const isFaqPage = normalizedPath === '/preguntas-frecuentes';
-  const homePrefix = isFaqPage ? '/' : '';
+  const landingPath = '/venta-contenedores-maritimos-espana';
+  const isLandingPage = normalizedPath === '/' || normalizedPath === landingPath;
+  const landingPrefix = isLandingPage ? '' : landingPath;
 
   const navLinks = [
-    { name: 'Venta', href: `${homePrefix}#logistica` },
-    { name: 'Estudio', href: `${homePrefix}#studio` },
-    { name: 'Transformaciones', href: `${homePrefix}#studio` },
+    { name: 'Precios', href: `${landingPrefix}#precios` },
+    { name: 'Comparativa', href: `${landingPrefix}#comparativa` },
+    { name: 'Logística', href: `${landingPrefix}#entrega` },
     { name: 'FAQs', href: '/preguntas-frecuentes' },
-    { name: 'Presupuesto', href: `${homePrefix}#quote` },
+    { name: 'Cotización', href: `${landingPrefix}#cotizacion` },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 py-4' : 'bg-transparent py-8'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" className="flex items-center gap-3">
+        <a href="/venta-contenedores-maritimos-espana" className="flex items-center gap-3">
           <div className="bg-orange-600 p-2 rounded-sm">
             <Box size={24} className="text-white" />
           </div>
@@ -47,7 +48,11 @@ export const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <Button variant="outline" size="sm" onClick={() => (window.location.href = `${homePrefix}#quote`)}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => (window.location.href = `${landingPrefix}#cotizacion`)}
+          >
             Solicitar Presupuesto
           </Button>
         </div>
@@ -72,7 +77,7 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <Button className="w-full" onClick={() => (window.location.href = `${homePrefix}#quote`)}>
+            <Button className="w-full" onClick={() => (window.location.href = `${landingPrefix}#cotizacion`)}>
               Solicitar Presupuesto
             </Button>
           </div>
