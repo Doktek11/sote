@@ -52,6 +52,27 @@ export const LegalPage: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const scrollToHashSection = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+
+      const section = document.querySelector(hash);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    scrollToHashSection();
+    const timeoutId = window.setTimeout(scrollToHashSection, 120);
+    window.addEventListener('hashchange', scrollToHashSection);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      window.removeEventListener('hashchange', scrollToHashSection);
+    };
+  }, []);
+
   return (
     <section className="bg-zinc-950 text-zinc-200" aria-labelledby="legal-main-title">
       <div className="container mx-auto px-6 pt-32 pb-24 max-w-5xl">
