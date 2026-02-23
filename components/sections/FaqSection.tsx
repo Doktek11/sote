@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const SEO_TITLE = 'FAQ | Compra segura de contenedores marítimos | The Box Container Design';
+const SEO_TITLE = 'Preguntas frecuentes sobre contenedores marítimos | The Box Container Design';
 const SEO_DESCRIPTION =
   'FAQ – Compra segura de contenedores marítimos. Inspección propia, fotos y vídeo con número de serie, entrega estimada en 7 días laborables y asesoramiento en permisos y logística.';
 
@@ -11,7 +11,7 @@ const faqItems = [
       'Ofrecemos garantías verificables: visita presencial a nuestras campas logísticas; inspección estructural propia antes de autorizar la salida; contrato y factura legal con condiciones detalladas; atención directa por un experto; y envío de fotos y vídeo en tiempo real del contenedor exacto (con su número de serie).',
       'Si no puede desplazarse, le remitimos fotos y vídeo del contenedor seleccionado antes de su envío.',
     ],
-    cta: { label: 'Solicitar vídeo', href: '#quote' },
+    cta: { label: 'Solicitar vídeo', href: '/#quote' },
   },
   {
     question: '¿Qué documentación recibe con el contenedor?',
@@ -28,7 +28,7 @@ const faqItems = [
       'First Trip (One Way): unidad con un solo trayecto desde fábrica; estado prácticamente nuevo; recomendable para transformaciones (vivienda, oficina, espacios comerciales).',
       'Usado (Grado A): ha tenido servicio marítimo; puede presentar marcas estéticas; es estanco e íntegro estructuralmente; ideal para almacenaje y usos industriales.',
     ],
-    cta: { label: 'Ver unidades disponibles', href: '#logistica' },
+    cta: { label: 'Ver unidades disponibles', href: '/#logistica' },
   },
   {
     question: '¿Qué es un High Cube (HC) y cuándo lo necesito?',
@@ -44,7 +44,7 @@ const faqItems = [
       'Camión grúa (pluma) (colocación directa si accesos y espacio lo permiten).',
       'En el presupuesto indicamos la opción recomendada según el acceso y condiciones del punto de entrega.',
     ],
-    cta: { label: 'Solicitar presupuesto de transporte', href: '#quote' },
+    cta: { label: 'Solicitar presupuesto de transporte', href: '/#quote' },
   },
   {
     question: '¿Qué preparación necesita mi terreno?',
@@ -53,7 +53,7 @@ const faqItems = [
       'Puntos de apoyo (bloques de hormigón o solera) en las esquinas para elevarlo ligeramente y permitir ventilación inferior.',
       'Si lo desea, le enviamos una checklist PDF para valorar accesos y preparar la descarga.',
     ],
-    cta: { label: 'Descargar checklist (PDF)', href: '#quote' },
+    cta: { label: 'Descargar checklist (PDF)', href: '/#quote' },
   },
   {
     question: '¿Cuánto cuesta la descarga con grúa?',
@@ -78,7 +78,7 @@ const faqItems = [
       'Vivienda o actividad fija: normalmente requiere proyecto técnico y licencia de obra.',
       'Ofrecemos asesoramiento inicial gratuito y orientación sobre los trámites municipales para que pueda consultar correctamente en su ayuntamiento.',
     ],
-    cta: { label: 'Solicitar asesoramiento sobre permisos', href: '#quote' },
+    cta: { label: 'Solicitar asesoramiento sobre permisos', href: '/#quote' },
   },
   {
     question: '¿Se puede colocar un contenedor en suelo rústico?',
@@ -102,7 +102,7 @@ const faqItems = [
       'Verificación del suelo y del estado interior.',
       'Registro fotográfico y vídeo con número de serie para su aprobación previa.',
     ],
-    cta: { label: 'Solicitar fotos y vídeo de inspección', href: '#quote' },
+    cta: { label: 'Solicitar fotos y vídeo de inspección', href: '/#quote' },
   },
   {
     question: '¿Cuánto tiempo tengo para aceptar o reclamar la unidad entregada?',
@@ -129,8 +129,7 @@ const upsertMeta = (name: string, content: string) => {
 export const FaqSection: React.FC = () => {
   useEffect(() => {
     const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
 
     document.title = SEO_TITLE;
     upsertMeta('description', SEO_DESCRIPTION);
@@ -142,13 +141,13 @@ export const FaqSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="faqs" className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="faq-main-title">
+    <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="faq-main-title">
       <div className="container mx-auto px-6 max-w-5xl">
         <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-4">Centro de Ayuda</p>
         <h1 id="faq-main-title" className="text-4xl md:text-5xl font-black tracking-tight mb-6">
-          FAQ de contenedores marítimos | The Box Container Design
+          Preguntas frecuentes sobre contenedores marítimos
         </h1>
-        <h2 className="text-xl md:text-2xl font-semibold text-zinc-200 mb-6">Preguntas frecuentes sobre compra, logística y normativa</h2>
+        <h2 className="text-xl md:text-2xl font-semibold text-zinc-200 mb-6">Compra, logística, normativa y seguridad</h2>
         <p className="text-zinc-300 max-w-3xl mb-12">
           En The Box Container Design creemos que la transparencia es la base de cualquier gran proyecto.
           Aquí encontrará respuestas claras y prácticas sobre adquisición, logística, normativa y seguridad en la compra de contenedores marítimos.
@@ -185,7 +184,7 @@ export const FaqSection: React.FC = () => {
             (almacenaje, transformación, normativa municipal y acceso de descarga).
           </p>
           <a
-            href="#quote"
+            href="/#quote"
             className="inline-flex items-center rounded-lg bg-orange-600 px-5 py-3 font-semibold hover:bg-orange-500 transition-colors"
           >
             Contactar con un asesor
