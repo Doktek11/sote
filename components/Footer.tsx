@@ -66,9 +66,9 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} THE BOX CONTAINER DESIGN. TODOS LOS DERECHOS RESERVADOS.
           </p>
           <div className="flex gap-8 text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
-            <a href="#" className="hover:text-zinc-400">Política de Privacidad</a>
-            <a href="#" className="hover:text-zinc-400">Aviso Legal</a>
-            <a href="#" className="hover:text-zinc-400">Cookies</a>
+            <a href="/legal#privacidad" className="hover:text-zinc-400">Política de Privacidad</a>
+            <a href="/legal#aviso-legal" className="hover:text-zinc-400">Aviso Legal</a>
+            <a href="/legal#cookies" className="hover:text-zinc-400">Cookies</a>
           </div>
         </div>
       </div>
