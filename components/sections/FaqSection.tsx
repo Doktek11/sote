@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+const SEO_TITLE = 'FAQ | Compra segura de contenedores marítimos | The Box Container Design';
+const SEO_DESCRIPTION =
+  'FAQ – Compra segura de contenedores marítimos. Inspección propia, fotos y vídeo con número de serie, entrega estimada en 7 días laborables y asesoramiento en permisos y logística.';
 
 const faqItems = [
   {
@@ -110,12 +114,41 @@ const faqItems = [
   },
 ];
 
+const upsertMeta = (name: string, content: string) => {
+  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    document.head.appendChild(meta);
+  }
+
+  meta.setAttribute('content', content);
+};
+
 export const FaqSection: React.FC = () => {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousDescription =
+      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+
+    document.title = SEO_TITLE;
+    upsertMeta('description', SEO_DESCRIPTION);
+
+    return () => {
+      document.title = previousTitle;
+      upsertMeta('description', previousDescription);
+    };
+  }, []);
+
   return (
-    <section id="faqs" className="bg-zinc-950 py-24 border-y border-zinc-900">
+    <section id="faqs" className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="faq-main-title">
       <div className="container mx-auto px-6 max-w-5xl">
         <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-4">Centro de Ayuda</p>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Preguntas Frecuentes (FAQ)</h2>
+        <h1 id="faq-main-title" className="text-4xl md:text-5xl font-black tracking-tight mb-6">
+          FAQ de contenedores marítimos | The Box Container Design
+        </h1>
+        <h2 className="text-xl md:text-2xl font-semibold text-zinc-200 mb-6">Preguntas frecuentes sobre compra, logística y normativa</h2>
         <p className="text-zinc-300 max-w-3xl mb-12">
           En The Box Container Design creemos que la transparencia es la base de cualquier gran proyecto.
           Aquí encontrará respuestas claras y prácticas sobre adquisición, logística, normativa y seguridad en la compra de contenedores marítimos.
@@ -125,7 +158,7 @@ export const FaqSection: React.FC = () => {
           {faqItems.map((item) => (
             <details key={item.question} className="group rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
               <summary className="cursor-pointer list-none text-lg font-bold text-white flex items-center justify-between gap-4">
-                <span>{item.question}</span>
+                <h3>{item.question}</h3>
                 <span className="text-orange-500 transition-transform group-open:rotate-45 text-2xl leading-none">+</span>
               </summary>
               <div className="mt-4 space-y-3 text-zinc-300">
@@ -146,7 +179,7 @@ export const FaqSection: React.FC = () => {
         </div>
 
         <div className="mt-12 p-6 rounded-2xl border border-orange-500/30 bg-orange-500/5">
-          <h3 className="text-2xl font-extrabold mb-3">¿No encuentra su pregunta?</h3>
+          <h2 className="text-2xl font-extrabold mb-3">¿No encuentra su pregunta?</h2>
           <p className="text-zinc-300 mb-4">
             Solicite asesoramiento técnico sin compromiso. Le orientamos según su proyecto
             (almacenaje, transformación, normativa municipal y acceso de descarga).
@@ -158,11 +191,6 @@ export const FaqSection: React.FC = () => {
             Contactar con un asesor
           </a>
         </div>
-
-        <p className="mt-12 text-sm text-zinc-400">
-          FAQ – Compra segura de contenedores marítimos. Inspección propia, fotos y vídeo con número de serie,
-          entrega estimada en 7 días laborables y asesoramiento en permisos y logística.
-        </p>
       </div>
     </section>
   );
