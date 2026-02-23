@@ -6,6 +6,7 @@ import { DesignStudio } from './components/sections/DesignStudio';
 import { QuoteForm } from './components/sections/QuoteForm';
 import { FaqSection } from './components/sections/FaqSection';
 import { SalesLandingPage } from './components/sections/SalesLandingPage';
+import { LegalPage } from './components/sections/LegalPage';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
   const salesLandingPath = '/venta-contenedores-maritimos-espana';
   const isFaqPage = normalizedPath === '/preguntas-frecuentes';
   const isSalesLandingPage = normalizedPath === salesLandingPath;
+  const isLegalPage = normalizedPath === '/legal';
 
   // Smooth scroll effect for hash links
   useEffect(() => {
-    if (isFaqPage) return;
+    if (isFaqPage || isLegalPage) return;
 
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -39,7 +41,7 @@ function App() {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isFaqPage]);
+  }, [isFaqPage, isLegalPage]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
@@ -48,6 +50,8 @@ function App() {
       <main>
         {isFaqPage ? (
           <FaqSection />
+        ) : isLegalPage ? (
+          <LegalPage />
         ) : isSalesLandingPage ? (
           <SalesLandingPage />
         ) : (
