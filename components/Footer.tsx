@@ -47,15 +47,15 @@ export const Footer: React.FC = () => {
             <ul className="space-y-6 text-zinc-500 text-sm">
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-orange-500 flex-shrink-0" />
-                <span>P.I. Los Olivos, Calle Ingeniería 42<br />28045, Madrid, España</span>
+                <span>Avinguda del comerç s/n<br />28045, Reus, España</span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-orange-500" />
-                <span>+34 912 345 678</span>
+                <span>+34657348078</span>
               </li>
               <li className="flex items-center gap-4">
                 <Mail size={18} className="text-orange-500" />
-                <span>ingenieria@theboxdesign.es</span>
+                <span>info@theboxcontainerdesign.com</span>
               </li>
             </ul>
           </div>
