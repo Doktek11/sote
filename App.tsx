@@ -4,14 +4,23 @@ import { Hero } from './components/sections/Hero';
 import { LogisticsSection } from './components/sections/LogisticsSection';
 import { DesignStudio } from './components/sections/DesignStudio';
 import { QuoteForm } from './components/sections/QuoteForm';
+import { FaqSection } from './components/sections/FaqSection';
+import { SalesLandingPage } from './components/sections/SalesLandingPage';
 import { Footer } from './components/Footer';
 
 function App() {
   const whatsappNumber = '34657348078'; // Reemplaza con tu número en formato internacional, sin + ni espacios
   const whatsappMessage = encodeURIComponent('Hola, me gustaría recibir información sobre sus servicios.');
 
-  // Simple smooth scroll effect for hash links
+  const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
+  const salesLandingPath = '/venta-contenedores-maritimos-espana';
+  const isFaqPage = normalizedPath === '/preguntas-frecuentes';
+  const isSalesLandingPage = normalizedPath === salesLandingPath;
+
+  // Smooth scroll effect for hash links
   useEffect(() => {
+    if (isFaqPage) return;
+
     const handleHashChange = () => {
       const hash = window.location.hash;
       if (hash) {
@@ -23,42 +32,51 @@ function App() {
     };
 
     window.addEventListener('hashchange', handleHashChange);
+
     // Handle initial load with hash
     if (window.location.hash) {
       setTimeout(handleHashChange, 100);
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [isFaqPage]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
       <Navbar />
 
       <main>
-        <Hero />
+        {isFaqPage ? (
+          <FaqSection />
+        ) : isSalesLandingPage ? (
+          <SalesLandingPage />
+        ) : (
+          <>
+            <Hero />
 
-        {/* Trusted Partners / Brands Section */}
-        <section className="bg-zinc-950 py-10 border-y border-zinc-900">
-          <div className="container mx-auto px-6 overflow-hidden">
-            <div className="flex items-center justify-between opacity-30 grayscale gap-12 whitespace-nowrap animate-pulse">
-              <span className="font-mono text-xl font-bold italic tracking-[0.2em]">CARGO-PRO</span>
-              <span className="font-mono text-xl font-bold italic tracking-[0.2em]">MODULAR-TECH</span>
-              <span className="font-mono text-xl font-bold italic tracking-[0.2em]">STEEL-CORE</span>
-              <span className="font-mono text-xl font-bold italic tracking-[0.2em]">ECO-Vessel</span>
-              <span className="font-mono text-xl font-bold italic tracking-[0.2em]">NORDIC-TRANS</span>
-            </div>
-          </div>
-        </section>
+            {/* Trusted Partners / Brands Section */}
+            <section className="bg-zinc-950 py-10 border-y border-zinc-900">
+              <div className="container mx-auto px-6 overflow-hidden">
+                <div className="flex items-center justify-between opacity-30 grayscale gap-12 whitespace-nowrap animate-pulse">
+                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">CARGO-PRO</span>
+                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">MODULAR-TECH</span>
+                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">STEEL-CORE</span>
+                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">ECO-Vessel</span>
+                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">NORDIC-TRANS</span>
+                </div>
+              </div>
+            </section>
 
-        <LogisticsSection />
+            <LogisticsSection />
 
-        {/* Split separator for Business Duality */}
-        <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
+            {/* Split separator for Business Duality */}
+            <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
 
-        <DesignStudio />
+            <DesignStudio />
 
-        <QuoteForm />
+            <QuoteForm />
+          </>
+        )}
       </main>
 
       <Footer />
