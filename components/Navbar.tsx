@@ -21,7 +21,7 @@ export const Navbar: React.FC = () => {
   const navLinks = isSalesLandingPage
     ? [
         { name: 'Precios', href: '#precios' },
-        { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' }, // sustituye Comparativa
+        { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
         { name: 'Logística', href: '#entrega' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
         { name: 'Cotización', href: '#cotizacion' },
@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
     : [
         { name: 'Venta', href: `${homePrefix}#logistica` },
         { name: 'Estudio', href: `${homePrefix}#studio` },
-        { name: 'Transformaciones', href: `${homePrefix}#studio` },
+        { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
         { name: 'Presupuesto', href: `${homePrefix}#quote` },
       ];
@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" className="flex items-center gap-3">
+        <a href="/" aria-label="Ir al inicio" className="flex items-center gap-3">
           <div className="bg-orange-600 p-2 rounded-sm">
             <Box size={24} className="text-white" />
           </div>
