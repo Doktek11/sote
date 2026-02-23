@@ -4,6 +4,7 @@ import { Hero } from './components/sections/Hero';
 import { LogisticsSection } from './components/sections/LogisticsSection';
 import { DesignStudio } from './components/sections/DesignStudio';
 import { QuoteForm } from './components/sections/QuoteForm';
+import { FaqSection } from './components/sections/FaqSection';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -57,6 +58,8 @@ function App() {
         <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
 
         <DesignStudio />
+
+        <FaqSection />
 
         <QuoteForm />
       </main>
