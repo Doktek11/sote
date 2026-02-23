@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Box } from 'lucide-react';
 import { Button } from './ui/Button';
@@ -17,6 +16,7 @@ export const Navbar: React.FC = () => {
     { name: 'Venta', href: '#logistica' },
     { name: 'Estudio', href: '#studio' },
     { name: 'Transformaciones', href: '#studio' },
+    { name: 'FAQs', href: '#faqs' },
     { name: 'Presupuesto', href: '#quote' },
   ];
 
@@ -35,9 +35,9 @@ export const Navbar: React.FC = () => {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
+            <a
+              key={link.name}
+              href={link.href}
               className="text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-orange-500 transition-colors"
             >
               {link.name}
@@ -59,9 +59,9 @@ export const Navbar: React.FC = () => {
         <div className="absolute top-full left-0 right-0 bg-zinc-950 border-b border-zinc-800 p-6 md:hidden">
           <div className="flex flex-col gap-6">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
+              <a
+                key={link.name}
+                href={link.href}
                 onClick={() => setIsOpen(false)}
                 className="text-sm font-mono uppercase tracking-widest text-zinc-400"
               >
