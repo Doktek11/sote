@@ -14,9 +14,9 @@ export const Navbar: React.FC = () => {
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
   const salesLandingPath = '/venta-contenedores-maritimos-espana';
-  const isFaqPage = normalizedPath === '/preguntas-frecuentes';
   const isSalesLandingPage = normalizedPath === salesLandingPath;
-  const homePrefix = isFaqPage ? '/' : '';
+  const isHomePage = normalizedPath === '/';
+  const homePrefix = isHomePage ? '' : '/';
 
   const navLinks = isSalesLandingPage
     ? [
@@ -39,7 +39,6 @@ export const Navbar: React.FC = () => {
       window.location.hash = '#cotizacion';
       return;
     }
-
     window.location.href = `${homePrefix}#quote`;
   };
 
@@ -61,7 +60,6 @@ export const Navbar: React.FC = () => {
           </span>
         </a>
 
-        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
@@ -77,13 +75,11 @@ export const Navbar: React.FC = () => {
           </Button>
         </div>
 
-        {/* Mobile Toggle */}
         <button className="md:hidden text-zinc-200" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="absolute top-full left-0 right-0 bg-zinc-950 border-b border-zinc-800 p-6 md:hidden">
           <div className="flex flex-col gap-6">
