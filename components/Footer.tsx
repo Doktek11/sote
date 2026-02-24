@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Box, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -37,8 +36,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4 text-zinc-500 text-sm">
               <li><a href="#" className="hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
               <li><a href="#" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Contacto</a></li>
+              <li><a href="/preguntas-frecuentes" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
+              <li><a href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026" className="hover:text-orange-500 transition-colors">Blog</a></li>
+              <li><a href="/#quote" className="hover:text-orange-500 transition-colors">Contacto</a></li>
             </ul>
           </div>
 
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-10 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-zinc-600 text-xs font-mono">
             © {new Date().getFullYear()} THE BOX CONTAINER DESIGN. TODOS LOS DERECHOS RESERVADOS.
