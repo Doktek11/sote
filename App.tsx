@@ -87,22 +87,29 @@ const STUDIO_ROUTES: Record<
   },
 };
 
+const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
+  '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026': <AvoidScamsArticle />
+};
+
 function App() {
   const whatsappNumber = '34657348078';
   const whatsappMessage = encodeURIComponent('Hola, me gustaría recibir información sobre sus servicios.');
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
   const salesLandingPath = '/venta-contenedores-maritimos-espana';
+
   const isFaqPage = normalizedPath === '/preguntas-frecuentes';
   const isSalesLandingPage = normalizedPath === salesLandingPath;
   const isLegalPage = normalizedPath === '/legal';
+
   const isBlogPage = normalizedPath === '/blog';
+  const isAnyBlogPath = normalizedPath.startsWith('/blog/');
+  const blogArticle = BLOG_ARTICLE_ROUTES[normalizedPath];
+
   const studioDetail = STUDIO_ROUTES[normalizedPath];
-  const isAvoidScamsArticlePage =
-    normalizedPath === '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026';
 
   useEffect(() => {
-    if (isFaqPage || isLegalPage || isBlogPage || studioDetail || isAvoidScamsArticlePage) return;
+    if (isFaqPage || isLegalPage || isBlogPage || isAnyBlogPath || studioDetail) return;
 
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -121,7 +128,7 @@ function App() {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isFaqPage, isLegalPage, isBlogPage, studioDetail, isAvoidScamsArticlePage]);
+  }, [isFaqPage, isLegalPage, isBlogPage, isAnyBlogPath, studioDetail]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
@@ -136,10 +143,12 @@ function App() {
           <SalesLandingPage />
         ) : isBlogPage ? (
           <BlogIndex />
+        ) : blogArticle ? (
+          blogArticle
+        ) : isAnyBlogPath ? (
+          <BlogIndex />
         ) : studioDetail ? (
           <StudioProductPage {...studioDetail} />
-        ) : isAvoidScamsArticlePage ? (
-          <AvoidScamsArticle />
         ) : (
           <>
             <Hero />
