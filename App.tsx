@@ -10,6 +10,7 @@ import { LegalPage } from './components/sections/LegalPage';
 import { Footer } from './components/Footer';
 import { StudioProductPage } from './components/sections/StudioProductPage';
 import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
+import { BlogIndex } from './components/sections/Blog/BlogIndex';
 
 const STUDIO_ROUTES: Record<
   string,
@@ -95,12 +96,13 @@ function App() {
   const isFaqPage = normalizedPath === '/preguntas-frecuentes';
   const isSalesLandingPage = normalizedPath === salesLandingPath;
   const isLegalPage = normalizedPath === '/legal';
+  const isBlogPage = normalizedPath === '/blog';
   const studioDetail = STUDIO_ROUTES[normalizedPath];
   const isAvoidScamsArticlePage =
     normalizedPath === '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026';
 
   useEffect(() => {
-    if (isFaqPage || isLegalPage || studioDetail || isAvoidScamsArticlePage) return;
+    if (isFaqPage || isLegalPage || isBlogPage || studioDetail || isAvoidScamsArticlePage) return;
 
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -119,7 +121,7 @@ function App() {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isFaqPage, isLegalPage, studioDetail, isAvoidScamsArticlePage]);
+  }, [isFaqPage, isLegalPage, isBlogPage, studioDetail, isAvoidScamsArticlePage]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
@@ -132,6 +134,8 @@ function App() {
           <LegalPage />
         ) : isSalesLandingPage ? (
           <SalesLandingPage />
+        ) : isBlogPage ? (
+          <BlogIndex />
         ) : studioDetail ? (
           <StudioProductPage {...studioDetail} />
         ) : isAvoidScamsArticlePage ? (
