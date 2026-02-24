@@ -24,7 +24,7 @@ export const Navbar: React.FC = () => {
         { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
         { name: 'Logística', href: '#entrega' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
-        { name: 'Blog', href: '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026' },
+        { name: 'Blog', href: '/blog' },
         { name: 'Cotización', href: '#cotizacion' },
       ]
     : [
@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
         { name: 'Estudio', href: `${homePrefix}#studio` },
         { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
-        { name: 'Blog', href: '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026' },
+        { name: 'Blog', href: '/blog' },
         { name: 'Presupuesto', href: `${homePrefix}#quote` },
       ];
 
