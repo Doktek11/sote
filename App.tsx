@@ -9,6 +9,7 @@ import { SalesLandingPage } from './components/sections/SalesLandingPage';
 import { LegalPage } from './components/sections/LegalPage';
 import { Footer } from './components/Footer';
 import { StudioProductPage } from './components/sections/StudioProductPage';
+import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
 
 const STUDIO_ROUTES: Record<
   string,
@@ -33,7 +34,7 @@ const STUDIO_ROUTES: Record<
     seoText: [
       'La Residencia Minimalista X1 está diseñada para clientes que buscan una casa contenedor moderna, eficiente y con acabados de alta gama. Se plantea como una solución arquitectónica flexible para primera residencia, segunda vivienda o activo turístico de alta ocupación.',
       'Cada proyecto se adapta a la parcela, normativa urbanística y necesidades energéticas del cliente. Integramos aislamiento reforzado, carpintería exterior de altas prestaciones y distribuciones interiores optimizadas para confort térmico durante todo el año.',
-      'Si estás comparando precio de vivienda modular en contenedor en España, este modelo ofrece equilibrio entre diseño, velocidad de ejecución y control de costes en obra.',
+      'Si estás comparando precio de vivienda modular en contenedor en España, este modelo ofrece equilibrio entre diseño, velocidad de ejecución y control de costes en obra.'
     ],
     highlights: ['Diseño modular escalable', 'Aislamiento térmico reforzado', 'Grandes ventanales', 'Entrega llave en mano opcional'],
     gallery: ['/3contenedores-evergreen-20pies-usado.webp', '/instalacióncontenedores-20pies-usado.webp', '/contenedor-nuevo-20pies-interior.webp'],
@@ -48,14 +49,14 @@ const STUDIO_ROUTES: Record<
     seoText: [
       'El modelo Bar & Lounge está pensado para negocios que quieren destacar con una imagen industrial premium. Su diseño favorece el flujo de clientes y la versatilidad en eventos privados, festivales y ferias.',
       'Configuramos aperturas frontales y laterales, barras técnicas, zonas de servicio y preparación para instalaciones eléctricas y de climatización según actividad.',
-      'Es una opción ideal para quien busca un bar en contenedor con estética impactante, plazos de fabricación optimizados y estructura resistente para uso intensivo.',
+      'Es una opción ideal para quien busca un bar en contenedor con estética impactante, plazos de fabricación optimizados y estructura resistente para uso intensivo.'
     ],
     highlights: ['Formato pop-up', 'Aperturas comerciales', 'Preparación eléctrica', 'Acabados personalizables'],
     gallery: ['/3contenedores-20pies-usado.webp', '/descargacontenedores-20pies-usado.webp', '/puertacontenedor-40pies-nuevo.webp'],
   },
   '/estudio/piscina-infinity-box-contenedor': {
     title: 'Piscina Infinity Box de contenedor',
-    category: 'Solución ldica exterior',
+    category: 'Solución lúdica exterior',
     price: 'Desde 14.500€',
     heroImage: '/montañacontenedores2.webp',
     description:
@@ -63,7 +64,7 @@ const STUDIO_ROUTES: Record<
     seoText: [
       'La Infinity Box aprovecha la robustez del contenedor para crear una piscina compacta y visualmente potente. Es ideal para proyectos residenciales y hoteleros que necesitan una solución modular y fácil de implantar.',
       'Incluye opciones de acabados interiores, sistemas de depuración ocultos y elementos de seguridad adaptados al tipo de uso previsto.',
-      'Si buscas una piscina contenedor en España con buena relación entre coste, durabilidad y diseño, esta alternativa permite reducir tiempos frente a obra tradicional.',
+      'Si buscas una piscina contenedor en España con buena relación entre coste, durabilidad y diseño, esta alternativa permite reducir tiempos frente a obra tradicional.'
     ],
     highlights: ['Instalación rápida', 'Depuración integrada', 'Acabado premium opcional', 'Mantenimiento simplificado'],
     gallery: ['/contenedorabierto-20pies-nuevo.webp', '/interiorcontenedor-40pies-oneway.webp', '/contenedor2-40pies-nuevo.webp'],
@@ -78,7 +79,7 @@ const STUDIO_ROUTES: Record<
     seoText: [
       'Este gimnasio en contenedor de 20 pies está orientado a entrenamientos funcionales, espacios wellness en hoteles, clubes deportivos y centros privados con limitación de superficie.',
       'La configuración incorpora apertura frontal acristalada, ventilación propia y distribución interior optimizada para aprovechar cada metro útil sin perder comodidad de uso.',
-      'Para proyectos que buscan un gimnasio modular económico, este formato permite empezar desde 9900€ con posibilidad de ampliaciones, branding y equipamiento personalizado.',
+      'Para proyectos que buscan un gimnasio modular económico, este formato permite empezar desde 9900€ con posibilidad de ampliaciones, branding y equipamiento personalizado.'
     ],
     highlights: ['Contenedor marítimo de 20 pies', 'Ventanal de aluminio frontal', 'Ventilación integrada', 'Interior muy luminoso'],
     gallery: ['/contenedorabierto-real-20pies-nuevo.webp', '/contenedorabierto-20pies-nuevo.webp', '/contenedor-nuevo-20pies-interior.webp'],
@@ -95,9 +96,11 @@ function App() {
   const isSalesLandingPage = normalizedPath === salesLandingPath;
   const isLegalPage = normalizedPath === '/legal';
   const studioDetail = STUDIO_ROUTES[normalizedPath];
+  const isAvoidScamsArticlePage =
+    normalizedPath === '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026';
 
   useEffect(() => {
-    if (isFaqPage || isLegalPage || studioDetail) return;
+    if (isFaqPage || isLegalPage || studioDetail || isAvoidScamsArticlePage) return;
 
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -116,7 +119,7 @@ function App() {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isFaqPage, isLegalPage, studioDetail]);
+  }, [isFaqPage, isLegalPage, studioDetail, isAvoidScamsArticlePage]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
@@ -131,6 +134,8 @@ function App() {
           <SalesLandingPage />
         ) : studioDetail ? (
           <StudioProductPage {...studioDetail} />
+        ) : isAvoidScamsArticlePage ? (
+          <AvoidScamsArticle />
         ) : (
           <>
             <Hero />
@@ -148,8 +153,11 @@ function App() {
             </section>
 
             <LogisticsSection />
+
             <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
+
             <DesignStudio />
+
             <QuoteForm />
           </>
         )}
