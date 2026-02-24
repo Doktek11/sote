@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
               <li><a href="#" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
               <li><a href="/preguntas-frecuentes" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
-              <li><a href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026" className="hover:text-orange-500 transition-colors">Blog</a></li>
+              <li><a href="/blog" className="hover:text-orange-500 transition-colors">Blog</a></li>
               <li><a href="/#quote" className="hover:text-orange-500 transition-colors">Contacto</a></li>
             </ul>
           </div>
