@@ -20,4 +20,24 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://theboxcontainerdesign.com/estudio/gimnasio-contenedor-20-pies</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
