@@ -1,20 +1,11 @@
-// AvoidScamsArticle.tsx
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-const SEO_TITLE = 'Cómo evitar estafas al comprar un contenedor marítimo en 2026 | Guía segura';
+const SEO_TITLE = 'Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026) | THE BOX CONTAINER DESIGN';
 const SEO_DESCRIPTION =
-  'Guía 2026 para evitar estafas al comprar un contenedor marítimo. Señales de alerta, precios reales de mercado y checklist de verificación antes de pagar.';
+  'Guía 2026 para evitar estafas al comprar un contenedor marítimo: precios reales, señales de alerta, checklist de verificación y asesoramiento técnico para comprar con seguridad.';
+const SEO_CANONICAL = 'https://theboxcontainerdesign.com/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026';
 
-// Sustituye por tu ID de medición GA4 (formato G-XXXXXXXXXX).
-// Si lo dejas como 'G-XXXXXXXXXX' el componente no inyectará el snippet automáticamente,
-// pero seguirá intentando enviar eventos si gtag/dataLayer ya existen en la página.
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
-
-// Teléfono WhatsApp (formato internacional sin espacios ni signos)
-const WHATSAPP_PHONE = '+34657348078';
-const WHATSAPP_LINK = `https://wa.me/34${WHATSAPP_PHONE.replace(/\D/g, '').slice(2)}`;
-
-const upsertMeta = (name: string, content: string) => {
+const upsertMetaByName = (name: string, content: string) => {
   let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
   if (!meta) {
     meta = document.createElement('meta');
@@ -24,285 +15,234 @@ const upsertMeta = (name: string, content: string) => {
   meta.setAttribute('content', content);
 };
 
-function injectGtag(measurementId: string) {
-  if (!measurementId || measurementId === 'G-XXXXXXXXXX') return;
-  // Evita inyectar doble vez
-  if (document.querySelector(`script[data-gtag-id="${measurementId}"]`)) return;
+const upsertMetaByProperty = (property: string, content: string) => {
+  let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('property', property);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', content);
+};
 
-  const script1 = document.createElement('script');
-  script1.async = true;
-  script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  script1.setAttribute('data-gtag-id', measurementId);
-  document.head.appendChild(script1);
-
-  const script2 = document.createElement('script');
-  script2.setAttribute('data-gtag-id', measurementId);
-  script2.innerHTML = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${measurementId}', { send_page_view: true });
-  `;
-  document.head.appendChild(script2);
-}
+const upsertCanonical = (href: string) => {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', href);
+};
 
 export const AvoidScamsArticle: React.FC = () => {
   useEffect(() => {
     const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousRobots = document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
+    const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
 
     document.title = SEO_TITLE;
-    upsertMeta('description', SEO_DESCRIPTION);
-    upsertMeta('robots', 'index,follow');
+    upsertMetaByName('description', SEO_DESCRIPTION);
+    upsertMetaByName('robots', 'index,follow,max-image-preview:large');
 
-    // Inyectar gtag si hay ID válido
-    injectGtag(GA_MEASUREMENT_ID);
+    upsertMetaByProperty('og:type', 'article');
+    upsertMetaByProperty('og:title', SEO_TITLE);
+    upsertMetaByProperty('og:description', SEO_DESCRIPTION);
+    upsertMetaByProperty('og:url', SEO_CANONICAL);
+    upsertMetaByProperty('og:site_name', 'THE BOX CONTAINER DESIGN');
 
-    // Inyectar JSON-LD Schema (Article) usando datos dinámicos del documento
+    upsertMetaByName('twitter:card', 'summary_large_image');
+    upsertMetaByName('twitter:title', SEO_TITLE);
+    upsertMetaByName('twitter:description', SEO_DESCRIPTION);
+
+    upsertCanonical(SEO_CANONICAL);
+
     const ld = {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      'headline': 'Cómo evitar estafas al comprar un contenedor marítimo',
-      'description': SEO_DESCRIPTION,
-      'datePublished': '2026-02-24',
-      'dateModified': '2026-02-24',
-      'author': {
+      headline: 'Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026)',
+      description: SEO_DESCRIPTION,
+      datePublished: '2026-02-24',
+      dateModified: '2026-02-24',
+      author: {
         '@type': 'Organization',
-        'name': 'THE BOX CONTAINER DESIGN'
+        name: 'THE BOX CONTAINER DESIGN'
       },
-      'publisher': {
+      publisher: {
         '@type': 'Organization',
-        'name': 'THE BOX CONTAINER DESIGN'
+        name: 'THE BOX CONTAINER DESIGN'
       },
-      'mainEntityOfPage': {
+      mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': window.location.href
+        '@id': SEO_CANONICAL
       }
     };
 
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.setAttribute('data-schema', 'avoid-scams-article');
-    script.text = JSON.stringify(ld);
-    document.head.appendChild(script);
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.setAttribute('data-schema', 'avoid-scams-article');
+    schemaScript.text = JSON.stringify(ld);
+    document.head.appendChild(schemaScript);
 
     return () => {
       document.title = previousTitle;
-      upsertMeta('description', previousDescription);
-      // limpiar schema y metadatos añadidos
+      upsertMetaByName('description', previousDescription);
+      upsertMetaByName('robots', previousRobots);
+      if (previousCanonical) {
+        upsertCanonical(previousCanonical);
+      }
+
       const injected = document.querySelector('script[data-schema="avoid-scams-article"]');
       if (injected) injected.remove();
-      // no se remueve gtag para no romper otras partes del sitio
     };
   }, []);
 
-  // Función que envía evento GA4 y dataLayer, luego abre WhatsApp.
-  // Intenta usar gtag primero; si no existe, hace dataLayer.push como fallback.
-  const handleWhatsAppClick = useCallback(
-    (label = 'WhatsApp CTA', extra: Record<string, any> = {}) => (e?: React.MouseEvent<HTMLAnchorElement>) => {
-      if (e) e.preventDefault();
-
-      const eventPayload = {
-        event_category: 'engagement',
-        event_label: label,
-        method: 'whatsapp',
-        phone: WHATSAPP_PHONE,
-        page_title: document.title,
-        page_location: window.location.href,
-        ...extra
-      };
-
-      try {
-        // gtag (GA4) call (si está disponible)
-        if ((window as any).gtag && typeof (window as any).gtag === 'function') {
-          // Nombre de evento personalizado: whatsapp_contact
-          (window as any).gtag('event', 'whatsapp_contact', eventPayload);
-        }
-      } catch (err) {
-        // silencioso
-        // console.warn('gtag error', err);
-      }
-
-      try {
-        // dataLayer fallback
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({ event: 'whatsapp_click', ...eventPayload });
-      } catch (err) {
-        // silencioso
-      }
-
-      // Abrir WhatsApp en nueva ventana
-      // Añadimos utm para distinguir tráfico si se usa en analytics
-      const url = `${WHATSAPP_LINK}?utm_source=site&utm_medium=cta&utm_campaign=whatsapp_contact`;
-      window.open(url, '_blank', 'noopener,noreferrer');
-    },
-    []
-  );
-
-  // Helper que retorna el handler para enlaces en línea (diferentes labels)
-  const waHandler = (label?: string) => {
-    return handleWhatsAppClick(label ?? 'WhatsApp CTA');
-  };
-
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="avoid-scams-title">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-4">Guía 2026</p>
-
+      <div className="container mx-auto px-6 max-w-5xl">
         <h1 id="avoid-scams-title" className="text-4xl md:text-5xl font-black tracking-tight mb-6 text-white">
-          Cómo evitar estafas al comprar un contenedor marítimo
+          Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026)
         </h1>
 
-        <h2 className="text-xl md:text-2xl font-semibold text-zinc-200 mb-6">
-          Señales de alerta, precios reales y cómo proteger su inversión
-        </h2>
-
-        <p className="text-zinc-300 mb-12">
-          El mercado de los contenedores marítimos ha visto un aumento de estafas digitales cada vez más sofisticadas.
-          Ya no son correos mal escritos; ahora son estructuras bien diseñadas para engañar incluso a compradores con experiencia.
+        <p className="text-zinc-300 max-w-4xl mb-8 leading-relaxed">
+          El mercado de los contenedores marítimos ha visto un aumento de estafas digitales cada vez más sofisticadas. Ya no son correos mal escritos; ahora son estructuras bien diseñadas para engañar incluso a compradores con experiencia. Si estás pensando en comprar un contenedor marítimo para almacenaje, inversión o para construir tu casa contenedor, esta guía puede ahorrarte miles de euros y muchos problemas.
         </p>
 
-        {/* SECCIÓN 1 */}
-        <article className="space-y-6 text-zinc-300 mb-16">
-          <h2 className="text-2xl font-bold text-white">1. El gancho: contenedores “casi nuevos” a precios imposibles</h2>
-
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          1. El gancho: contenedores “casi nuevos” a precios imposibles
+        </h2>
+        <div className="space-y-5 text-zinc-300 mb-14 leading-relaxed">
           <p>
-            Si ve un contenedor 40’ High Cube One Way por 1.500€ o 1.800€, desconfíe inmediatamente.
-            En el mercado europeo actual, en 2026, un 40’ HC One Way rara vez baja de 2.800€ según disponibilidad y puerto.
+            La primera señal de alerta es el precio. Si ves un contenedor 40’ High Cube “One Way” (un solo viaje) por 1.100€, 1.200€ o cifras similares, desconfía inmediatamente.
+          </p>
+          <p>
+            En el mercado europeo actual, el precio de un contenedor marítimo de 40 pies High Cube One Way en 2026 rara vez baja de los 2.600€, según disponibilidad, puerto de entrega y situación logística internacional.
+          </p>
+          <p>
+            El precio de los contenedores está ligado a factores globales como el coste del acero, la demanda logística y las rutas marítimas internacionales desde grandes centros de fabricación como Shanghái. Nadie vende muy por debajo del mercado sin un motivo claro.
           </p>
 
+          <h3 className="text-xl font-bold text-white">La trampa</h3>
+          <p>Utilizan fotografías reales robadas de terminales portuarias para aparentar stock físico.</p>
+
+          <h3 className="text-xl font-bold text-white">La realidad</h3>
+          <p>No tienen contenedores. Solo buscan la transferencia rápida.</p>
+
           <p>
-            El precio está ligado al coste del acero, la demanda logística y las rutas marítimas internacionales.
-            Nadie vende muy por debajo del mercado sin un motivo claro.
+            Muchas víctimas no solo pierden dinero; pierden la ilusión de su casa contenedor. Habían elegido terreno, calculado presupuesto, visualizado la distribución y de un día para otro se quedan sin contenedor, sin proyecto y sin ahorros.
           </p>
+          <p>
+            Antes de reservar por impulso, contrasta el precio con un proveedor que pueda acreditarlo con datos reales y asesoramiento técnico.
+          </p>
+        </div>
 
-          <div className="border-l-4 border-orange-500 pl-6">
-            <p className="font-semibold text-white">La trampa</p>
-            <p>Utilizan fotografías reales robadas de terminales portuarias para aparentar stock.</p>
-
-            <p className="font-semibold text-white mt-4">La realidad</p>
-            <p>No tienen contenedores. Solo buscan la transferencia rápida.</p>
-          </div>
-
-          <a
-            href={WHATSAPP_LINK}
-            onClick={waHandler('Consultar precio real por WhatsApp')}
-            className="inline-flex mt-4 rounded-lg bg-orange-600 px-5 py-3 font-semibold hover:bg-orange-500 transition-colors text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Consultar precio real por WhatsApp
-          </a>
-        </article>
-
-        {/* SECCIÓN 2 */}
-        <article className="space-y-6 text-zinc-300 mb-16">
-          <h2 className="text-2xl font-bold text-white">2. Webs perfectas pero vacías (webs fantasma)</h2>
-
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          2. Webs “perfectas” pero vacías (webs fantasma)
+        </h2>
+        <div className="space-y-5 text-zinc-300 mb-14 leading-relaxed">
           <p>
             Hoy en día crear una web profesional es sencillo. Las llamadas webs fantasma están diseñadas para parecer empresas consolidadas.
           </p>
 
+          <h3 className="text-xl font-bold text-white">Suelen incluir</h3>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Certificados falsos.</li>
-            <li>Textos legales genéricos.</li>
-            <li>Direcciones en puertos reales donde nadie conoce a la empresa.</li>
+            <li>Certificados falsos: logotipos de calidad que son solo imágenes.</li>
+            <li>Textos legales genéricos: avisos legales que mencionan empresas inexistentes o usan nombres reales con cuentas bancarias distintas.</li>
+            <li>Ubicaciones falsas: direcciones en puertos reales como Valencia, Barcelona o Algeciras donde nadie conoce a la empresa.</li>
           </ul>
 
-          <p className="font-semibold text-white">Señales claras de alerta:</p>
-
+          <h3 className="text-xl font-bold text-white">Señales claras de alerta</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li>Solo permiten pago por transferencia.</li>
             <li>No responden preguntas técnicas.</li>
-            <li>No ofrecen visita ni vídeo real.</li>
-            <li>El IBAN no coincide con el titular.</li>
+            <li>No ofrecen visita ni vídeo real del contenedor.</li>
+            <li>El IBAN no coincide con el titular de la empresa.</li>
           </ul>
 
-          <a
-            href={WHATSAPP_LINK}
-            onClick={waHandler('Verificar empresa antes de pagar')}
-            className="inline-flex mt-4 rounded-lg bg-orange-600 px-5 py-3 font-semibold hover:bg-orange-500 transition-colors text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Verificar empresa antes de pagar
-          </a>
-        </article>
+          <p>
+            Si no puedes hablar con una persona real antes de pagar, detente. Una empresa legítima no evita el contacto directo ni las preguntas técnicas.
+          </p>
+        </div>
 
-        {/* SECCIÓN 3 */}
-        <article className="space-y-6 text-zinc-300 mb-16">
-          <h2 className="text-2xl font-bold text-white">3. El riesgo del “Click y Compra” sin asesoramiento técnico</h2>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          3. La barrera del “Click y Compra” (sin asesoramiento técnico)
+        </h2>
+        <div className="space-y-5 text-zinc-300 mb-14 leading-relaxed">
+          <p>
+            Comprar un contenedor marítimo, especialmente para vivienda o transformación, requiere análisis previo. Un contenedor One Way significa que ha realizado un único transporte de carga desde fábrica. Un modelo High Cube tiene mayor altura interior (aprox. 2,69 m frente a 2,39 m estándar), lo que lo hace más adecuado para proyectos de vivienda.
+          </p>
 
-          <p>Comprar un contenedor marítimo para vivienda requiere análisis previo:</p>
-
+          <h3 className="text-xl font-bold text-white">Además, deben evaluarse aspectos como</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li>Nivelación del terreno.</li>
             <li>Accesos para camión grúa.</li>
             <li>Estado estructural.</li>
-            <li>Aislamiento si es para vivienda.</li>
+            <li>Aislamiento si es para casa contenedor.</li>
           </ul>
 
-          <p>Señal clara de alerta: la web obliga a añadir al carrito y pagar sin consulta técnica previa.</p>
+          <p>
+            Señal de alerta clara: la web te obliga a añadir al carrito y pagar directamente sin ningún tipo de consulta técnica previa.
+          </p>
+          <p>
+            Antes de pagar, solicita asesoramiento técnico real. Si el vendedor evita la conversación o solo envía mensajes automatizados, cambia de proveedor.
+          </p>
+        </div>
 
-          <a
-            href={WHATSAPP_LINK}
-            onClick={waHandler('Solicitar asesoramiento técnico')}
-            className="inline-flex mt-4 rounded-lg bg-orange-600 px-5 py-3 font-semibold hover:bg-orange-500 transition-colors text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Solicitar asesoramiento técnico
-          </a>
-        </article>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">4. El triángulo del silencio</h2>
+        <div className="space-y-5 text-zinc-300 mb-14 leading-relaxed">
+          <p>Tras realizar la transferencia, suele repetirse este patrón:</p>
+          <ol className="list-decimal pl-6 space-y-2">
+            <li>Confirmación automática de “pedido procesado”.</li>
+            <li>Excusas logísticas: camión retenido, permiso portuario pendiente, incidencia aduanera.</li>
+            <li>Desaparición total: la web deja de funcionar y el teléfono no responde.</li>
+          </ol>
+          <p>
+            Recuperar el dinero es extremadamente difícil si no se ha verificado previamente la identidad fiscal y bancaria del vendedor.
+          </p>
+          <p>
+            Un presupuesto contrastado hoy puede evitar una pérdida total mañana.
+          </p>
+        </div>
 
-        {/* SECCIÓN 4 */}
-        <article className="space-y-6 text-zinc-300 mb-16">
-          <h2 className="text-2xl font-bold text-white">4. El triángulo del silencio</h2>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          Checklist antes de comprar un contenedor marítimo
+        </h2>
+        <div className="mt-4 p-6 rounded-2xl border border-orange-500/30 bg-orange-500/5 mb-14">
+          <ul className="list-disc pl-6 text-zinc-300 space-y-2">
+            <li>La empresa tiene CIF verificable.</li>
+            <li>El IBAN coincide con el titular de la empresa.</li>
+            <li>Puedes hablar con una persona real por teléfono.</li>
+            <li>Existe una dirección física comprobable.</li>
+            <li>Te ofrecen factura con datos fiscales completos.</li>
+            <li>Te permiten visitar el contenedor o enviarte vídeo real.</li>
+            <li>El precio está dentro del rango real de mercado.</li>
+          </ul>
+          <p className="text-zinc-300 mt-6 leading-relaxed">
+            Si alguna respuesta genera dudas, frena la operación.
+          </p>
+        </div>
 
-          <p>Tras realizar la transferencia suele repetirse el patrón:</p>
-
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+          Cómo trabajamos en THE BOX CONTAINER DESIGN
+        </h2>
+        <div className="space-y-5 text-zinc-300 leading-relaxed">
+          <p>
+            En THE BOX CONTAINER DESIGN trabajamos de forma inversa a las webs fantasma:
+          </p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Confirmación automática.</li>
-            <li>Excusas logísticas.</li>
-            <li>Desaparición total.</li>
+            <li>Consulta obligatoria antes de cualquier pago.</li>
+            <li>Transparencia total en datos fiscales.</li>
+            <li>Identidad real y sede física verificable.</li>
+            <li>Asesoramiento técnico especializado en proyectos de casa contenedor.</li>
+            <li>Presupuestos realistas alineados con el precio real del mercado.</li>
           </ul>
-
-          <p>Recuperar el dinero es extremadamente difícil si no se ha verificado previamente la identidad fiscal y bancaria del vendedor.</p>
-
-          <a
-            href={WHATSAPP_LINK}
-            onClick={waHandler('Confirmar datos antes de transferir')}
-            className="inline-flex mt-4 rounded-lg bg-orange-600 px-5 py-3 font-semibold hover:bg-orange-500 transition-colors text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Confirmar datos antes de transferir
-          </a>
-        </article>
-
-        {/* CHECKLIST */}
-        <div className="mt-20 p-8 rounded-2xl border border-orange-500/30 bg-orange-500/5">
-          <h2 className="text-2xl font-extrabold mb-6 text-white">Checklist antes de comprar un contenedor marítimo</h2>
-
-          <ul className="space-y-3 text-zinc-300">
-            <li>¿La empresa tiene CIF verificable?</li>
-            <li>¿El IBAN coincide con el titular?</li>
-            <li>¿Puede hablar con una persona real?</li>
-            <li>¿Existe dirección física comprobable?</li>
-            <li>¿Le ofrecen vídeo real del contenedor?</li>
-            <li>¿El precio está dentro del rango de mercado?</li>
-          </ul>
-
-          <a
-            href={WHATSAPP_LINK}
-            onClick={waHandler('Hablar ahora con un asesor')}
-            className="inline-flex mt-6 rounded-lg bg-orange-600 px-6 py-3 font-semibold hover:bg-orange-500 transition-colors text-white"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Hablar ahora con un asesor
-          </a>
+          <p>
+            En un mercado lleno de estructuras digitales sin respaldo real, la diferencia no está en el diseño de la web, sino en las personas y en los procesos que hay detrás.
+          </p>
+          <p>
+            Si estás valorando comprar un contenedor marítimo en 2026, habla primero con nosotros. Analizamos tu caso, resolvemos tus dudas y te damos un precio realista antes de que tomes cualquier decisión.
+          </p>
         </div>
       </div>
     </section>
