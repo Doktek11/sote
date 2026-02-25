@@ -17,7 +17,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     category: 'Vivienda modular',
     description:
       'Casa contenedor premium con diseño minimalista, distribución flexible y acabados de alta gama para proyecto residencial a medida.',
-    imageUrl: '/demogym-20metors-nuevo.webp',
+    imageUrl: '/casacontenedor-40pies-disenofinal.webp',
     href: '/estudio/residencia-minimalista-contenedor',
   },
   {
