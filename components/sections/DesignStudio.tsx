@@ -16,7 +16,12 @@ type StudioCard = {
 
 const STUDIO_PRODUCTS: StudioCard[] = [
   {
-    ...TRANSFORMATIONS[0],
+    id: 't1',
+    title: 'Residencia minimalista contenedor',
+    category: 'Viviendas',
+    description: '...',
+    imageUrl: '/images/transformations-0.webp', // <-- reemplaza aquí
+    features: [...],
     href: '/estudio/residencia-minimalista-contenedor',
   },
   {
