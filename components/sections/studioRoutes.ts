@@ -23,7 +23,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
       'Si estás comparando precio de vivienda modular en contenedor en España, este modelo ofrece equilibrio entre diseño, velocidad de ejecución y control de costes en obra.'
     ],
     highlights: ['Diseño modular escalable', 'Aislamiento térmico reforzado', 'Grandes ventanales', 'Entrega llave en mano opcional'],
-    gallery: ['/casacontenedor-plano-40pies-highcube.webp', '/instalacióncontenedores-20pies-usado.webp', '/contenedor-nuevo-20pies-interior.webp'],
+    gallery: ['/casacontenedor-plano-40pies-highcube.webp', '/instalacióncontenedores-20pies-usado.webp', '/planocontenedor-40pies.webp'],
   },
   '/estudio/bar-lounge-contenedor-eventos': {
     title: 'The Box Bar & Lounge para eventos',
