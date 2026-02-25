@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-200 mb-8 underline underline-offset-8 decoration-orange-600">Servicios</h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
+              <li><a href="https://www.theboxcontainerdesign.com/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
               <li><a href="https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor" className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
               <li><a href="https://www.theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor" className="hover:text-orange-500 transition-colors">Piscinas de contenedores</a></li>
               <li><a href="https://www.theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos" className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
