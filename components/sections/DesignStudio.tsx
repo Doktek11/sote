@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { TRANSFORMATIONS } from '../../constants';
 import { ArrowUpRight, Maximize2 } from 'lucide-react';
+import { portfolioContenedoresCasaPath } from './PortfolioContenedoresCasaPage';
 
 type StudioCard = {
   id: string;
@@ -104,10 +105,13 @@ export const DesignStudio: React.FC = () => {
         </div>
 
         <div className="mt-20 text-center">
-          <button className="text-zinc-400 font-mono text-sm hover:text-white transition-colors group flex items-center gap-4 mx-auto uppercase tracking-widest">
+          <a
+            href={portfolioContenedoresCasaPath}
+            className="text-zinc-400 font-mono text-sm hover:text-white transition-colors group inline-flex items-center gap-4 mx-auto uppercase tracking-widest"
+          >
             Ver Portafolio Completo
             <div className="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-orange-500 transition-all"></div>
-          </button>
+          </a>
         </div>
       </div>
     </section>
