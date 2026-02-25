@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Box, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -16,7 +16,6 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               <a href="#" className="p-2 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all"><Instagram size={18} /></a>
-              <a href="#" className="p-2 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all"><Linkedin size={18} /></a>
               <a href="#" className="p-2 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all"><Twitter size={18} /></a>
             </div>
           </div>
@@ -24,10 +23,10 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-200 mb-8 underline underline-offset-8 decoration-orange-600">Servicios</h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Contenedores de Ocasión</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Viviendas Modulares</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Piscinas de Contenedor</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Proyectos Retail & Pop-up</a></li>
+              <li><a href="/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
+              <li><a href="https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor" className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
+              <li><a href="https://www.theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor" className="hover:text-orange-500 transition-colors">Piscinas de contenedores</a></li>
+              <li><a href="https://www.theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos" className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
             </ul>
           </div>
 
@@ -35,7 +34,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-200 mb-8 underline underline-offset-8 decoration-orange-600">Compañía</h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
               <li><a href="#" className="hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
+              <li><a href="https://www.theboxcontainerdesign.com/portfolio-contenedores-casa" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
               <li><a href="/preguntas-frecuentes" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
               <li><a href="/blog" className="hover:text-orange-500 transition-colors">Blog</a></li>
               <li><a href="/#quote" className="hover:text-orange-500 transition-colors">Contacto</a></li>
