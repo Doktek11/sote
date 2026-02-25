@@ -20,7 +20,7 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     title: 'Residencia minimalista contenedor',
     category: 'Viviendas',
     description: '...',
-    imageUrl: '/images/transformations-0.webp', // <-- reemplaza aquí
+    imageUrl: '/casacontenedor-40pies-disenofinal.webp', // <-- reemplaza aquí
     features: [...],
     href: '/estudio/residencia-minimalista-contenedor',
   },
