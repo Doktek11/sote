@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { StudioProductPage } from './components/sections/StudioProductPage';
 import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
 import { BlogIndex } from './components/sections/Blog/BlogIndex';
+import { PortfolioContenedoresCasaPage, portfolioContenedoresCasaPath } from './components/sections/PortfolioContenedoresCasaPage';
 
 const STUDIO_ROUTES: Record<
   string,
@@ -101,6 +102,7 @@ function App() {
   const isFaqPage = normalizedPath === '/preguntas-frecuentes';
   const isSalesLandingPage = normalizedPath === salesLandingPath;
   const isLegalPage = normalizedPath === '/legal';
+  const isPortfolioContenedoresCasaPage = normalizedPath === portfolioContenedoresCasaPath;
 
   const isBlogPage = normalizedPath === '/blog';
   const isAnyBlogPath = normalizedPath.startsWith('/blog/');
@@ -109,7 +111,7 @@ function App() {
   const studioDetail = STUDIO_ROUTES[normalizedPath];
 
   useEffect(() => {
-    if (isFaqPage || isLegalPage || isBlogPage || isAnyBlogPath || studioDetail) return;
+    if (isFaqPage || isLegalPage || isBlogPage || isAnyBlogPath || studioDetail || isPortfolioContenedoresCasaPage) return;
 
     const handleHashChange = () => {
       const hash = window.location.hash;
@@ -128,7 +130,7 @@ function App() {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isFaqPage, isLegalPage, isBlogPage, isAnyBlogPath, studioDetail]);
+  }, [isFaqPage, isLegalPage, isBlogPage, isAnyBlogPath, studioDetail, isPortfolioContenedoresCasaPage]);
 
   return (
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
@@ -147,6 +149,8 @@ function App() {
           blogArticle
         ) : isAnyBlogPath ? (
           <BlogIndex />
+        ) : isPortfolioContenedoresCasaPage ? (
+          <PortfolioContenedoresCasaPage />
         ) : studioDetail ? (
           <StudioProductPage {...studioDetail} />
         ) : (
