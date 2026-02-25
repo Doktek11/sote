@@ -14,7 +14,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     title: 'Residencia Minimalista X1 en Contenedor',
     category: 'Vivienda modular',
     price: 'Proyecto a medida',
-    heroImage: '/demogym-20metors-nuevo.webp',
+    heroImage: '/casacontenedor-plano-40pies-highcube.webp',
     description:
       'Vivienda modular premium de inspiración minimalista fabricada a partir de módulos marítimos preparados para uso residencial en España.',
     seoText: [
