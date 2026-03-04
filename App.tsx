@@ -1,24 +1,62 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/sections/Hero';
 import { LogisticsSection } from './components/sections/LogisticsSection';
 import { DesignStudio } from './components/sections/DesignStudio';
 import { QuoteForm } from './components/sections/QuoteForm';
-import { FaqSection } from './components/sections/FaqSection';
-import { SalesLandingPage } from './components/sections/SalesLandingPage';
-import { LegalPage } from './components/sections/LegalPage';
 import { Footer } from './components/Footer';
-import { StudioProductPage } from './components/sections/StudioProductPage';
-import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
-import { BlogIndex } from './components/sections/Blog/BlogIndex';
-import { CatalunyaContainersArticle } from './components/sections/Blog/CatalunyaContainersArticle';
 import {
-  PortfolioContenedoresCasaPage,
   portfolioContenedoresCasaPath
 } from './components/sections/PortfolioContenedoresCasaPage';
-
-// ✅ IMPORT CORRECTO DESDE ARCHIVO EXTERNO
 import { STUDIO_ROUTES } from './components/sections/studioRoutes';
+
+const FaqSection = React.lazy(() =>
+  import('./components/sections/FaqSection').then((module) => ({
+    default: module.FaqSection
+  }))
+);
+
+const SalesLandingPage = React.lazy(() =>
+  import('./components/sections/SalesLandingPage').then((module) => ({
+    default: module.SalesLandingPage
+  }))
+);
+
+const LegalPage = React.lazy(() =>
+  import('./components/sections/LegalPage').then((module) => ({
+    default: module.LegalPage
+  }))
+);
+
+const StudioProductPage = React.lazy(() =>
+  import('./components/sections/StudioProductPage').then((module) => ({
+    default: module.StudioProductPage
+  }))
+);
+
+const BlogIndex = React.lazy(() =>
+  import('./components/sections/Blog/BlogIndex').then((module) => ({
+    default: module.BlogIndex
+  }))
+);
+
+const AvoidScamsArticle = React.lazy(() =>
+  import('./components/sections/Blog/AvoidScamsArticle').then((module) => ({
+    default: module.AvoidScamsArticle
+  }))
+);
+
+const CatalunyaContainersArticle = React.lazy(() =>
+  import('./components/sections/Blog/CatalunyaContainersArticle').then((module) => ({
+    default: module.CatalunyaContainersArticle
+  }))
+);
+
+const PortfolioContenedoresCasaPage = React.lazy(() =>
+  import('./components/sections/PortfolioContenedoresCasaPage').then((module) => ({
+    default: module.PortfolioContenedoresCasaPage
+  }))
+);
 
 const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
   '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026': (
@@ -92,57 +130,59 @@ function App() {
       <Navbar />
 
       <main>
-        {isFaqPage ? (
-          <FaqSection />
-        ) : isLegalPage ? (
-          <LegalPage />
-        ) : isSalesLandingPage ? (
-          <SalesLandingPage />
-        ) : isBlogPage ? (
-          <BlogIndex />
-        ) : blogArticle ? (
-          blogArticle
-        ) : isAnyBlogPath ? (
-          <BlogIndex />
-        ) : isPortfolioContenedoresCasaPage ? (
-          <PortfolioContenedoresCasaPage />
-        ) : studioDetail ? (
-          <StudioProductPage {...studioDetail} />
-        ) : (
-          <>
-            <Hero />
+        <Suspense fallback={<div className="min-h-[40vh]" />}>
+          {isFaqPage ? (
+            <FaqSection />
+          ) : isLegalPage ? (
+            <LegalPage />
+          ) : isSalesLandingPage ? (
+            <SalesLandingPage />
+          ) : isBlogPage ? (
+            <BlogIndex />
+          ) : blogArticle ? (
+            blogArticle
+          ) : isAnyBlogPath ? (
+            <BlogIndex />
+          ) : isPortfolioContenedoresCasaPage ? (
+            <PortfolioContenedoresCasaPage />
+          ) : studioDetail ? (
+            <StudioProductPage {...studioDetail} />
+          ) : (
+            <>
+              <Hero />
 
-            <section className="bg-zinc-950 py-10 border-y border-zinc-900">
-              <div className="container mx-auto px-6 overflow-hidden">
-                <div className="flex items-center justify-between opacity-30 grayscale gap-12 whitespace-nowrap animate-pulse">
-                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
-                    CARGO-PRO
-                  </span>
-                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
-                    MODULAR-TECH
-                  </span>
-                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
-                    STEEL-CORE
-                  </span>
-                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
-                    ECO-Vessel
-                  </span>
-                  <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
-                    NORDIC-TRANS
-                  </span>
+              <section className="bg-zinc-950 py-10 border-y border-zinc-900">
+                <div className="container mx-auto px-6 overflow-hidden">
+                  <div className="flex items-center justify-between opacity-30 grayscale gap-12 whitespace-nowrap animate-pulse">
+                    <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
+                      CARGO-PRO
+                    </span>
+                    <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
+                      MODULAR-TECH
+                    </span>
+                    <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
+                      STEEL-CORE
+                    </span>
+                    <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
+                      ECO-Vessel
+                    </span>
+                    <span className="font-mono text-xl font-bold italic tracking-[0.2em]">
+                      NORDIC-TRANS
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
-            <LogisticsSection />
+              <LogisticsSection />
 
-            <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
+              <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
 
-            <DesignStudio />
+              <DesignStudio />
 
-            <QuoteForm />
-          </>
-        )}
+              <QuoteForm />
+            </>
+          )}
+        </Suspense>
       </main>
 
       <Footer />
