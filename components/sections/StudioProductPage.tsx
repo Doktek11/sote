@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type StudioProductPageProps = {
   title: string;
@@ -11,6 +11,26 @@ type StudioProductPageProps = {
   gallery: string[];
 };
 
+const upsertMetaByName = (name: string, content: string) => {
+  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', content);
+};
+
+const upsertCanonical = (href: string) => {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', href);
+};
+
 export const StudioProductPage: React.FC<StudioProductPageProps> = ({
   title,
   category,
@@ -21,6 +41,28 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
   highlights,
   gallery,
 }) => {
+  useEffect(() => {
+    const seoTitle = `${title} | ${category} | The Box Container Design`;
+    const seoDescription = `${description} Precio ${price}. Proyecto de ${category.toLowerCase()} en contenedor marítimo con opciones de personalización y entrega en España.`;
+    const canonical = `${window.location.origin}${window.location.pathname}`;
+
+    const previousTitle = document.title;
+    const previousDescription =
+      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousCanonical =
+      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+
+    document.title = seoTitle;
+    upsertMetaByName('description', seoDescription);
+    upsertCanonical(canonical);
+
+    return () => {
+      document.title = previousTitle;
+      upsertMetaByName('description', previousDescription);
+      if (previousCanonical) upsertCanonical(previousCanonical);
+    };
+  }, [title, category, description, price]);
+
   return (
     <section className="bg-zinc-950 text-zinc-100 pt-36 pb-20">
       <div className="container mx-auto px-6">
