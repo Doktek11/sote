@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 import { StudioProductPage } from './components/sections/StudioProductPage';
 import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
 import { BlogIndex } from './components/sections/Blog/BlogIndex';
+import { CatalunyaContainersArticle } from './components/sections/Blog/CatalunyaContainersArticle';
 import {
   PortfolioContenedoresCasaPage,
   portfolioContenedoresCasaPath
@@ -22,6 +23,9 @@ import { STUDIO_ROUTES } from './components/sections/studioRoutes';
 const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
   '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026': (
     <AvoidScamsArticle />
+  ),
+  '/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026': (
+    <CatalunyaContainersArticle />
   )
 };
 
