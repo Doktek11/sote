@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 type PortfolioFamily = {
@@ -8,6 +8,31 @@ type PortfolioFamily = {
   description: string;
   imageUrl: string;
   href: string;
+};
+
+const SEO_TITLE = 'Portfolio de contenedores casa | Diseños y transformaciones | The Box Container Design';
+const SEO_DESCRIPTION =
+  'Descubre nuestro portfolio de contenedores casa: vivienda modular, bar lounge, piscina y gimnasio en contenedor con enfoque técnico y diseño funcional.';
+const SEO_CANONICAL = 'https://theboxcontainerdesign.com/portfolio-contenedores-casa';
+
+const upsertMetaByName = (name: string, content: string) => {
+  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', content);
+};
+
+const upsertCanonical = (href: string) => {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', href);
 };
 
 const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
@@ -52,6 +77,24 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
 export const portfolioContenedoresCasaPath = '/portfolio-contenedores-casa';
 
 export const PortfolioContenedoresCasaPage: React.FC = () => {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousDescription =
+      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousCanonical =
+      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+
+    document.title = SEO_TITLE;
+    upsertMetaByName('description', SEO_DESCRIPTION);
+    upsertCanonical(SEO_CANONICAL);
+
+    return () => {
+      document.title = previousTitle;
+      upsertMetaByName('description', previousDescription);
+      if (previousCanonical) upsertCanonical(previousCanonical);
+    };
+  }, []);
+
   return (
     <section className="bg-zinc-950 py-20 md:py-24">
       <div className="container mx-auto px-6">
