@@ -13,25 +13,47 @@ export const BlogIndex: React.FC = () => {
           contenedores marítimos en España. Guías prácticas para evitar errores y tomar mejores decisiones.
         </p>
 
-        <article className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8">
-          <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-3">Guía destacada</p>
+        <div className="space-y-6">
+          <article className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8">
+            <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-3">Nueva guía 2026</p>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Cómo evitar estafas al comprar un contenedor marítimo en 2026
-          </h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Catalunya: venta de contenedores marítimos (medidas, tipos y precios 2026)
+            </h2>
 
-          <p className="text-zinc-300 mb-6 leading-relaxed">
-            Señales de alerta, precios de referencia y checklist de verificación antes de pagar para proteger
-            tu inversión y comprar con seguridad.
-          </p>
+            <p className="text-zinc-300 mb-6 leading-relaxed">
+              Comparativa clara entre 20 pies, 40 pies y High Cube, rangos de precio actualizados y
+              checklist técnico para comprar con criterio en Catalunya.
+            </p>
 
-          <a
-            href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026"
-            className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
-          >
-            Leer artículo completo
-          </a>
-        </article>
+            <a
+              href="/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026"
+              className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
+            >
+              Leer artículo completo
+            </a>
+          </article>
+
+          <article className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-8">
+            <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-3">Guía destacada</p>
+
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Cómo evitar estafas al comprar un contenedor marítimo en 2026
+            </h2>
+
+            <p className="text-zinc-300 mb-6 leading-relaxed">
+              Señales de alerta, precios de referencia y checklist de verificación antes de pagar para proteger
+              tu inversión y comprar con seguridad.
+            </p>
+
+            <a
+              href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026"
+              className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
+            >
+              Leer artículo completo
+            </a>
+          </article>
+        </div>
       </div>
     </section>
   );
