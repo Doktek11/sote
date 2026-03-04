@@ -29,7 +29,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     title: 'The Box Bar & Lounge para eventos',
     category: 'Espacio comercial',
     price: 'Desde 18.900€',
-    heroImage: '/montañacontenedores.webp',
+    heroImage: '/contenedorbar-20pies-nuevo.webp',
     description:
       'Espacio comercial en contenedor orientado a hostelería, pop-ups de marca y eventos itinerantes con alta visibilidad.',
     seoText: [
@@ -38,7 +38,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
       'Es una opción ideal para quien busca un bar en contenedor con estética impactante, plazos de fabricación optimizados y estructura resistente para uso intensivo.'
     ],
     highlights: ['Formato pop-up', 'Aperturas comerciales', 'Preparación eléctrica', 'Acabados personalizables'],
-    gallery: ['/3contenedores-20pies-usado.webp', '/descargacontenedores-20pies-usado.webp', '/puertacontenedor-40pies-nuevo.webp'],
+    gallery: ['/contenedorbar-streetfood-20pies.webp', '/planocontenedor-bar-20pies.webp'],
   },
   '/estudio/piscina-infinity-box-contenedor': {
     title: 'Piscina Infinity Box de contenedor',
