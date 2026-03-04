@@ -26,7 +26,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     category: 'Espacio comercial',
     description:
       'Contenedor transformado para hostelería y eventos, con aperturas comerciales y configuración adaptable para pop-ups y activaciones.',
-    imageUrl: '/montañacontenedores.webp',
+    imageUrl: '/contenedorbar-20pies-nuevo.webp',
     href: '/estudio/bar-lounge-contenedor-eventos',
   },
   {
