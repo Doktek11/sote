@@ -26,6 +26,7 @@ const STUDIO_PRODUCTS: StudioCard[] = [
   },
   {
     ...TRANSFORMATIONS[1],
+    imageUrl: '/contenedorbar-20pies-nuevo.webp',
     href: '/estudio/bar-lounge-contenedor-eventos',
   },
   {
