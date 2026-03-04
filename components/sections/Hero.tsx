@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
         >
           <div className="relative z-10 rounded-lg overflow-hidden border border-zinc-800 shadow-2xl">
             <img 
-              src="/puertacontenedor-40pies-nuevo.webp" 
+              src="/contenedorbar-20pies-barcelona.webp" 
               alt="Contenedor marítimo transformado en vivienda moderna" 
               className="w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
