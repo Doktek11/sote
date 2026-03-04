@@ -1,6 +1,49 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+const SEO_TITLE = 'Blog de contenedores marítimos | Guías y consejos 2026 | The Box Container Design';
+const SEO_DESCRIPTION =
+  'Blog de The Box Container Design con guías prácticas sobre compra segura, precios, logística y transformación de contenedores marítimos en España.';
+const SEO_CANONICAL = 'https://theboxcontainerdesign.com/blog';
+
+const upsertMetaByName = (name: string, content: string) => {
+  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute('name', name);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', content);
+};
+
+const upsertCanonical = (href: string) => {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', href);
+};
 
 export const BlogIndex: React.FC = () => {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousDescription =
+      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+    const previousCanonical =
+      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+
+    document.title = SEO_TITLE;
+    upsertMetaByName('description', SEO_DESCRIPTION);
+    upsertCanonical(SEO_CANONICAL);
+
+    return () => {
+      document.title = previousTitle;
+      upsertMetaByName('description', previousDescription);
+      if (previousCanonical) upsertCanonical(previousCanonical);
+    };
+  }, []);
+
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="blog-title">
       <div className="container mx-auto px-6 max-w-5xl">
