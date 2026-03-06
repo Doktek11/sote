@@ -28,7 +28,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
   '/estudio/bar-lounge-contenedor-eventos': {
     title: 'The Box Bar & Lounge para eventos',
     category: 'Espacio comercial',
-    price: 'Desde 18.900€',
+    price: 'Desde 18.900 €',
     heroImage: '/contenedorbar-20pies-nuevo.webp',
     description:
       'Espacio comercial en contenedor orientado a hostelería, pop-ups de marca y eventos itinerantes con alta visibilidad.',
@@ -43,7 +43,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
   '/estudio/piscina-infinity-box-contenedor': {
     title: 'Piscina Infinity Box de contenedor',
     category: 'Solución lúdica exterior',
-    price: 'Desde 14.500€',
+    price: 'Desde 14.500 €',
     heroImage: '/montañacontenedores2.webp',
     description:
       'Piscina fabricada sobre contenedor marítimo para viviendas, hoteles y espacios turísticos que necesitan instalación rápida y estética diferenciada.',
@@ -58,16 +58,17 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
   '/estudio/gimnasio-contenedor-20-pies': {
     title: 'Gimnasio en contenedor de 20 pies',
     category: 'Fitness modular',
-    price: 'Desde 9900€',
+    price: 'Desde 9.900 €',
     heroImage: '/contenedorabierto-real-20pies-nuevo.webp',
     description:
       'Gimnasio modular compacto sobre contenedor de 20 pies, con ventanal frontal de aluminio, ventilación propia y máxima entrada de luz natural.',
     seoText: [
       'Este gimnasio en contenedor de 20 pies está orientado a entrenamientos funcionales, espacios wellness en hoteles, clubes deportivos y centros privados con limitación de superficie.',
       'La configuración incorpora apertura frontal acristalada, ventilación propia y distribución interior optimizada para aprovechar cada metro útil sin perder comodidad de uso.',
-      'Para proyectos que buscan un gimnasio modular económico, este formato permite empezar desde 9900€ con posibilidad de ampliaciones, branding y equipamiento personalizado.'
+      'Para proyectos que buscan un gimnasio modular económico, este formato permite empezar desde 9.900 € con posibilidad de ampliaciones, branding y equipamiento personalizado.'
     ],
     highlights: ['Contenedor marítimo de 20 pies', 'Ventanal de aluminio frontal', 'Ventilación integrada', 'Interior muy luminoso'],
     gallery: ['/contenedorabierto-real-20pies-nuevo.webp', '/contenedorabierto-20pies-nuevo.webp', '/contenedor-nuevo-20pies-interior.webp'],
   },
 };
+
