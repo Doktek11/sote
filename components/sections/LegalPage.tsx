@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { canonicalForPath } from '../../seo';
 
 const SEO_TITLE = 'Política de Privacidad y Aviso Legal | The Box Container Design';
 const SEO_DESCRIPTION =
@@ -40,14 +41,17 @@ export const LegalPage: React.FC = () => {
     const previousTitle = document.title;
     const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
     const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+    const previousRobots = document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
 
     document.title = SEO_TITLE;
     upsertMeta('description', SEO_DESCRIPTION);
-    upsertCanonical(`${window.location.origin}${CANONICAL_PATH}`);
+    upsertMeta('robots', 'noindex,follow');
+    upsertCanonical(canonicalForPath(CANONICAL_PATH));
 
     return () => {
       document.title = previousTitle;
       upsertMeta('description', previousDescription);
+      upsertMeta('robots', previousRobots);
       if (previousCanonical) upsertCanonical(previousCanonical);
     };
   }, []);
@@ -199,3 +203,4 @@ export const LegalPage: React.FC = () => {
     </section>
   );
 };
+
