@@ -11,9 +11,9 @@ type PortfolioFamily = {
   href: string;
 };
 
-const SEO_TITLE = 'Portfolio de contenedores casa | DiseÃ±os y transformaciones | The Box Container Design';
+const SEO_TITLE = 'Portfolio de contenedores casa | Diseños y transformaciones | The Box Container Design';
 const SEO_DESCRIPTION =
-  'Descubre nuestro portfolio de contenedores casa: vivienda modular, bar lounge, piscina y gimnasio en contenedor con enfoque tÃ©cnico y diseÃ±o funcional.';
+  'Descubre nuestro portfolio de contenedores casa: vivienda modular, bar lounge, piscina y gimnasio en contenedor con enfoque técnico y diseño funcional.';
 const SEO_CANONICAL = canonicalForPath('/portfolio-contenedores-casa');
 
 const upsertMetaByName = (name: string, content: string) => {
@@ -42,7 +42,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     title: 'Residencia Minimalista X1 en Contenedor',
     category: 'Vivienda modular',
     description:
-      'Casa contenedor premium con diseÃ±o minimalista, distribuciÃ³n flexible y acabados de alta gama para proyecto residencial a medida.',
+      'Casa contenedor premium con diseño minimalista, distribución flexible y acabados de alta gama para proyecto residencial a medida.',
     imageUrl: '/casacontenedor-40pies-disenofinal.webp',
     href: '/estudio/residencia-minimalista-contenedor',
   },
@@ -51,17 +51,17 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     title: 'The Box Bar & Lounge para eventos',
     category: 'Espacio comercial',
     description:
-      'Contenedor transformado para hostelerÃ­a y eventos, con aperturas comerciales y configuraciÃ³n adaptable para pop-ups y activaciones.',
+      'Contenedor transformado para hostelería y eventos, con aperturas comerciales y configuración adaptable para pop-ups y activaciones.',
     imageUrl: '/contenedorbar-20pies-nuevo.webp',
     href: '/estudio/bar-lounge-contenedor-eventos',
   },
   {
     id: 'p3',
     title: 'Piscina Infinity Box de contenedor',
-    category: 'SoluciÃ³n lÃºdica exterior',
+    category: 'Solución lúdica exterior',
     description:
-      'Piscina modular sobre contenedor marÃ­timo, pensada para instalaciÃ³n rÃ¡pida en vivienda, hotel o espacio turÃ­stico.',
-    imageUrl: '/montaÃ±acontenedores2.webp',
+      'Piscina modular sobre contenedor marítimo, pensada para instalación rápida en vivienda, hotel o espacio turístico.',
+    imageUrl: '/montañacontenedores2.webp',
     href: '/estudio/piscina-infinity-box-contenedor',
   },
   {
@@ -69,7 +69,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     title: 'Gimnasio en contenedor de 20 pies',
     category: 'Fitness modular',
     description:
-      'Formato compacto desde 20 pies con ventanal frontal de aluminio, ventilaciÃ³n integrada y espacio interior luminoso.',
+      'Formato compacto desde 20 pies con ventanal frontal de aluminio, ventilación integrada y espacio interior luminoso.',
     imageUrl: '/contenedorabierto-real-20pies-nuevo.webp',
     href: '/estudio/gimnasio-contenedor-20-pies',
   },
@@ -104,11 +104,11 @@ export const PortfolioContenedoresCasaPage: React.FC = () => {
             Portfolio Contenedores Casa
           </span>
           <h1 className="mt-4 text-4xl md:text-6xl font-light tracking-tight text-white">
-            Familias de diseÃ±o y transformaciones
+            Familias de diseño y transformaciones
           </h1>
           <p className="mt-6 max-w-3xl text-zinc-400 leading-relaxed">
-            PÃ¡gina intermedia para centralizar todas las familias de producto del estudio. AquÃ­ puedes ampliar el catÃ¡logo en el futuro sin
-            perder la selecciÃ³n destacada de 4 familias en portada.
+            Página intermedia para centralizar todas las familias de producto del estudio. Aquí puedes ampliar el catálogo en el futuro sin
+            perder la selección destacada de 4 familias en portada.
           </p>
         </header>
 
