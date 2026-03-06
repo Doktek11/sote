@@ -49,12 +49,12 @@ export const BlogIndex: React.FC = () => {
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="blog-title">
       <div className="container mx-auto px-6 max-w-5xl">
         <h1 id="blog-title" className="text-4xl md:text-5xl font-black tracking-tight mb-6 text-white">
-          Blog de contenedores marÃ­timos
+          Blog de contenedores marí­timos
         </h1>
 
         <p className="text-zinc-300 mb-12 max-w-3xl leading-relaxed">
-          Consejos expertos sobre compra segura, precios reales, logÃ­stica, transformaciÃ³n y uso de
-          contenedores marÃ­timos en EspaÃ±a. GuÃ­as prÃ¡cticas para evitar errores y tomar mejores decisiones.
+          Consejos expertos sobre compra segura, precios reales, logí­stica, transformación y uso de
+          contenedores marí­timos en España. Guí­as prácticas para evitar errores y tomar mejores decisiones.
         </p>
 
         <div className="space-y-6">
@@ -62,19 +62,19 @@ export const BlogIndex: React.FC = () => {
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-3">Nueva guÃ­a 2026</p>
 
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Catalunya: venta de contenedores marÃ­timos (medidas, tipos y precios 2026)
+              Catalunya: venta de contenedores marí­timos (medidas, tipos y precios 2026)
             </h2>
 
             <p className="text-zinc-300 mb-6 leading-relaxed">
               Comparativa clara entre 20 pies, 40 pies y High Cube, rangos de precio actualizados y
-              checklist tÃ©cnico para comprar con criterio en Catalunya.
+              checklist técnico para comprar con criterio en Catalunya.
             </p>
 
             <a
               href="/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026"
               className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
             >
-              Leer artÃ­culo completo
+              Leer artículo completo
             </a>
           </article>
 
@@ -82,19 +82,19 @@ export const BlogIndex: React.FC = () => {
             <p className="text-xs font-mono tracking-[0.2em] uppercase text-orange-500 mb-3">GuÃ­a destacada</p>
 
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              CÃ³mo evitar estafas al comprar un contenedor marÃ­timo en 2026
+              Como evitar estafas al comprar un contenedor marí­timo en 2026
             </h2>
 
             <p className="text-zinc-300 mb-6 leading-relaxed">
-              SeÃ±ales de alerta, precios de referencia y checklist de verificaciÃ³n antes de pagar para proteger
-              tu inversiÃ³n y comprar con seguridad.
+              Señales de alerta, precios de referencia y checklist de verificación antes de pagar para proteger
+              tu inversión y comprar con seguridad.
             </p>
 
             <a
               href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026"
               className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
             >
-              Leer artÃ­culo completo
+              Leer artí­culo completo
             </a>
           </article>
         </div>
