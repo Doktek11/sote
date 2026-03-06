@@ -44,7 +44,7 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
 }) => {
   useEffect(() => {
     const seoTitle = `${title} | ${category} | The Box Container Design`;
-    const seoDescription = `${description} Precio ${price}. Proyecto de ${category.toLowerCase()} en contenedor marÃ­timo con opciones de personalizaciÃ³n y entrega en EspaÃ±a.`;
+    const seoDescription = `${description} Precio ${price}. Proyecto de ${category.toLowerCase()} en contenedor marítimo con opciones de personalización y entrega en España.`;
     const canonical = canonicalForPath(window.location.pathname || '/');
 
     const previousTitle = document.title;
@@ -68,7 +68,7 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
     <section className="bg-zinc-950 text-zinc-100 pt-36 pb-20">
       <div className="container mx-auto px-6">
         <a href="/#studio" className="text-orange-500 font-mono text-xs uppercase tracking-widest hover:text-orange-400">
-          â† Volver al estudio
+          ← Volver al estudio
         </a>
 
         <header className="mt-6 max-w-4xl">
@@ -92,10 +92,10 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
           </article>
 
           <aside className="border border-zinc-800 rounded-sm p-6 h-fit bg-zinc-900/50">
-            <h2 className="text-lg font-semibold">CaracterÃ­sticas destacadas</h2>
+            <h2 className="text-lg font-semibold">Características destacadas</h2>
             <ul className="mt-4 space-y-3">
               {highlights.map((item) => (
-                <li key={item} className="text-zinc-300 text-sm">â€¢ {item}</li>
+                <li key={item} className="text-zinc-300 text-sm">• {item}</li>
               ))}
             </ul>
           </aside>
@@ -112,3 +112,5 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
     </section>
   );
 };
+
+export default StudioProductPage;
