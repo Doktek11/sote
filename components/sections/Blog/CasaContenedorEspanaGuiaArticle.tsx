@@ -72,16 +72,7 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
           url: 'https://theboxcontainerdesign.com',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://theboxcontainerdesign.com/logo.png'
-          }
-        },
-        {
-          '@type': 'Person',
-          '@id': 'https://theboxcontainerdesign.com/#author-andres',
-          name: 'Andrés De Eguía Haazer',
-          jobTitle: 'Arquitecto técnico',
-          worksFor: {
-            '@id': 'https://theboxcontainerdesign.com/#organization'
+            url: 'https://theboxcontainerdesign.com/logo-theboxcontainerdesign4.svg'
           }
         }
       ]
@@ -416,7 +407,7 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
 
         <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">Autor y credenciales</h2>
         <p className="text-zinc-300 leading-relaxed">
-          Andrés De Eguía Haazer — arquitecto técnico con experiencia en proyectos modulares y en
+          Andrés — arquitecto técnico con experiencia en proyectos modulares y en
           conversión de contenedores para vivienda y uso turístico.
         </p>
       </div>
