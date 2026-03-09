@@ -59,6 +59,8 @@ export const Navbar: React.FC = () => {
             src="/logo-theboxcontainerdesign4.svg"
             alt="The Box Container Design"
             className="h-10 md:h-12 w-auto object-contain"
+            width={220}
+            height={48}
             loading="eager"
             decoding="async"
           />
