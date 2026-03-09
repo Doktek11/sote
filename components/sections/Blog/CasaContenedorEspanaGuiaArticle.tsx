@@ -292,7 +292,7 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
 
         <div className="mb-12 rounded-2xl border border-orange-500/30 bg-orange-500/10 p-6">
           <h2 className="text-2xl font-extrabold text-white mb-3">
-            CTA intermedio — estudio de viabilidad gratuito (15 min)
+            Pídenos tu estudio de viabilidad gratuito (15 min)
           </h2>
           <p className="text-zinc-200 mb-5">
             ¿Quieres un presupuesto orientativo y una valoración de viabilidad? Te orientamos sobre
