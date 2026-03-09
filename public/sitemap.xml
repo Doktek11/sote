@@ -16,6 +16,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://theboxcontainerdesign.com/legal</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -51,7 +56,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://theboxcontainerdesign.com/portfolio-contenedores-casa</loc>
+    <loc>https://theboxcontainerdesign.com/blog/casa-contenedor-espana-guia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
