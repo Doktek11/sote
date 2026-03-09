@@ -54,16 +54,11 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" aria-label="Ir al inicio" className="flex items-center gap-3">
-          <span className="font-extrabold text-xl tracking-tighter whitespace-nowrap">
-            THE BOX <span className="font-light text-zinc-400">DESIGN</span>
-          </span>
+        <a href="/" aria-label="Ir al inicio" className="flex items-center">
           <img
             src="/logo-theboxcontainerdesign4.svg"
-            alt="Logo The Box Container Design"
-            className="h-9 w-9 object-contain"
-            width={36}
-            height={36}
+            alt="The Box Container Design"
+            className="h-10 md:h-12 w-auto object-contain"
             loading="eager"
             decoding="async"
           />
