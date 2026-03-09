@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/logo-theboxcontainerdesign4.svg"
                 alt="The Box Container Design"
-                className="className="h-16 md:h-20 w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
                 loading="lazy"
                 decoding="async"
               />
