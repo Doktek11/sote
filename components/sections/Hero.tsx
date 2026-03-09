@@ -15,11 +15,8 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        {/* Sin animación inicial en bloque del título para no retrasar LCP en móvil */}
+        <div>
           <div className="flex items-center gap-4 mb-6">
             <div className="accent-line"></div>
             <span className="font-mono text-orange-500 text-sm tracking-tighter uppercase">
@@ -48,19 +45,23 @@ export const Hero: React.FC = () => {
               Catálogo de Venta
             </Button>
           </div>
-        </motion.div>
+        </div>
 
+        {/* Mantengo animación en desktop visual, pero sin delay para no penalizar LCP de imagen */}
         <motion.div
           className="relative hidden lg:block"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
           <div className="relative z-10 rounded-lg overflow-hidden border border-zinc-800 shadow-2xl">
             <img
               src="/contenedorbar-20pies-barcelona.webp"
               alt="Contenedor marítimo transformado en vivienda moderna"
               className="w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
             />
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-zinc-950 to-transparent">
               <div className="flex items-center gap-3 text-zinc-300 font-mono text-sm">
