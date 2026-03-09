@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Box } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
 
 export const Navbar: React.FC = () => {
@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
         { name: 'Logística', href: '#entrega' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
         { name: 'Blog', href: '/blog' },
-        { name: 'Cotización', href: '#cotizacion' },
+        { name: 'Cotización', href: '#cotizacion' }
       ]
     : [
         { name: 'Venta', href: `${homePrefix}#logistica` },
@@ -33,7 +33,7 @@ export const Navbar: React.FC = () => {
         { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
         { name: 'FAQs', href: '/preguntas-frecuentes' },
         { name: 'Blog', href: '/blog' },
-        { name: 'Presupuesto', href: `${homePrefix}#quote` },
+        { name: 'Presupuesto', href: `${homePrefix}#quote` }
       ];
 
   const handleQuoteClick = () => {
@@ -55,12 +55,18 @@ export const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <a href="/" aria-label="Ir al inicio" className="flex items-center gap-3">
-          <div className="bg-orange-600 p-2 rounded-sm">
-            <Box size={24} className="text-white" />
-          </div>
           <span className="font-extrabold text-xl tracking-tighter whitespace-nowrap">
             THE BOX <span className="font-light text-zinc-400">DESIGN</span>
           </span>
+          <img
+            src="/logo-theboxcontainerdesign-2-favicon.svg"
+            alt="Logo The Box Container Design"
+            className="h-9 w-9 object-contain"
+            width={36}
+            height={36}
+            loading="eager"
+            decoding="async"
+          />
         </a>
 
         <div className="hidden md:flex items-center gap-10">
