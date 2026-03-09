@@ -24,7 +24,10 @@ export const Footer: React.FC = () => {
 
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/box_container_design?igsh=d3Q3bDF1OHdpdm9z"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram The Box Container Design"
                 className="p-2 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all"
               >
                 <Instagram size={18} />
