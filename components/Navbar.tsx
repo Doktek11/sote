@@ -59,7 +59,7 @@ export const Navbar: React.FC = () => {
             THE BOX <span className="font-light text-zinc-400">DESIGN</span>
           </span>
           <img
-            src="/logo-theboxcontainerdesign-4-favicon.svg"
+            src="/logo-theboxcontainerdesign4.svg"
             alt="Logo The Box Container Design"
             className="h-9 w-9 object-contain"
             width={36}
