@@ -5,9 +5,7 @@ import { LogisticsSection } from './components/sections/LogisticsSection';
 import { DesignStudio } from './components/sections/DesignStudio';
 import { QuoteForm } from './components/sections/QuoteForm';
 import { Footer } from './components/Footer';
-import {
-  portfolioContenedoresCasaPath
-} from './components/sections/PortfolioContenedoresCasaPage';
+import { portfolioContenedoresCasaPath } from './components/sections/PortfolioContenedoresCasaPage';
 import { STUDIO_ROUTES } from './components/sections/studioRoutes';
 
 const FaqSection = React.lazy(() =>
@@ -52,6 +50,12 @@ const CatalunyaContainersArticle = React.lazy(() =>
   }))
 );
 
+const CasaContenedorEspanaGuiaArticle = React.lazy(() =>
+  import('./components/sections/Blog/CasaContenedorEspanaGuiaArticle').then((module) => ({
+    default: module.CasaContenedorEspanaGuiaArticle
+  }))
+);
+
 const PortfolioContenedoresCasaPage = React.lazy(() =>
   import('./components/sections/PortfolioContenedoresCasaPage').then((module) => ({
     default: module.PortfolioContenedoresCasaPage
@@ -64,7 +68,8 @@ const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
   ),
   '/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026': (
     <CatalunyaContainersArticle />
-  )
+  ),
+  '/blog/casa-contenedor-espana-guia': <CasaContenedorEspanaGuiaArticle />
 };
 
 function App() {
