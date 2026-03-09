@@ -32,8 +32,12 @@ export const QuoteForm: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
-            <span className="font-mono text-orange-500 text-sm uppercase tracking-widest">Contacto Directo</span>
-            <h2 className="text-4xl md:text-5xl font-black mt-4 mb-8">Solicitar Presupuesto Técnico</h2>
+            <span className="font-mono text-orange-500 text-sm uppercase tracking-widest">
+              Contacto Directo
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-white mt-4 mb-8">
+              Solicitar Presupuesto Técnico
+            </h2>
             <p className="text-zinc-400 text-lg mb-6">
               Te lo ponemos fácil: déjanos solo lo básico y te contactamos lo antes posible.
             </p>
@@ -47,9 +51,18 @@ export const QuoteForm: React.FC = () => {
 
             <div className="space-y-8">
               {[
-                { title: 'Respuesta Ágil', desc: 'Te contactamos en el menor tiempo posible con una primera orientación.' },
-                { title: 'Sin Compromiso', desc: 'Cuéntanos tu idea y te ayudamos a definir la mejor solución.' },
-                { title: 'Asesoría Técnica', desc: 'Equipo especializado en contenedores para uso industrial y modular.' }
+                {
+                  title: 'Respuesta Ágil',
+                  desc: 'Te contactamos en el menor tiempo posible con una primera orientación.'
+                },
+                {
+                  title: 'Sin Compromiso',
+                  desc: 'Cuéntanos tu idea y te ayudamos a definir la mejor solución.'
+                },
+                {
+                  title: 'Asesoría Técnica',
+                  desc: 'Equipo especializado en contenedores para uso industrial y modular.'
+                }
               ].map((item, i) => (
                 <div key={i} className="flex gap-6">
                   <div className="flex-shrink-0 w-12 h-12 bg-zinc-800 flex items-center justify-center font-mono text-orange-500 font-bold border border-zinc-700">
@@ -72,13 +85,17 @@ export const QuoteForm: React.FC = () => {
                 className="flex flex-col items-center justify-center text-center py-20"
               >
                 <CheckCircle2 size={64} className="text-orange-500 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">¡Solicitud Enviada!</h3>
-                <p className="text-zinc-400">Se abrirá tu correo para enviar la solicitud a nuestro equipo.</p>
+                <h3 className="text-2xl font-bold text-white mb-4">¡Solicitud Enviada!</h3>
+                <p className="text-zinc-400">
+                  Se abrirá tu correo para enviar la solicitud a nuestro equipo.
+                </p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Nombre</label>
+                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                    Nombre
+                  </label>
                   <input
                     required
                     name="fullName"
@@ -89,7 +106,9 @@ export const QuoteForm: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Teléfono</label>
+                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                    Teléfono
+                  </label>
                   <input
                     name="phone"
                     type="tel"
@@ -99,7 +118,9 @@ export const QuoteForm: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">Mensaje (opcional)</label>
+                  <label className="block font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                    Mensaje (opcional)
+                  </label>
                   <textarea
                     name="message"
                     rows={4}
@@ -113,7 +134,8 @@ export const QuoteForm: React.FC = () => {
                 </Button>
 
                 <p className="text-[10px] text-zinc-600 font-mono text-center">
-                  Al pulsar se abrirá tu cliente de correo con la solicitud preparada para enviar a {contactEmail}.
+                  Al pulsar se abrirá tu cliente de correo con la solicitud preparada para enviar a{' '}
+                  {contactEmail}.
                 </p>
               </form>
             )}
