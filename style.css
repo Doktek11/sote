@@ -64,14 +64,25 @@
   font-display: swap;
 }
 
-body {
-  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background-color: #09090b;
-  color: #f4f4f5;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.font-mono {
-  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+@layer base {
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background-color: #09090b;
+    color: #f4f4f5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair', Georgia, serif;
+  }
 }
 
 .industrial-gradient {
@@ -82,13 +93,4 @@ body {
   height: 2px;
   background: #f97316;
   width: 40px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Playfair', Georgia, serif;
 }

@@ -1,24 +1,83 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/sections/Hero';
-import { LogisticsSection } from './components/sections/LogisticsSection';
-import { DesignStudio } from './components/sections/DesignStudio';
-import { QuoteForm } from './components/sections/QuoteForm';
-import { FaqSection } from './components/sections/FaqSection';
-import { SalesLandingPage } from './components/sections/SalesLandingPage';
-import { LegalPage } from './components/sections/LegalPage';
 import { Footer } from './components/Footer';
-import { StudioProductPage } from './components/sections/StudioProductPage';
-import { AvoidScamsArticle } from './components/sections/Blog/AvoidScamsArticle';
-import { BlogIndex } from './components/sections/Blog/BlogIndex';
-import { CatalunyaContainersArticle } from './components/sections/Blog/CatalunyaContainersArticle';
-import { CasaContenedorEspanaGuiaArticle } from './components/sections/Blog/CasaContenedorEspanaGuiaArticle';
-import {
-  PortfolioContenedoresCasaPage,
-  portfolioContenedoresCasaPath
-} from './components/sections/PortfolioContenedoresCasaPage';
+import { portfolioContenedoresCasaPath } from './components/sections/PortfolioContenedoresCasaPage';
 
 import { STUDIO_ROUTES } from './components/sections/studioRoutes';
+
+const FaqSection = React.lazy(() =>
+  import('./components/sections/FaqSection').then((module) => ({
+    default: module.FaqSection
+  }))
+);
+
+
+const LogisticsSection = React.lazy(() =>
+  import('./components/sections/LogisticsSection').then((module) => ({
+    default: module.LogisticsSection
+  }))
+);
+
+const DesignStudio = React.lazy(() =>
+  import('./components/sections/DesignStudio').then((module) => ({
+    default: module.DesignStudio
+  }))
+);
+
+const QuoteForm = React.lazy(() =>
+  import('./components/sections/QuoteForm').then((module) => ({
+    default: module.QuoteForm
+  }))
+);
+
+const SalesLandingPage = React.lazy(() =>
+  import('./components/sections/SalesLandingPage').then((module) => ({
+    default: module.SalesLandingPage
+  }))
+);
+
+const LegalPage = React.lazy(() =>
+  import('./components/sections/LegalPage').then((module) => ({
+    default: module.LegalPage
+  }))
+);
+
+const StudioProductPage = React.lazy(() =>
+  import('./components/sections/StudioProductPage').then((module) => ({
+    default: module.StudioProductPage
+  }))
+);
+
+const BlogIndex = React.lazy(() =>
+  import('./components/sections/Blog/BlogIndex').then((module) => ({
+    default: module.BlogIndex
+  }))
+);
+
+const AvoidScamsArticle = React.lazy(() =>
+  import('./components/sections/Blog/AvoidScamsArticle').then((module) => ({
+    default: module.AvoidScamsArticle
+  }))
+);
+
+const CatalunyaContainersArticle = React.lazy(() =>
+  import('./components/sections/Blog/CatalunyaContainersArticle').then((module) => ({
+    default: module.CatalunyaContainersArticle
+  }))
+);
+
+const CasaContenedorEspanaGuiaArticle = React.lazy(() =>
+  import('./components/sections/Blog/CasaContenedorEspanaGuiaArticle').then((module) => ({
+    default: module.CasaContenedorEspanaGuiaArticle
+  }))
+);
+
+const PortfolioContenedoresCasaPageLazy = React.lazy(() =>
+  import('./components/sections/PortfolioContenedoresCasaPage').then((module) => ({
+    default: module.PortfolioContenedoresCasaPage
+  }))
+);
 
 const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
   '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026': (
@@ -94,21 +153,35 @@ function App() {
 
       <main>
         {isFaqPage ? (
-          <FaqSection />
+          <Suspense fallback={null}>
+            <FaqSection />
+          </Suspense>
         ) : isLegalPage ? (
-          <LegalPage />
+          <Suspense fallback={null}>
+            <LegalPage />
+          </Suspense>
         ) : isSalesLandingPage ? (
-          <SalesLandingPage />
+          <Suspense fallback={null}>
+            <SalesLandingPage />
+          </Suspense>
         ) : isBlogPage ? (
-          <BlogIndex />
+          <Suspense fallback={null}>
+            <BlogIndex />
+          </Suspense>
         ) : blogArticle ? (
-          blogArticle
+          <Suspense fallback={null}>{blogArticle}</Suspense>
         ) : isAnyBlogPath ? (
-          <BlogIndex />
+          <Suspense fallback={null}>
+            <BlogIndex />
+          </Suspense>
         ) : isPortfolioContenedoresCasaPage ? (
-          <PortfolioContenedoresCasaPage />
+          <Suspense fallback={null}>
+            <PortfolioContenedoresCasaPageLazy />
+          </Suspense>
         ) : studioDetail ? (
-          <StudioProductPage {...studioDetail} />
+          <Suspense fallback={null}>
+            <StudioProductPage {...studioDetail} />
+          </Suspense>
         ) : (
           <>
             <Hero />
@@ -135,13 +208,15 @@ function App() {
               </div>
             </section>
 
-            <LogisticsSection />
+            <Suspense fallback={null}>
+              <LogisticsSection />
 
-            <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
+              <div className="h-24 bg-gradient-to-b from-white to-zinc-950"></div>
 
-            <DesignStudio />
+              <DesignStudio />
 
-            <QuoteForm />
+              <QuoteForm />
+            </Suspense>
           </>
         )}
       </main>
@@ -169,3 +244,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+

@@ -62,6 +62,8 @@ export const Hero: React.FC = () => {
               fetchPriority="high"
               loading="eager"
               decoding="async"
+              width={800}
+              height={1000}
             />
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-zinc-950 to-transparent">
               <div className="flex items-center gap-3 text-zinc-300 font-mono text-sm">
@@ -83,3 +85,5 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
+
