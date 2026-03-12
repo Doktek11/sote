@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'framer-motion';
 import { TRANSFORMATIONS } from '../../constants';
 import { ArrowUpRight, Maximize2 } from 'lucide-react';
@@ -20,7 +20,7 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     title: 'Residencia minimalista contenedor',
     category: 'Viviendas',
     description: '...',
-    imageUrl: '/casacontenedor-40pies-disenofinal.webp', // <-- reemplaza aquí si hace falta
+    imageUrl: '/casacontenedor-40pies-disenofinal.webp', // <-- reemplaza aquÃ­ si hace falta
     features: ['Minimal escandinavo', '40 ft high-cube', 'Ventanal lateral', 'Acabado premium'],
     href: '/estudio/residencia-minimalista-contenedor',
   },
@@ -38,9 +38,9 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     title: 'Gimnasio Modular 20 pies',
     category: 'Gimnasios',
     description:
-      'Desde 9900€. Contenedor de 20 pies con ventanal de aluminio de apertura frontal, ventilación propia y un interior muy luminoso.',
+      'Desde 9900â‚¬. Contenedor de 20 pies con ventanal de aluminio de apertura frontal, ventilaciÃ³n propia y un interior muy luminoso.',
     imageUrl: '/contenedorabierto-real-20pies-nuevo.webp',
-    features: ['Desde 9900€', '20 pies', 'Ventanal frontal', 'Ventilación propia'],
+    features: ['Desde 9900â‚¬', '20 pies', 'Ventanal frontal', 'VentilaciÃ³n propia'],
     href: '/estudio/gimnasio-contenedor-20-pies',
   },
 ];
@@ -52,7 +52,7 @@ export const DesignStudio: React.FC = () => {
         <div className="mb-20">
           <span className="font-mono text-zinc-500 text-sm uppercase tracking-[0.3em]">The Design Studio</span>
           <h2 className="text-5xl md:text-7xl font-light mt-4 mb-8 tracking-tighter">
-            Estudio de Diseño y <br />
+            Estudio de DiseÃ±o y <br />
             <span className="italic font-serif">Transformaciones</span>
           </h2>
           <div className="accent-line w-24 bg-orange-500"></div>
