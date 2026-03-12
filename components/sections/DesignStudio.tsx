@@ -51,9 +51,9 @@ export const DesignStudio: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="mb-20">
           <span className="font-mono text-zinc-500 text-sm uppercase tracking-[0.3em]">The Design Studio</span>
-          <h2 className="text-5xl md:text-7xl font-light mt-4 mb-8 tracking-tighter">
-            Estudio de DiseÃ±o y <br />
-            <span className="italic font-serif">Transformaciones</span>
+          <h2 className="text-5xl md:text-7xl font-light mt-4 mb-8 tracking-tighter text-white">
+            Estudio de Diseño y <br />
+            <span className="italic font-serif text-white">Transformaciones</span>
           </h2>
           <div className="accent-line w-24 bg-orange-500"></div>
         </div>
