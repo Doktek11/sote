@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Footer } from './components/Footer';
 import { portfolioContenedoresCasaPath } from './components/sections/PortfolioContenedoresCasaPage';
+import { ComingSoonPage } from './components/sections/ComingSoonPage';
 
 import { STUDIO_ROUTES } from './components/sections/studioRoutes';
 
@@ -109,6 +110,19 @@ function App() {
   const blogArticle = BLOG_ARTICLE_ROUTES[normalizedPath];
 
   const studioDetail = STUDIO_ROUTES[normalizedPath];
+  const temporarilyClosedPages: Record<string, { title: string; description: string }> = {
+    '/estudio/piscina-infinity-box-contenedor': {
+      title: 'Piscina Infinity Box de contenedor',
+      description:
+        'Esta secciÃ³n estÃ¡ en actualizaciÃ³n. Estamos preparando nuevos materiales y detalles tÃ©cnicos.',
+    },
+    '/estudio/gimnasio-contenedor-20-pies': {
+      title: 'Gimnasio en contenedor de 20 pies',
+      description:
+        'Esta secciÃ³n estÃ¡ en actualizaciÃ³n. Muy pronto publicaremos fotos y especificaciones completas.',
+    },
+  };
+  const temporarilyClosed = temporarilyClosedPages[normalizedPath];
 
   useEffect(() => {
     if (
@@ -178,6 +192,12 @@ function App() {
           <Suspense fallback={null}>
             <PortfolioContenedoresCasaPageLazy />
           </Suspense>
+        ) : temporarilyClosed ? (
+          <ComingSoonPage
+            title={temporarilyClosed.title}
+            description={temporarilyClosed.description}
+            canonicalPath={normalizedPath}
+          />
         ) : studioDetail ? (
           <Suspense fallback={null}>
             <StudioProductPage {...studioDetail} />

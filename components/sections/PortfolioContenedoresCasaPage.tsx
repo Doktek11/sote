@@ -9,6 +9,7 @@ type PortfolioFamily = {
   description: string;
   imageUrl: string;
   href: string;
+  isAvailable?: boolean;
 };
 
 const SEO_TITLE = 'Portfolio de contenedores casa | Diseños y transformaciones | The Box Container Design';
@@ -45,6 +46,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
       'Casa contenedor premium con diseño minimalista, distribución flexible y acabados de alta gama para proyecto residencial a medida.',
     imageUrl: '/casacontenedor-40pies-disenofinal.webp',
     href: '/estudio/residencia-minimalista-contenedor',
+    isAvailable: true,
   },
   {
     id: 'p2',
@@ -54,6 +56,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
       'Contenedor transformado para hostelería y eventos, con aperturas comerciales y configuración adaptable para pop-ups y activaciones.',
     imageUrl: '/contenedorbar-20pies-nuevo.webp',
     href: '/estudio/bar-lounge-contenedor-eventos',
+    isAvailable: true,
   },
   {
     id: 'p3',
@@ -61,8 +64,9 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     category: 'Solución lúdica exterior',
     description:
       'Piscina modular sobre contenedor marítimo, pensada para instalación rápida en vivienda, hotel o espacio turístico.',
-    imageUrl: '/montañacontenedores2.webp',
+    imageUrl: '/proximamentetbcd.webp',
     href: '/estudio/piscina-infinity-box-contenedor',
+    isAvailable: false,
   },
   {
     id: 'p4',
@@ -70,8 +74,9 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     category: 'Fitness modular',
     description:
       'Formato compacto desde 20 pies con ventanal frontal de aluminio, ventilación integrada y espacio interior luminoso.',
-    imageUrl: '/contenedorabierto-real-20pies-nuevo.webp',
+    imageUrl: '/proximamentetbcd.webp',
     href: '/estudio/gimnasio-contenedor-20-pies',
+    isAvailable: false,
   },
 ];
 
@@ -115,26 +120,52 @@ export const PortfolioContenedoresCasaPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {PORTFOLIO_FAMILIES.map((family) => (
             <article key={family.id} className="group border border-zinc-800 bg-zinc-900/40 overflow-hidden">
-              <a href={family.href} className="block" aria-label={`Ver detalle de ${family.title}`}>
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <img
-                    src={family.imageUrl}
-                    alt={family.title}
-                    className="h-full w-full object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                </div>
-
-                <div className="p-6 md:p-8">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-orange-500">{family.category}</span>
-                  <div className="mt-3 flex items-start justify-between gap-4">
-                    <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{family.title}</h2>
-                    <ArrowUpRight className="h-5 w-5 text-zinc-400 transition-colors group-hover:text-white" />
+              {family.isAvailable ? (
+                <a href={family.href} className="block" aria-label={`Ver detalle de ${family.title}`}>
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={family.imageUrl}
+                      alt={family.title}
+                      className="h-full w-full object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                   </div>
-                  <p className="mt-4 text-zinc-400 leading-relaxed">{family.description}</p>
+
+                  <div className="p-6 md:p-8">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-orange-500">{family.category}</span>
+                    <div className="mt-3 flex items-start justify-between gap-4">
+                      <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{family.title}</h2>
+                      <ArrowUpRight className="h-5 w-5 text-zinc-400 transition-colors group-hover:text-white" />
+                    </div>
+                    <p className="mt-4 text-zinc-400 leading-relaxed">{family.description}</p>
+                  </div>
+                </a>
+              ) : (
+                <div className="block cursor-not-allowed" role="link" aria-disabled="true" aria-label={`PrÃ³ximamente ${family.title}`}>
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                      src={family.imageUrl}
+                      alt={`PrÃ³ximamente: ${family.title}`}
+                      className="h-full w-full object-cover grayscale brightness-75"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <div className="absolute top-4 right-4 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-widest text-white">
+                      PrÃ³ximamente
+                    </div>
+                  </div>
+
+                  <div className="p-6 md:p-8">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-orange-500">{family.category}</span>
+                    <div className="mt-3 flex items-start justify-between gap-4">
+                      <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">{family.title}</h2>
+                      <ArrowUpRight className="h-5 w-5 text-zinc-700" />
+                    </div>
+                    <p className="mt-4 text-zinc-400 leading-relaxed">{family.description}</p>
+                  </div>
                 </div>
-              </a>
+              )}
             </article>
           ))}
         </div>
@@ -142,4 +173,5 @@ export const PortfolioContenedoresCasaPage: React.FC = () => {
     </section>
   );
 };
+
 

@@ -12,6 +12,7 @@ type StudioCard = {
   imageUrl: string;
   features: string[];
   href: string;
+  isAvailable?: boolean;
 };
 
 const STUDIO_PRODUCTS: StudioCard[] = [
@@ -23,15 +24,19 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     imageUrl: '/casacontenedor-40pies-disenofinal.webp', // <-- reemplaza aquÃ­ si hace falta
     features: ['Minimal escandinavo', '40 ft high-cube', 'Ventanal lateral', 'Acabado premium'],
     href: '/estudio/residencia-minimalista-contenedor',
+    isAvailable: true,
   },
   {
     ...TRANSFORMATIONS[1],
     imageUrl: '/contenedorbar-20pies-nuevo.webp',
     href: '/estudio/bar-lounge-contenedor-eventos',
+    isAvailable: true,
   },
   {
     ...TRANSFORMATIONS[2],
+    imageUrl: '/proximamentetbcd.webp',
     href: '/estudio/piscina-infinity-box-contenedor',
+    isAvailable: false,
   },
   {
     id: 't4',
@@ -39,9 +44,10 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     category: 'Gimnasios',
     description:
       'Desde 9900â‚¬. Contenedor de 20 pies con ventanal de aluminio de apertura frontal, ventilaciÃ³n propia y un interior muy luminoso.',
-    imageUrl: '/contenedorabierto-real-20pies-nuevo.webp',
+    imageUrl: '/proximamentetbcd.webp',
     features: ['Desde 9900â‚¬', '20 pies', 'Ventanal frontal', 'VentilaciÃ³n propia'],
     href: '/estudio/gimnasio-contenedor-20-pies',
+    isAvailable: false,
   },
 ];
 
@@ -68,33 +74,59 @@ export const DesignStudio: React.FC = () => {
               viewport={{ once: true }}
               className="relative group"
             >
-              <a href={project.href} className="block" aria-label={`Ver ${project.title}`}>
-                <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-zinc-800">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+              {project.isAvailable ? (
+                <a href={project.href} className="block" aria-label={`Ver ${project.title}`}>
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-zinc-800">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
-                  <div className="absolute top-6 right-6 flex gap-2">
-                    <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
-                      <Maximize2 size={20} className="text-white" />
+                    <div className="absolute top-6 right-6 flex gap-2">
+                      <div className="bg-white/10 backdrop-blur-md p-3 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0">
+                        <Maximize2 size={20} className="text-white" />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="absolute bottom-10 left-10 right-10">
-                    <span className="font-mono text-orange-500 text-xs mb-2 block uppercase tracking-widest">{project.category}</span>
-                    <div className="flex justify-between items-end gap-4">
-                      <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{project.title}</h3>
-                      <div className="p-4 bg-orange-600 rounded-full opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
-                        <ArrowUpRight size={24} className="text-white" />
+                    <div className="absolute bottom-10 left-10 right-10">
+                      <span className="font-mono text-orange-500 text-xs mb-2 block uppercase tracking-widest">{project.category}</span>
+                      <div className="flex justify-between items-end gap-4">
+                        <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{project.title}</h3>
+                        <div className="p-4 bg-orange-600 rounded-full opacity-0 group-hover:opacity-100 transition-all translate-x-4 group-hover:translate-x-0">
+                          <ArrowUpRight size={24} className="text-white" />
+                        </div>
                       </div>
                     </div>
                   </div>
+                </a>
+              ) : (
+                <div
+                  className="block cursor-not-allowed"
+                  aria-label={`PrÃ³ximamente ${project.title}`}
+                  role="link"
+                  aria-disabled="true"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-zinc-800">
+                    <img
+                      src={project.imageUrl}
+                      alt={`PrÃ³ximamente: ${project.title}`}
+                      className="w-full h-full object-cover grayscale brightness-75"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70"></div>
+                    <div className="absolute top-6 right-6 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-widest text-white">
+                      PrÃ³ximamente
+                    </div>
+                    <div className="absolute bottom-10 left-10 right-10">
+                      <span className="font-mono text-orange-500 text-xs mb-2 block uppercase tracking-widest">{project.category}</span>
+                      <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{project.title}</h3>
+                    </div>
+                  </div>
                 </div>
-              </a>
+              )}
 
               <div className="mt-6 max-w-xl">
                 <p className="text-zinc-400 leading-relaxed font-light">{project.description}</p>
