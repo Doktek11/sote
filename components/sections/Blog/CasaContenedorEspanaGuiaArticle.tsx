@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { canonicalForPath } from '../../../seo';
 
-const SEO_TITLE =\r\n  'Casa contenedor en España: precio, normativa y diseño | The Box';
-const SEO_DESCRIPTION =\r\n  'Guía práctica: costes orientativos, permisos y CTE, logística y errores comunes antes de empezar tu casa contenedor.';
+const SEO_TITLE =
+    'Casa contenedor en España: precio, normativa y diseño | The Box';
+const SEO_DESCRIPTION =
+    'Guía práctica: costes orientativos, permisos y CTE, logística y errores comunes antes de empezar tu casa contenedor.';
 const SEO_CANONICAL = canonicalForPath('/blog/casa-contenedor-espana-guia');
 
 const upsertMetaByName = (name: string, content: string) => {
@@ -413,4 +415,6 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
     </section>
   );
 };
+
+
 

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { canonicalForPath } from '../../../seo';
 
 const SEO_TITLE = 'Blog contenedores marítimos | Guías de compra y precios | The Box';
-const SEO_DESCRIPTION =\r\n  'Guías prácticas sobre compra segura, precios reales, logística y transformación de contenedores en España.';
+const SEO_DESCRIPTION =
+    'Guías prácticas sobre compra segura, precios reales, logística y transformación de contenedores en España.';
 const SEO_CANONICAL = canonicalForPath('/blog');
 
 const upsertMetaByName = (name: string, content: string) => {
@@ -123,5 +124,7 @@ export const BlogIndex: React.FC = () => {
 };
 
 export default BlogIndex;
+
+
 
 
