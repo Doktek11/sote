@@ -6,6 +6,13 @@ export interface StudioRoute {
   description: string;
   seoTitle?: string;
   seoDescription?: string;
+  sections?: {
+    heading: string;
+    level?: 2 | 3;
+    body: string[];
+    bullets?: string[];
+  }[];
+  schemaLd?: Record<string, unknown>;
   seoText: string[];
   highlights: string[];
   gallery: string[];
@@ -18,15 +25,63 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     price: 'Proyecto a medida',
     heroImage: '/casacontenedor-40pies-disenofinal.webp',
     description:
-      'Vivienda modular premium de inspiración minimalista fabricada a partir de módulos marítimos preparados para uso residencial en España.',
-    seoTitle: 'Residencia Minimalista X1 | Vivienda modular en contenedor | The Box',
+      'Residencia Minimalista X1 es una casa contenedor moderna pensada para quienes buscan una vivienda modular en contenedor en España con diseño contemporáneo, eficiencia energética y acabados de alta gama. Esta propuesta de arquitectura con contenedores marítimos combina estética minimalista, rapidez de ejecución y control de costes, convirtiéndose en una solución versátil para vivienda habitual, segunda residencia o alquiler turístico.',
+    seoTitle: 'Residencia Minimalista X1 | Casa contenedor en España | The Box',
     seoDescription:
-      'Vivienda modular premium en contenedor para uso residencial en España. Proyecto a medida con personalización y entrega.',
-    seoText: [
-      'La Residencia Minimalista X1 está diseñada para clientes que buscan una casa contenedor moderna, eficiente y con acabados de alta gama. Se plantea como una solución arquitectónica flexible para primera residencia, segunda vivienda o activo turístico de alta ocupación.',
-      'Cada proyecto se adapta a la parcela, normativa urbanística y necesidades energéticas del cliente. Integramos aislamiento reforzado, carpintería exterior de altas prestaciones y distribuciones interiores optimizadas para confort térmico durante todo el año.',
-      'Si estás comparando precio de vivienda modular en contenedor en España, este modelo ofrece equilibrio entre diseño, velocidad de ejecución y control de costes en obra.'
+      'Casa contenedor moderna en España con diseño contemporáneo, eficiencia energética y acabados premium. Proyecto modular a medida.',
+    sections: [
+      {
+        heading: 'Arquitectura modular personalizada',
+        level: 2,
+        body: [
+          'Cada proyecto de casa contenedor se adapta de forma personalizada a la parcela, a la normativa urbanística y a las necesidades energéticas de cada cliente. Gracias a un sistema de construcción modular con contenedores, es posible reducir plazos de obra sin renunciar al confort, la calidad ni a una imagen arquitectónica actual.'
+        ]
+      },
+      {
+        heading: 'Eficiencia energética y confort',
+        level: 2,
+        body: [
+          'Esta vivienda modular de contenedor incorpora aislamiento térmico reforzado, carpintería exterior de altas prestaciones y una distribución interior optimizada para mejorar la eficiencia energética durante todo el año. Su diseño aprovecha la luz natural, mejora el confort interior y refuerza la sensación de amplitud, características muy valoradas en una casa prefabricada en contenedor.'
+        ]
+      },
+      {
+        heading: 'Precio y propuesta de valor',
+        level: 2,
+        body: [
+          'Si estás comparando el precio de una casa contenedor en España, la Residencia Minimalista X1 destaca por su equilibrio entre diseño, sostenibilidad, funcionalidad y coste. Es una alternativa innovadora frente a la construcción tradicional para quienes buscan una casa contenedor llave en mano, una vivienda modular sostenible o una solución residencial de rápida ejecución.'
+        ]
+      },
+      {
+        heading: 'Características destacadas',
+        level: 3,
+        body: [],
+        bullets: [
+          'Diseño modular escalable y personalizable',
+          'Aislamiento térmico reforzado para mayor eficiencia energética',
+          'Grandes ventanales con abundante luz natural',
+          'Construcción rápida con contenedores marítimos',
+          'Opción de entrega llave en mano',
+          'Ideal como vivienda principal, segunda residencia o inversión turística'
+        ]
+      }
     ],
+    schemaLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: 'Residencia Minimalista X1',
+      description:
+        'Residencia Minimalista X1 es una casa contenedor moderna pensada para quienes buscan una vivienda modular en contenedor en España con diseño contemporáneo, eficiencia energética y acabados de alta gama.',
+      serviceType: 'Vivienda modular en contenedor',
+      areaServed: 'ES',
+      provider: {
+        '@type': 'Organization',
+        name: 'The Box Container Design',
+        url: 'https://www.theboxcontainerdesign.com'
+      },
+      image: 'https://www.theboxcontainerdesign.com/casacontenedor-40pies-disenofinal.webp',
+      url: 'https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor'
+    },
+    seoText: [],
     highlights: ['Diseño modular escalable', 'Aislamiento térmico reforzado', 'Grandes ventanales', 'Entrega llave en mano opcional'],
     gallery: ['/casacontenedor-plano-40pies-highcube.webp', '/instalacióncontenedores-20pies-usado.webp', '/planocontenedor-40pies.webp'],
   },
@@ -79,5 +134,9 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     gallery: ['/contenedorabierto-real-20pies-nuevo.webp', '/contenedorabierto-20pies-nuevo.webp', '/contenedor-nuevo-20pies-interior.webp'],
   },
 };
+
+
+
+
 
 

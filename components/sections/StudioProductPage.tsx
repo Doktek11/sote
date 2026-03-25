@@ -9,6 +9,13 @@ type StudioProductPageProps = {
   description: string;
   seoTitle?: string;
   seoDescription?: string;
+  sections?: {
+    heading: string;
+    level?: 2 | 3;
+    body: string[];
+    bullets?: string[];
+  }[];
+  schemaLd?: Record<string, unknown>;
   seoText: string[];
   highlights: string[];
   gallery: string[];
@@ -42,6 +49,8 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
   description,
   seoTitle,
   seoDescription,
+  sections,
+  schemaLd,
   seoText,
   highlights,
   gallery,
@@ -63,12 +72,22 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
     upsertMetaByName('description', seoDescriptionValue);
     upsertCanonical(canonical);
 
+    let schemaScript: HTMLScriptElement | null = null;
+    if (schemaLd) {
+      schemaScript = document.createElement('script');
+      schemaScript.type = 'application/ld+json';
+      schemaScript.setAttribute('data-schema', 'studio-page');
+      schemaScript.text = JSON.stringify(schemaLd);
+      document.head.appendChild(schemaScript);
+    }
+
     return () => {
       document.title = previousTitle;
       upsertMetaByName('description', previousDescription);
       if (previousCanonical) upsertCanonical(previousCanonical);
+      if (schemaScript) schemaScript.remove();
     };
-  }, [title, category, description, price]);
+  }, [title, category, description, price, seoTitle, seoDescription, schemaLd]);
 
   return (
     <section className="bg-zinc-950 text-zinc-100 pt-36 pb-20">
@@ -90,11 +109,36 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-12">
           <article className="lg:col-span-2 space-y-6">
-            {seoText.map((paragraph, index) => (
-              <p key={index} className="text-zinc-300 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+            {sections && sections.length > 0 ? (
+              sections.map((section, index) => {
+                const HeadingTag = section.level === 3 ? 'h3' : 'h2';
+                return (
+                  <div key={`${section.heading}-${index}`} className="space-y-4">
+                    <HeadingTag className="text-2xl md:text-3xl font-bold text-white">
+                      {section.heading}
+                    </HeadingTag>
+                    {section.body.map((paragraph) => (
+                      <p key={paragraph} className="text-zinc-300 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                    {section.bullets && section.bullets.length > 0 && (
+                      <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+                        {section.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              seoText.map((paragraph) => (
+                <p key={paragraph} className="text-zinc-300 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))
+            )}
           </article>
 
           <aside className="border border-zinc-800 rounded-sm p-6 h-fit bg-zinc-900/50">
