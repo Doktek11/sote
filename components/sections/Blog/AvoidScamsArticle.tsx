@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { canonicalForPath } from '../../../seo';
 
-const SEO_TITLE = 'Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026) | THE BOX CONTAINER DESIGN';
-const SEO_DESCRIPTION =
-  'Guía 2026 para evitar estafas al comprar un contenedor marítimo: precios reales, señales de alerta, checklist de verificación y asesoramiento técnico para comprar con seguridad.';
+const SEO_TITLE = 'Cómo evitar estafas al comprar un contenedor marítimo | Guía 2026';
+const SEO_DESCRIPTION =\r\n  'Señales de alerta, precios reales y checklist de verificación antes de pagar. Compra segura paso a paso.';
 const SEO_CANONICAL = canonicalForPath('/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026');
 
 const upsertMetaByName = (name: string, content: string) => {
@@ -251,4 +250,5 @@ export const AvoidScamsArticle: React.FC = () => {
 };
 
 export default AvoidScamsArticle;
+
 

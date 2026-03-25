@@ -7,6 +7,8 @@ type StudioProductPageProps = {
   price: string;
   heroImage: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoText: string[];
   highlights: string[];
   gallery: string[];
@@ -38,13 +40,17 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
   price,
   heroImage,
   description,
+  seoTitle,
+  seoDescription,
   seoText,
   highlights,
   gallery,
 }) => {
   useEffect(() => {
-    const seoTitle = `${title} | ${category} | The Box Container Design`;
-    const seoDescription = `${description} Precio ${price}. Proyecto de ${category.toLowerCase()} en contenedor marítimo con opciones de personalización y entrega en España.`;
+    const seoTitleValue = seoTitle || `${title} | ${category} | The Box`;
+    const seoDescriptionValue =
+      seoDescription ||
+      `${description} ${price}. Proyecto de ${category.toLowerCase()} en contenedor marítimo con opciones de personalización y entrega en España.`;
     const canonical = canonicalForPath(window.location.pathname || '/');
 
     const previousTitle = document.title;
@@ -53,8 +59,8 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
     const previousCanonical =
       document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
 
-    document.title = seoTitle;
-    upsertMetaByName('description', seoDescription);
+    document.title = seoTitleValue;
+    upsertMetaByName('description', seoDescriptionValue);
     upsertCanonical(canonical);
 
     return () => {
@@ -114,3 +120,7 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
 };
 
 export default StudioProductPage;
+
+
+
+

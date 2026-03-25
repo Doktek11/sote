@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { canonicalForPath } from '../../../seo';
 
-const SEO_TITLE =
-  'Catalunya: venta de contenedores marítimos (medidas, tipos y precios 2026) | THE BOX CONTAINER DESIGN';
-const SEO_DESCRIPTION =
-  'Guía 2026 para comprar contenedores marítimos en Catalunya: medidas oficiales ISO, diferencias entre 20 pies, 40 pies y High Cube, precios orientativos y checklist técnico.';
+const SEO_TITLE =\r\n  'Catalunya: venta de contenedores marítimos 2026 | Medidas y precios';
+const SEO_DESCRIPTION =\r\n  'Guía 2026 con medidas ISO, diferencias 20/40 pies y High Cube, precios orientativos y checklist de compra.';
 const SEO_CANONICAL = canonicalForPath('/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026');
 
 const upsertMetaByName = (name: string, content: string) => {
@@ -461,4 +459,5 @@ export const CatalunyaContainersArticle: React.FC = () => {
 };
 
 export default CatalunyaContainersArticle;
+
 

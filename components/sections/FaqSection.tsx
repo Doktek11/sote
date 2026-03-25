@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
-const SEO_TITLE = 'Preguntas frecuentes sobre contenedores marítimos | The Box Container Design';
-const SEO_DESCRIPTION =
-  'FAQ – Compra segura de contenedores marítimos. Inspección propia, fotos y vídeo con número de serie, entrega estimada en 7 días laborables y asesoramiento en permisos y logística.';
+const SEO_TITLE = 'FAQ contenedores marítimos | Compra segura y logística | The Box';
+const SEO_DESCRIPTION =\r\n  'Respuestas sobre compra, inspección, transporte, permisos y plazos. Consejos prácticos para evitar errores y estafas.';
 
 const faqItems = [
   {
@@ -194,3 +193,4 @@ export const FaqSection: React.FC = () => {
     </section>
   );
 };
+

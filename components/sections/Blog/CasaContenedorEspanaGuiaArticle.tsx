@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
+import { canonicalForPath } from '../../../seo';
 
-const SEO_TITLE =
-  'Casa contenedor en España: guía completa de diseño, precio y normativa | THE BOX CONTAINER DESIGN';
-const SEO_DESCRIPTION =
-  'Guía práctica y técnica para evaluar una casa contenedor en España: costes orientativos, diseño, permisos, CTE, logística y errores comunes antes de iniciar tu proyecto.';
-const SEO_CANONICAL = 'https://theboxcontainerdesign.com/blog/casa-contenedor-espana-guia';
+const SEO_TITLE =\r\n  'Casa contenedor en España: precio, normativa y diseño | The Box';
+const SEO_DESCRIPTION =\r\n  'Guía práctica: costes orientativos, permisos y CTE, logística y errores comunes antes de empezar tu casa contenedor.';
+const SEO_CANONICAL = canonicalForPath('/blog/casa-contenedor-espana-guia');
 
 const upsertMetaByName = (name: string, content: string) => {
   let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
@@ -414,3 +413,4 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
     </section>
   );
 };
+

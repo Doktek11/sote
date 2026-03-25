@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { canonicalForPath } from '../../seo';
 
-const SEO_TITLE = 'Venta de Contenedores Marítimos en España | 20 y 40 Pies - Nuevos y Usados';
+const SEO_TITLE = 'Venta de contenedores marítimos en España (20 y 40 pies) | The Box';
 const SEO_DESCRIPTION =
-  'Compra directa de contenedores marítimos en España con inspección técnica propia, vídeo real de unidad y entrega estimada en 5 días. Precios orientativos y transporte gestionado.';
+  'Stock real en puerto, inspección propia y vídeo de la unidad. Entrega 3-10 días y presupuesto cerrado con transporte incluido.';
 const CANONICAL_PATH = '/venta-contenedores-maritimos-espana';
 const WHATSAPP_BASE = 'https://wa.me/34657348078';
 
@@ -57,7 +57,7 @@ export const SalesLandingPage: React.FC = () => {
       <div className="container mx-auto px-6 pt-32 pb-24 max-w-6xl">
         <header className="mb-14">
           <h1 id="landing-main-title" className="text-3xl md:text-5xl font-black tracking-tight leading-tight mb-5">
-            Venta de Contenedores Marítimos en España | 20 y 40 Pies - Nuevos y Usados
+            Venta de contenedores marítimos en España (20 y 40 pies) | The Box
           </h1>
           <p className="text-xl text-orange-400 font-semibold mb-6">
             Compra directa, inspección técnica propia y entrega estimada en 5 días.
@@ -253,4 +253,5 @@ export const SalesLandingPage: React.FC = () => {
 };
 
 export default SalesLandingPage;
+
 

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
+import { canonicalForPath } from '../../../seo';
 
-const SEO_TITLE = 'Blog de contenedores marítimos | Guías y consejos 2026 | The Box Container Design';
-const SEO_DESCRIPTION =
-  'Blog de The Box Container Design con guías prácticas sobre compra segura, precios, logística y transformación de contenedores marítimos en España.';
-const SEO_CANONICAL = 'https://theboxcontainerdesign.com/blog';
+const SEO_TITLE = 'Blog contenedores marítimos | Guías de compra y precios | The Box';
+const SEO_DESCRIPTION =\r\n  'Guías prácticas sobre compra segura, precios reales, logística y transformación de contenedores en España.';
+const SEO_CANONICAL = canonicalForPath('/blog');
 
 const upsertMetaByName = (name: string, content: string) => {
   let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
@@ -123,3 +123,5 @@ export const BlogIndex: React.FC = () => {
 };
 
 export default BlogIndex;
+
+

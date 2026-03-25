@@ -4,6 +4,8 @@ export interface StudioRoute {
   price: string;
   heroImage: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   seoText: string[];
   highlights: string[];
   gallery: string[];
@@ -17,6 +19,9 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     heroImage: '/casacontenedor-40pies-disenofinal.webp',
     description:
       'Vivienda modular premium de inspiración minimalista fabricada a partir de módulos marítimos preparados para uso residencial en España.',
+    seoTitle: 'Residencia Minimalista X1 | Vivienda modular en contenedor | The Box',
+    seoDescription:
+      'Vivienda modular premium en contenedor para uso residencial en España. Proyecto a medida con personalización y entrega.',
     seoText: [
       'La Residencia Minimalista X1 está diseñada para clientes que buscan una casa contenedor moderna, eficiente y con acabados de alta gama. Se plantea como una solución arquitectónica flexible para primera residencia, segunda vivienda o activo turístico de alta ocupación.',
       'Cada proyecto se adapta a la parcela, normativa urbanística y necesidades energéticas del cliente. Integramos aislamiento reforzado, carpintería exterior de altas prestaciones y distribuciones interiores optimizadas para confort térmico durante todo el año.',
@@ -32,6 +37,9 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     heroImage: '/contenedorbar-20pies-nuevo.webp',
     description:
       'Espacio comercial en contenedor orientado a hostelería, pop-ups de marca y eventos itinerantes con alta visibilidad.',
+    seoTitle: 'Bar & Lounge en contenedor | Espacio comercial | The Box',
+    seoDescription:
+      'Espacio comercial en contenedor para hostelería y eventos. Desde 18.900 €, personalizable y entrega en España.',
     seoText: [
       'El modelo Bar & Lounge está pensado para negocios que quieren destacar con una imagen industrial premium. Su diseño favorece el flujo de clientes y la versatilidad en eventos privados, festivales y ferias.',
       'Configuramos aperturas frontales y laterales, barras técnicas, zonas de servicio y preparación para instalaciones eléctricas y de climatización según actividad.',
@@ -71,4 +79,5 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     gallery: ['/contenedorabierto-real-20pies-nuevo.webp', '/contenedorabierto-20pies-nuevo.webp', '/contenedor-nuevo-20pies-interior.webp'],
   },
 };
+
 
