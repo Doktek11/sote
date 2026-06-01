@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://www.theboxcontainerdesign.com';
+export const SITE_URL = 'https://theboxcontainerdesign.com';
 
 export const canonicalForPath = (path: string) => {
   const normalized = path.startsWith('/') ? path : `/${path}`;

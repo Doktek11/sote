@@ -46,10 +46,10 @@ export const Footer: React.FC = () => {
               Servicios
             </h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="https://www.theboxcontainerdesign.com/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor" className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor" className="hover:text-orange-500 transition-colors">Piscinas de contenedores</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos" className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
+              <li><a href="https://theboxcontainerdesign.com/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
+              <li><a href="https://theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor" className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
+              <li><a href="https://theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor" className="hover:text-orange-500 transition-colors">Piscinas de contenedores</a></li>
+              <li><a href="https://theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos" className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
             </ul>
           </div>
 
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-200 mb-8 underline underline-offset-8 decoration-orange-600">Compañía</h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
               <li><a href="#" className="hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/portfolio-contenedores-casa" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
+              <li><a href="https://theboxcontainerdesign.com/portfolio-contenedores-casa" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
               <li><a href="/preguntas-frecuentes" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
               <li><a href="/blog" className="hover:text-orange-500 transition-colors">Blog</a></li>
               <li><a href="/#quote" className="hover:text-orange-500 transition-colors">Contacto</a></li>
