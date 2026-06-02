@@ -54,9 +54,9 @@ const routes = [
   },
   {
     path: '/estudio/gimnasio-contenedor-20-pies',
-    title: 'Gimnasio en contenedor de 20 pies | Próximamente | The Box',
+    title: 'Gimnasio modular 20 pies | Contenedor fitness | The Box',
     description:
-      'Esta sección está en actualización. Muy pronto publicaremos fotos y especificaciones completas.',
+      'Gimnasio modular en contenedor de 20 pies desde 13.625 € + IVA. Fachada acristalada, interior aislado, suelo acabado y configuración para fitness.',
   },
   {
     path: '/blog',

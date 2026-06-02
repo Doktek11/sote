@@ -116,11 +116,6 @@ function App() {
       description:
         'Esta secciÃ³n estÃ¡ en actualizaciÃ³n. Estamos preparando nuevos materiales y detalles tÃ©cnicos.',
     },
-    '/estudio/gimnasio-contenedor-20-pies': {
-      title: 'Gimnasio en contenedor de 20 pies',
-      description:
-        'Esta secciÃ³n estÃ¡ en actualizaciÃ³n. Muy pronto publicaremos fotos y especificaciones completas.',
-    },
   };
   const temporarilyClosed = temporarilyClosedPages[normalizedPath];
 

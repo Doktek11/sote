@@ -70,13 +70,13 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
   },
   {
     id: 'p4',
-    title: 'Gimnasio en contenedor de 20 pies',
+    title: 'Gimnasio modular en contenedor de 20 pies',
     category: 'Fitness modular',
     description:
-      'Formato compacto desde 20 pies con ventanal frontal de aluminio, ventilación integrada y espacio interior luminoso.',
-    imageUrl: '/proximamentetbcd.webp',
+      'Módulo fitness desde 13.625 € + IVA con fachada acristalada, interior aislado y configuración adaptable para entrenamiento o wellness.',
+    imageUrl: '/gym_20pies_tricarril.webp',
     href: '/estudio/gimnasio-contenedor-20-pies',
-    isAvailable: false,
+    isAvailable: true,
   },
 ];
 

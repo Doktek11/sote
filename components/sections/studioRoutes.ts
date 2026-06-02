@@ -119,19 +119,60 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     gallery: ['/contenedorabierto-20pies-nuevo.webp', '/interiorcontenedor-40pies-oneway.webp', '/contenedor2-40pies-nuevo.webp'],
   },
   '/estudio/gimnasio-contenedor-20-pies': {
-    title: 'Gimnasio en contenedor de 20 pies',
+    title: 'Gimnasio modular en contenedor de 20 pies',
     category: 'Fitness modular',
-    price: 'Desde 9.900 €',
-    heroImage: '/contenedorabierto-real-20pies-nuevo.webp',
+    price: 'Desde 13.625 € + IVA',
+    heroImage: '/gym_20pies_tricarril.webp',
     description:
-      'Gimnasio modular compacto sobre contenedor de 20 pies, con ventanal frontal de aluminio, ventilación propia y máxima entrada de luz natural.',
-    seoText: [
-      'Este gimnasio en contenedor de 20 pies está orientado a entrenamientos funcionales, espacios wellness en hoteles, clubes deportivos y centros privados con limitación de superficie.',
-      'La configuración incorpora apertura frontal acristalada, ventilación propia y distribución interior optimizada para aprovechar cada metro útil sin perder comodidad de uso.',
-      'Para proyectos que buscan un gimnasio modular económico, este formato permite empezar desde 9.900 € con posibilidad de ampliaciones, branding y equipamiento personalizado.'
+      'Gimnasio modular compacto fabricado sobre contenedor marítimo de 20 pies, preparado para entrenamiento funcional, wellness privado o espacio deportivo profesional con instalación rápida.',
+    seoTitle: 'Gimnasio modular 20 pies | Contenedor fitness | The Box',
+    seoDescription:
+      'Gimnasio modular en contenedor de 20 pies desde 13.625 € + IVA. Fachada acristalada, interior aislado, suelo acabado y configuración para fitness.',
+    sections: [
+      {
+        heading: 'Espacio fitness listo para adaptar',
+        level: 2,
+        body: [
+          'Este gimnasio modular de 20 pies convierte la estructura resistente de un contenedor marítimo en un espacio deportivo luminoso, aislado y de rápida implantación. Es una solución pensada para viviendas, hoteles, centros wellness, clubes deportivos o negocios que necesitan ampliar superficie sin una obra tradicional larga.',
+          'La propuesta incorpora una fachada acristalada corredera, revestimiento interior limpio, pavimento cálido y zonas preparadas para equipamiento cardiovascular, pesas, entrenamiento funcional o yoga.'
+        ]
+      },
+      {
+        heading: 'Construcción y confort interior',
+        level: 2,
+        body: [
+          'El sistema se plantea con aislamiento en paramentos y cubierta, acabado interior en panel blanco, iluminación empotrada y una envolvente exterior de acero con imagen industrial. El objetivo es ofrecer un espacio compacto pero profesional, con buena entrada de luz natural y una imagen cuidada para uso privado o comercial.'
+        ],
+        bullets: [
+          'Contenedor marítimo de 20 pies transformado',
+          'Fachada de vidrio corredera con perfilería negra',
+          'Aislamiento en paredes y techo',
+          'Acabado interior claro para mayor amplitud visual',
+          'Pavimento efecto madera y zonas técnicas para entrenamiento',
+          'Configuración adaptable según actividad y equipamiento'
+        ]
+      },
+      {
+        heading: 'Precio orientativo',
+        level: 2,
+        body: [
+          'El precio parte desde 13.625 € + IVA para la configuración base del módulo. El importe final puede variar según transporte, ubicación, equipamiento deportivo, climatización, instalaciones y nivel de personalización.'
+        ]
+      }
     ],
-    highlights: ['Contenedor marítimo de 20 pies', 'Ventanal de aluminio frontal', 'Ventilación integrada', 'Interior muy luminoso'],
-    gallery: ['/contenedorabierto-real-20pies-nuevo.webp', '/contenedorabierto-20pies-nuevo.webp', '/contenedor-nuevo-20pies-interior.webp'],
+    seoText: [],
+    highlights: [
+      'Desde 13.625 € + IVA',
+      'Contenedor marítimo de 20 pies',
+      'Fachada acristalada corredera',
+      'Interior aislado y acabado',
+      'Uso fitness, wellness o entrenamiento privado'
+    ],
+    gallery: [
+      '/gym_20pies_tricarril_materiales.webp',
+      '/gym_20pies_basico.webp',
+      '/gym_20pies_basico_materiales.webp'
+    ],
   },
 };
 

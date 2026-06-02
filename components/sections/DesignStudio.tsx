@@ -40,14 +40,14 @@ const STUDIO_PRODUCTS: StudioCard[] = [
   },
   {
     id: 't4',
-    title: 'Gimnasio Modular 20 pies',
+    title: 'Gimnasio modular 20 pies',
     category: 'Gimnasios',
     description:
-      'Desde 9900â‚¬. Contenedor de 20 pies con ventanal de aluminio de apertura frontal, ventilaciÃ³n propia y un interior muy luminoso.',
-    imageUrl: '/proximamentetbcd.webp',
-    features: ['Desde 9900â‚¬', '20 pies', 'Ventanal frontal', 'VentilaciÃ³n propia'],
+      'Desde 13.625 € + IVA. Contenedor de 20 pies con fachada acristalada, interior aislado y configuración adaptable para fitness o wellness.',
+    imageUrl: '/gym_20pies_tricarril.webp',
+    features: ['Desde 13.625 € + IVA', '20 pies', 'Fachada acristalada', 'Interior aislado'],
     href: '/estudio/gimnasio-contenedor-20-pies',
-    isAvailable: false,
+    isAvailable: true,
   },
 ];
 

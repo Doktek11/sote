@@ -103,8 +103,8 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
           <p className="text-zinc-300 mt-6 leading-relaxed">{description}</p>
         </header>
 
-        <div className="mt-10 rounded-sm overflow-hidden border border-zinc-800">
-          <img src={heroImage} alt={title} className="w-full h-[420px] object-cover" loading="eager" />
+        <div className="mt-10 rounded-sm overflow-hidden border border-zinc-800 aspect-[16/9] bg-zinc-900">
+          <img src={heroImage} alt={title} className="w-full h-full object-cover" loading="eager" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-12">
@@ -153,8 +153,8 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
           {gallery.map((image, index) => (
-            <div key={index} className="rounded-sm overflow-hidden border border-zinc-800">
-              <img src={image} alt={`${title} detalle ${index + 1}`} className="w-full h-56 object-cover" loading="lazy" />
+            <div key={index} className="rounded-sm overflow-hidden border border-zinc-800 aspect-[16/9] bg-zinc-900">
+              <img src={image} alt={`${title} detalle ${index + 1}`} className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
         </div>
