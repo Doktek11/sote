@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const SITE_URL = 'https://theboxcontainerdesign.com';
+const SITE_URL = 'https://www.theboxcontainerdesign.com';
 const SITE_NAME = 'THE BOX CONTAINER DESIGN';
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(rootDir, 'dist');

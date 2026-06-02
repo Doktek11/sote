@@ -68,12 +68,12 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
       '@graph': [
         {
           '@type': 'Organization',
-          '@id': 'https://theboxcontainerdesign.com/#organization',
+          '@id': 'https://www.theboxcontainerdesign.com/#organization',
           name: 'THE BOX CONTAINER DESIGN',
-          url: 'https://theboxcontainerdesign.com',
+          url: 'https://www.theboxcontainerdesign.com',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://theboxcontainerdesign.com/logo-theboxcontainerdesign4.svg'
+            url: 'https://www.theboxcontainerdesign.com/logo-theboxcontainerdesign4.svg'
           }
         }
       ]

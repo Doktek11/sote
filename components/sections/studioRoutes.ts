@@ -76,10 +76,10 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
       provider: {
         '@type': 'Organization',
         name: 'The Box Container Design',
-        url: 'https://theboxcontainerdesign.com'
+        url: 'https://www.theboxcontainerdesign.com'
       },
-      image: 'https://theboxcontainerdesign.com/casacontenedor-40pies-disenofinal.webp',
-      url: 'https://theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor'
+      image: 'https://www.theboxcontainerdesign.com/casacontenedor-40pies-disenofinal.webp',
+      url: 'https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor'
     },
     seoText: [],
     highlights: ['Diseño modular escalable', 'Aislamiento térmico reforzado', 'Grandes ventanales', 'Entrega llave en mano opcional'],
