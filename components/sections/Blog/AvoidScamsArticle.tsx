@@ -1,103 +1,10 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../../seo';
-
-const SEO_TITLE = 'Cómo evitar estafas al comprar un contenedor marítimo | Guía 2026';
-const SEO_DESCRIPTION =
-    'Señales de alerta, precios reales y checklist de verificación antes de pagar. Compra segura paso a paso.';
-const SEO_CANONICAL = canonicalForPath('/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026');
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertMetaByProperty = (property: string, content: string) => {
-  let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('property', property);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
-};
+import React from 'react';
+import { useRouteSeo } from '../../../seo';
+import { PATHS } from '../../../site.config.mjs';
+import { ArticleMeta, ArticleReferences } from './ArticleMeta';
 
 export const AvoidScamsArticle: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousRobots = document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
-    const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMetaByName('description', SEO_DESCRIPTION);
-    upsertMetaByName('robots', 'index,follow,max-image-preview:large');
-
-    upsertMetaByProperty('og:type', 'article');
-    upsertMetaByProperty('og:title', SEO_TITLE);
-    upsertMetaByProperty('og:description', SEO_DESCRIPTION);
-    upsertMetaByProperty('og:url', SEO_CANONICAL);
-    upsertMetaByProperty('og:site_name', 'THE BOX CONTAINER DESIGN');
-
-    upsertMetaByName('twitter:card', 'summary_large_image');
-    upsertMetaByName('twitter:title', SEO_TITLE);
-    upsertMetaByName('twitter:description', SEO_DESCRIPTION);
-
-    upsertCanonical(SEO_CANONICAL);
-
-    const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026)',
-      description: SEO_DESCRIPTION,
-      datePublished: '2026-02-24',
-      dateModified: '2026-02-24',
-      author: {
-        '@type': 'Organization',
-        name: 'THE BOX CONTAINER DESIGN'
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'THE BOX CONTAINER DESIGN'
-      },
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': SEO_CANONICAL
-      }
-    };
-
-    const schemaScript = document.createElement('script');
-    schemaScript.type = 'application/ld+json';
-    schemaScript.setAttribute('data-schema', 'avoid-scams-article');
-    schemaScript.text = JSON.stringify(ld);
-    document.head.appendChild(schemaScript);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      upsertMetaByName('robots', previousRobots);
-      if (previousCanonical) {
-        upsertCanonical(previousCanonical);
-      }
-
-      const injected = document.querySelector('script[data-schema="avoid-scams-article"]');
-      if (injected) injected.remove();
-    };
-  }, []);
+  useRouteSeo(PATHS.articleScams);
 
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="avoid-scams-title">
@@ -106,9 +13,18 @@ export const AvoidScamsArticle: React.FC = () => {
           Cómo evitar estafas al comprar un contenedor marítimo (Guía 2026)
         </h1>
 
+        <ArticleMeta path={PATHS.articleScams} />
+
         <p className="text-zinc-300 max-w-4xl mb-8 leading-relaxed">
           El mercado de los contenedores marítimos ha visto un aumento de estafas digitales cada vez más sofisticadas. Ya no son correos mal escritos; ahora son estructuras bien diseñadas para engañar incluso a compradores con experiencia. Si estás pensando en comprar un contenedor marítimo para almacenaje, inversión o para construir tu casa contenedor, esta guía puede ahorrarte miles de euros y muchos problemas.
         </p>
+
+        <img
+          src="/3contenedorescerrados-evergreen-20pies-usado.webp"
+          alt="Contenedores marítimos usados disponibles para inspección"
+          className="mb-12 w-full rounded-2xl border border-zinc-800"
+          loading="eager"
+        />
 
         <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
           1. El gancho: contenedores “casi nuevos” a precios imposibles
@@ -245,6 +161,15 @@ export const AvoidScamsArticle: React.FC = () => {
             Si estás valorando comprar un contenedor marítimo en 2026, habla primero con nosotros. Analizamos tu caso, resolvemos tus dudas y te damos un precio realista antes de que tomes cualquier decisión.
           </p>
         </div>
+
+        <ArticleReferences
+          items={[
+            {
+              name: 'Fraudes online — Centro Europeo del Consumidor en España',
+              url: 'https://portal-cec.consumo.gob.es/es/informacion-general/compras-online/fraudes-online',
+            },
+          ]}
+        />
       </div>
     </section>
   );

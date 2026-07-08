@@ -1,56 +1,13 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../seo';
+import React from 'react';
+import { useRouteSeo } from '../../seo';
+import { PATHS } from '../../site.config.mjs';
 
-const SEO_TITLE = 'Venta de contenedores marítimos en España (20 y 40 pies) | The Box';
-const SEO_DESCRIPTION =
-  'Stock real en puerto, inspección propia y vídeo de la unidad. Entrega 3-10 días y presupuesto cerrado con transporte incluido.';
-const CANONICAL_PATH = '/venta-contenedores-maritimos-espana';
 const WHATSAPP_BASE = 'https://wa.me/34657348078';
-
-const upsertMeta = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonical);
-  }
-
-  canonical.setAttribute('href', href);
-};
 
 const buildWhatsappUrl = (message: string) => `${WHATSAPP_BASE}?text=${encodeURIComponent(message)}`;
 
 export const SalesLandingPage: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMeta('description', SEO_DESCRIPTION);
-    upsertCanonical(canonicalForPath(CANONICAL_PATH));
-
-    return () => {
-      document.title = previousTitle;
-      upsertMeta('description', previousDescription);
-      if (previousCanonical) {
-        upsertCanonical(previousCanonical);
-      }
-    };
-  }, []);
+  useRouteSeo(PATHS.sales);
 
   return (
     <section className="bg-zinc-950 text-white" aria-labelledby="landing-main-title">

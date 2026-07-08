@@ -1,5 +1,6 @@
 import React from 'react';
-import { Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { PATHS, SITE } from '../site.config.mjs';
 
 export const Footer: React.FC = () => {
   return (
@@ -32,12 +33,6 @@ export const Footer: React.FC = () => {
               >
                 <Instagram size={18} />
               </a>
-              <a
-                href="#"
-                className="p-2 border border-zinc-800 rounded-full text-zinc-400 hover:text-white hover:border-zinc-600 transition-all"
-              >
-                <Twitter size={18} />
-              </a>
             </div>
           </div>
 
@@ -46,20 +41,20 @@ export const Footer: React.FC = () => {
               Servicios
             </h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="https://www.theboxcontainerdesign.com/venta-contenedores-maritimos-espana" className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor" className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/piscina-infinity-box-contenedor" className="hover:text-orange-500 transition-colors">Piscinas de contenedores</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos" className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
+              <li><a href={PATHS.sales} className="hover:text-orange-500 transition-colors">Standard Cargo 40ft Ocasión</a></li>
+              <li><a href={PATHS.studioResidence} className="hover:text-orange-500 transition-colors">Residencia minimalista</a></li>
+              <li><a href={PATHS.studioGym} className="hover:text-orange-500 transition-colors">Gimnasios modulares</a></li>
+              <li><a href={PATHS.studioBar} className="hover:text-orange-500 transition-colors">Retail y pop-up</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-200 mb-8 underline underline-offset-8 decoration-orange-600">Compañía</h4>
             <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
-              <li><a href="https://www.theboxcontainerdesign.com/portfolio-contenedores-casa" className="hover:text-orange-500 transition-colors">Portafolio</a></li>
-              <li><a href="/preguntas-frecuentes" className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
-              <li><a href="/blog" className="hover:text-orange-500 transition-colors">Blog</a></li>
+              <li><a href={PATHS.portfolio} className="hover:text-orange-500 transition-colors">Portafolio</a></li>
+              <li><a href={PATHS.faq} className="hover:text-orange-500 transition-colors">Preguntas Frecuentes</a></li>
+              <li><a href={PATHS.blog} className="hover:text-orange-500 transition-colors">Blog</a></li>
+              <li><a href={PATHS.editorial} className="hover:text-orange-500 transition-colors">Equipo editorial</a></li>
               <li><a href="/#quote" className="hover:text-orange-500 transition-colors">Contacto</a></li>
             </ul>
           </div>
@@ -69,15 +64,19 @@ export const Footer: React.FC = () => {
             <ul className="space-y-6 text-zinc-500 text-sm">
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-orange-500 flex-shrink-0" />
-                <span>Avinguda del comerç s/n<br />43206, Reus, España</span>
+                <span>
+                  {SITE.address.streetAddress}
+                  <br />
+                  {SITE.address.postalCode}, {SITE.address.addressLocality}, España
+                </span>
               </li>
               <li className="flex items-center gap-4">
                 <Phone size={18} className="text-orange-500" />
-                <span>+34 657348078</span>
+                <a href="tel:+34657348078" className="hover:text-orange-500 transition-colors">{SITE.telephone}</a>
               </li>
               <li className="flex items-center gap-4">
                 <Mail size={18} className="text-orange-500" />
-                <span>info@theboxcontainerdesign.com</span>
+                <a href={`mailto:${SITE.email}`} className="hover:text-orange-500 transition-colors">{SITE.email}</a>
               </li>
             </ul>
           </div>

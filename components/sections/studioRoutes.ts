@@ -1,34 +1,30 @@
+import { PATHS } from '../../site.config.mjs';
+
 export interface StudioRoute {
   title: string;
   category: string;
   price: string;
   heroImage: string;
   description: string;
-  seoTitle?: string;
-  seoDescription?: string;
   sections?: {
     heading: string;
     level?: 2 | 3;
     body: string[];
     bullets?: string[];
   }[];
-  schemaLd?: Record<string, unknown>;
   seoText: string[];
   highlights: string[];
   gallery: string[];
 }
 
 export const STUDIO_ROUTES: Record<string, StudioRoute> = {
-  '/estudio/residencia-minimalista-contenedor': {
+  [PATHS.studioResidence]: {
     title: 'Residencia Minimalista X1 en Contenedor',
     category: 'Vivienda modular',
     price: 'Proyecto a medida',
     heroImage: '/casacontenedor-40pies-disenofinal.webp',
     description:
       'Residencia Minimalista X1 es una casa contenedor moderna pensada para quienes buscan una vivienda modular en contenedor en España con diseño contemporáneo, eficiencia energética y acabados de alta gama. Esta propuesta de arquitectura con contenedores marítimos combina estética minimalista, rapidez de ejecución y control de costes, convirtiéndose en una solución versátil para vivienda habitual, segunda residencia o alquiler turístico.',
-    seoTitle: 'Residencia Minimalista X1 | Casa contenedor en España | The Box',
-    seoDescription:
-      'Casa contenedor moderna en España con diseño contemporáneo, eficiencia energética y acabados premium. Proyecto modular a medida.',
     sections: [
       {
         heading: 'Arquitectura modular personalizada',
@@ -65,36 +61,17 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
         ]
       }
     ],
-    schemaLd: {
-      '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: 'Residencia Minimalista X1',
-      description:
-        'Residencia Minimalista X1 es una casa contenedor moderna pensada para quienes buscan una vivienda modular en contenedor en España con diseño contemporáneo, eficiencia energética y acabados de alta gama.',
-      serviceType: 'Vivienda modular en contenedor',
-      areaServed: 'ES',
-      provider: {
-        '@type': 'Organization',
-        name: 'The Box Container Design',
-        url: 'https://www.theboxcontainerdesign.com'
-      },
-      image: 'https://www.theboxcontainerdesign.com/casacontenedor-40pies-disenofinal.webp',
-      url: 'https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor'
-    },
     seoText: [],
     highlights: ['Diseño modular escalable', 'Aislamiento térmico reforzado', 'Grandes ventanales', 'Entrega llave en mano opcional'],
     gallery: ['/casacontenedor-plano-40pies-highcube.webp', '/instalacióncontenedores-20pies-usado.webp', '/planocontenedor-40pies.webp'],
   },
-  '/estudio/bar-lounge-contenedor-eventos': {
+  [PATHS.studioBar]: {
     title: 'The Box Bar & Lounge para eventos',
     category: 'Espacio comercial',
     price: 'Desde 18.900 €',
     heroImage: '/contenedorbar-20pies-nuevo.webp',
     description:
       'Espacio comercial en contenedor orientado a hostelería, pop-ups de marca y eventos itinerantes con alta visibilidad.',
-    seoTitle: 'Bar & Lounge en contenedor | Espacio comercial | The Box',
-    seoDescription:
-      'Espacio comercial en contenedor para hostelería y eventos. Desde 18.900 €, personalizable y entrega en España.',
     seoText: [
       'El modelo Bar & Lounge está pensado para negocios que quieren destacar con una imagen industrial premium. Su diseño favorece el flujo de clientes y la versatilidad en eventos privados, festivales y ferias.',
       'Configuramos aperturas frontales y laterales, barras técnicas, zonas de servicio y preparación para instalaciones eléctricas y de climatización según actividad.',
@@ -103,7 +80,7 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     highlights: ['Formato pop-up', 'Aperturas comerciales', 'Preparación eléctrica', 'Acabados personalizables'],
     gallery: ['/contenedorbar-streetfood-20pies.webp', '/planocontenedor-bar-20pies.webp'],
   },
-  '/estudio/piscina-infinity-box-contenedor': {
+  [PATHS.studioPool]: {
     title: 'Piscina Infinity Box de contenedor',
     category: 'Solución lúdica exterior',
     price: 'Desde 14.500 €',
@@ -118,16 +95,13 @@ export const STUDIO_ROUTES: Record<string, StudioRoute> = {
     highlights: ['Instalación rápida', 'Depuración integrada', 'Acabado premium opcional', 'Mantenimiento simplificado'],
     gallery: ['/contenedorabierto-20pies-nuevo.webp', '/interiorcontenedor-40pies-oneway.webp', '/contenedor2-40pies-nuevo.webp'],
   },
-  '/estudio/gimnasio-contenedor-20-pies': {
+  [PATHS.studioGym]: {
     title: 'Gimnasio modular en contenedor de 20 pies',
     category: 'Fitness modular',
     price: 'Desde 13.625 € + IVA',
     heroImage: '/gym_20pies_tricarril.webp',
     description:
       'Gimnasio modular compacto fabricado sobre contenedor marítimo de 20 pies, preparado para entrenamiento funcional, wellness privado o espacio deportivo profesional con instalación rápida.',
-    seoTitle: 'Gimnasio modular 20 pies | Contenedor fitness | The Box',
-    seoDescription:
-      'Gimnasio modular en contenedor de 20 pies desde 13.625 € + IVA. Fachada acristalada, interior aislado, suelo acabado y configuración para fitness.',
     sections: [
       {
         heading: 'Espacio fitness listo para adaptar',

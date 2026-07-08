@@ -1,49 +1,9 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../../seo';
-
-const SEO_TITLE = 'Blog contenedores marítimos | Guías de compra y precios | The Box';
-const SEO_DESCRIPTION =
-    'Guías prácticas sobre compra segura, precios reales, logística y transformación de contenedores en España.';
-const SEO_CANONICAL = canonicalForPath('/blog');
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
-};
+import React from 'react';
+import { useRouteSeo } from '../../../seo';
+import { PATHS } from '../../../site.config.mjs';
 
 export const BlogIndex: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousCanonical =
-      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMetaByName('description', SEO_DESCRIPTION);
-    upsertCanonical(SEO_CANONICAL);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-    };
-  }, []);
+  useRouteSeo(PATHS.blog);
 
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="blog-title">
@@ -55,6 +15,14 @@ export const BlogIndex: React.FC = () => {
         <p className="text-zinc-300 mb-12 max-w-3xl leading-relaxed">
           Consejos expertos sobre compra segura, precios reales, logística, transformación y uso de
           contenedores marítimos en España. Guías prácticas para evitar errores y tomar mejores decisiones.
+        </p>
+
+        <p className="-mt-8 mb-12 text-sm text-zinc-500">
+          Contenidos publicados por el{' '}
+          <a href={PATHS.editorial} rel="author" className="text-orange-400 hover:text-orange-300">
+            equipo editorial de The Box
+          </a>
+          .
         </p>
 
         <div className="space-y-6">
@@ -72,7 +40,7 @@ export const BlogIndex: React.FC = () => {
             </p>
 
             <a
-              href="/blog/casa-contenedor-espana-guia"
+              href={PATHS.articleContainerHouse}
               className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
             >
               Leer artículo completo
@@ -91,7 +59,7 @@ export const BlogIndex: React.FC = () => {
             </p>
 
             <a
-              href="/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026"
+              href={PATHS.articleCatalunya}
               className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
             >
               Leer artículo completo
@@ -111,7 +79,7 @@ export const BlogIndex: React.FC = () => {
             </p>
 
             <a
-              href="/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026"
+              href={PATHS.articleScams}
               className="inline-flex rounded-lg bg-orange-600 px-5 py-3 font-semibold text-white hover:bg-orange-500 transition-colors"
             >
               Leer artículo completo

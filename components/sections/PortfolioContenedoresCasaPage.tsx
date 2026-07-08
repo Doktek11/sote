@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../seo';
+import React from 'react';
+import { useRouteSeo } from '../../seo';
+import { PATHS } from '../../site.config.mjs';
 import { ArrowUpRight } from 'lucide-react';
 
 type PortfolioFamily = {
@@ -12,31 +13,6 @@ type PortfolioFamily = {
   isAvailable?: boolean;
 };
 
-const SEO_TITLE = 'Portfolio de contenedores casa | Diseños y transformaciones | The Box Container Design';
-const SEO_DESCRIPTION =
-  'Descubre nuestro portfolio de contenedores casa: vivienda modular, bar lounge, piscina y gimnasio en contenedor con enfoque técnico y diseño funcional.';
-const SEO_CANONICAL = canonicalForPath('/portfolio-contenedores-casa');
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
-};
-
 const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
   {
     id: 'p1',
@@ -45,7 +21,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     description:
       'Casa contenedor premium con diseño minimalista, distribución flexible y acabados de alta gama para proyecto residencial a medida.',
     imageUrl: '/casacontenedor-40pies-disenofinal.webp',
-    href: '/estudio/residencia-minimalista-contenedor',
+    href: PATHS.studioResidence,
     isAvailable: true,
   },
   {
@@ -55,7 +31,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     description:
       'Contenedor transformado para hostelería y eventos, con aperturas comerciales y configuración adaptable para pop-ups y activaciones.',
     imageUrl: '/contenedorbar-20pies-nuevo.webp',
-    href: '/estudio/bar-lounge-contenedor-eventos',
+    href: PATHS.studioBar,
     isAvailable: true,
   },
   {
@@ -65,7 +41,7 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     description:
       'Piscina modular sobre contenedor marítimo, pensada para instalación rápida en vivienda, hotel o espacio turístico.',
     imageUrl: '/proximamentetbcd.webp',
-    href: '/estudio/piscina-infinity-box-contenedor',
+    href: PATHS.studioPool,
     isAvailable: false,
   },
   {
@@ -75,31 +51,13 @@ const PORTFOLIO_FAMILIES: PortfolioFamily[] = [
     description:
       'Módulo fitness desde 13.625 € + IVA con fachada acristalada, interior aislado y configuración adaptable para entrenamiento o wellness.',
     imageUrl: '/gym_20pies_tricarril.webp',
-    href: '/estudio/gimnasio-contenedor-20-pies',
+    href: PATHS.studioGym,
     isAvailable: true,
   },
 ];
 
-export const portfolioContenedoresCasaPath = '/portfolio-contenedores-casa';
-
 export const PortfolioContenedoresCasaPage: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousCanonical =
-      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMetaByName('description', SEO_DESCRIPTION);
-    upsertCanonical(SEO_CANONICAL);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-    };
-  }, []);
+  useRouteSeo(PATHS.portfolio);
 
   return (
     <section className="bg-zinc-950 py-20 md:py-24">
@@ -142,17 +100,17 @@ export const PortfolioContenedoresCasaPage: React.FC = () => {
                   </div>
                 </a>
               ) : (
-                <div className="block cursor-not-allowed" role="link" aria-disabled="true" aria-label={`PrÃ³ximamente ${family.title}`}>
+                <div className="block cursor-not-allowed" role="link" aria-disabled="true" aria-label={`Próximamente ${family.title}`}>
                   <div className="relative aspect-[16/9] overflow-hidden">
                     <img
                       src={family.imageUrl}
-                      alt={`PrÃ³ximamente: ${family.title}`}
+                      alt={`Próximamente: ${family.title}`}
                       className="h-full w-full object-cover grayscale brightness-75"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                     <div className="absolute top-4 right-4 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-widest text-white">
-                      PrÃ³ximamente
+                      Próximamente
                     </div>
                   </div>
 

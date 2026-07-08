@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
+import { PATHS } from '../site.config.mjs';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,7 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
-  const salesLandingPath = '/venta-contenedores-maritimos-espana';
+  const salesLandingPath = PATHS.sales;
   const isSalesLandingPage = normalizedPath === salesLandingPath;
   const isHomePage = normalizedPath === '/';
   const homePrefix = isHomePage ? '' : '/';
@@ -21,18 +22,18 @@ export const Navbar: React.FC = () => {
   const navLinks = isSalesLandingPage
     ? [
         { name: 'Precios', href: '#precios' },
-        { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
+        { name: 'Landing Venta', href: PATHS.sales },
         { name: 'Logística', href: '#entrega' },
-        { name: 'FAQs', href: '/preguntas-frecuentes' },
-        { name: 'Blog', href: '/blog' },
+        { name: 'FAQs', href: PATHS.faq },
+        { name: 'Blog', href: PATHS.blog },
         { name: 'Cotización', href: '#cotizacion' }
       ]
     : [
         { name: 'Venta', href: `${homePrefix}#logistica` },
         { name: 'Estudio', href: `${homePrefix}#studio` },
-        { name: 'Landing Venta', href: '/venta-contenedores-maritimos-espana' },
-        { name: 'FAQs', href: '/preguntas-frecuentes' },
-        { name: 'Blog', href: '/blog' },
+        { name: 'Landing Venta', href: PATHS.sales },
+        { name: 'FAQs', href: PATHS.faq },
+        { name: 'Blog', href: PATHS.blog },
         { name: 'Presupuesto', href: `${homePrefix}#quote` }
       ];
 

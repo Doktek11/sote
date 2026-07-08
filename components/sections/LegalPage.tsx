@@ -1,34 +1,6 @@
 import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../seo';
-
-const SEO_TITLE = 'Política de Privacidad y Aviso Legal | The Box Container Design';
-const SEO_DESCRIPTION =
-  'Consulta la Política de Privacidad y el Aviso Legal de The Box Container Design conforme al RGPD, LOPDGDD y LSSI-CE.';
-const CANONICAL_PATH = '/legal';
-
-const upsertMeta = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonical);
-  }
-
-  canonical.setAttribute('href', href);
-};
+import { useRouteSeo } from '../../seo';
+import { PATHS, SITE } from '../../site.config.mjs';
 
 const SectionTitle: React.FC<{ id?: string; children: React.ReactNode }> = ({ id, children }) => (
   <h2 id={id} className="text-2xl md:text-3xl font-black mt-12 mb-4 text-white">
@@ -37,24 +9,7 @@ const SectionTitle: React.FC<{ id?: string; children: React.ReactNode }> = ({ id
 );
 
 export const LegalPage: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-    const previousRobots = document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMeta('description', SEO_DESCRIPTION);
-    upsertMeta('robots', 'noindex,follow');
-    upsertCanonical(canonicalForPath(CANONICAL_PATH));
-
-    return () => {
-      document.title = previousTitle;
-      upsertMeta('description', previousDescription);
-      upsertMeta('robots', previousRobots);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-    };
-  }, []);
+  useRouteSeo(PATHS.legal);
 
   useEffect(() => {
     const scrollToHashSection = () => {
@@ -83,19 +38,26 @@ export const LegalPage: React.FC = () => {
         <h1 id="legal-main-title" className="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">
           Política de Privacidad y Aviso Legal
         </h1>
-        <p className="text-zinc-400 mb-10">Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+        <p className="text-zinc-400 mb-10">
+          Última actualización:{' '}
+          <time dateTime={SITE.legalLastUpdated}>{SITE.legalLastUpdatedLabel}</time>
+        </p>
 
         <SectionTitle id="privacidad">Política de Privacidad</SectionTitle>
         <p className="mb-4">En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y de la Ley Orgánica 3/2018 (LOPDGDD), se informa al usuario de lo siguiente:</p>
 
         <h3 className="font-bold text-white mt-6 mb-2">1. Responsable del Tratamiento</h3>
         <ul className="space-y-1">
-          <li><strong>Identidad:</strong> Andrés De Eguía Haazer</li>
-          <li><strong>Nombre comercial:</strong> The Box Container Design</li>
-          <li><strong>CIF:</strong> C-39923029</li>
-          <li><strong>Dirección:</strong> Avinguda del Comerç s/n, Cambrils, España</li>
-          <li><strong>Correo electrónico:</strong> info@theboxcontainerdesign.com</li>
-          <li><strong>Teléfono:</strong> +34 657 348 078</li>
+          <li><strong>Identidad:</strong> {SITE.legalName}</li>
+          <li><strong>Nombre comercial:</strong> {SITE.displayName}</li>
+          {SITE.taxID && <li><strong>NIF:</strong> {SITE.taxID}</li>}
+          <li>
+            <strong>Dirección:</strong> {SITE.address.streetAddress},{' '}
+            {SITE.address.postalCode} {SITE.address.addressLocality},{' '}
+            {SITE.address.addressRegion}, España
+          </li>
+          <li><strong>Correo electrónico:</strong> {SITE.email}</li>
+          <li><strong>Teléfono:</strong> {SITE.telephone}</li>
         </ul>
 
         <h3 className="font-bold text-white mt-6 mb-2">2. Datos que recopilamos</h3>
@@ -164,12 +126,16 @@ export const LegalPage: React.FC = () => {
 
         <h3 className="font-bold text-white mt-6 mb-2">1. Datos Identificativos</h3>
         <ul className="space-y-1">
-          <li><strong>Titular:</strong> Andrés De Eguía Haazer</li>
-          <li><strong>Nombre comercial:</strong> The Box Container Design</li>
-          <li><strong>NIF:</strong> 39923023C</li>
-          <li><strong>Domicilio fiscal:</strong> Avinguda del Comerç s/n, 43206 Reus, Tarragona, España</li>
-          <li><strong>Teléfono:</strong> +34 657 348 078</li>
-          <li><strong>Correo electrónico:</strong> info@theboxcontainerdesign.com</li>
+          <li><strong>Titular:</strong> {SITE.legalName}</li>
+          <li><strong>Nombre comercial:</strong> {SITE.displayName}</li>
+          {SITE.taxID && <li><strong>NIF:</strong> {SITE.taxID}</li>}
+          <li>
+            <strong>Domicilio fiscal:</strong> {SITE.address.streetAddress},{' '}
+            {SITE.address.postalCode} {SITE.address.addressLocality},{' '}
+            {SITE.address.addressRegion}, España
+          </li>
+          <li><strong>Teléfono:</strong> {SITE.telephone}</li>
+          <li><strong>Correo electrónico:</strong> {SITE.email}</li>
         </ul>
 
         <h3 className="font-bold text-white mt-6 mb-2">2. Objeto y Condiciones de Uso</h3>
@@ -189,7 +155,10 @@ export const LegalPage: React.FC = () => {
 
         <h3 className="font-bold text-white mt-6 mb-2">5. Política de Seguridad y Prevención de Fraude</h3>
         <ul className="list-disc ml-6 space-y-1">
-          <li>No se solicitarán pagos sin factura o proforma oficial vinculada al NIF 39923023C.</li>
+          <li>
+            No se solicitarán pagos sin factura o proforma oficial vinculada a los datos fiscales
+            publicados en este aviso legal.
+          </li>
           <li>Las comunicaciones oficiales se realizan desde direcciones corporativas.</li>
           <li>Se recomienda verificar operaciones por teléfono oficial.</li>
         </ul>

@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
-
-const SEO_TITLE = 'FAQ contenedores marítimos | Compra segura y logística | The Box';
-const SEO_DESCRIPTION =
-    'Respuestas sobre compra, inspección, transporte, permisos y plazos. Consejos prácticos para evitar errores y estafas.';
+import React from 'react';
+import { useRouteSeo } from '../../seo';
+import { PATHS } from '../../site.config.mjs';
 
 const faqItems = [
   {
@@ -114,31 +112,8 @@ const faqItems = [
   },
 ];
 
-const upsertMeta = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-
-  meta.setAttribute('content', content);
-};
-
 export const FaqSection: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMeta('description', SEO_DESCRIPTION);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMeta('description', previousDescription);
-    };
-  }, []);
+  useRouteSeo(PATHS.faq);
 
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="faq-main-title">

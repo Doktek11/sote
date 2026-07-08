@@ -2,8 +2,10 @@ import React, { Suspense, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/sections/Hero';
 import { Footer } from './components/Footer';
-import { portfolioContenedoresCasaPath } from './components/sections/PortfolioContenedoresCasaPage';
+import { Breadcrumbs } from './components/Breadcrumbs';
 import { ComingSoonPage } from './components/sections/ComingSoonPage';
+import { NotFoundPage } from './components/sections/NotFoundPage';
+import { PATHS } from './site.config.mjs';
 
 import { STUDIO_ROUTES } from './components/sections/studioRoutes';
 
@@ -44,6 +46,12 @@ const LegalPage = React.lazy(() =>
   }))
 );
 
+const EditorialTeamPage = React.lazy(() =>
+  import('./components/sections/EditorialTeamPage').then((module) => ({
+    default: module.EditorialTeamPage
+  }))
+);
+
 const StudioProductPage = React.lazy(() =>
   import('./components/sections/StudioProductPage').then((module) => ({
     default: module.StudioProductPage
@@ -81,13 +89,13 @@ const PortfolioContenedoresCasaPageLazy = React.lazy(() =>
 );
 
 const BLOG_ARTICLE_ROUTES: Record<string, React.ReactNode> = {
-  '/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026': (
+  [PATHS.articleScams]: (
     <AvoidScamsArticle />
   ),
-  '/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026': (
+  [PATHS.articleCatalunya]: (
     <CatalunyaContainersArticle />
   ),
-  '/blog/casa-contenedor-espana-guia': <CasaContenedorEspanaGuiaArticle />
+  [PATHS.articleContainerHouse]: <CasaContenedorEspanaGuiaArticle />
 };
 
 function App() {
@@ -97,24 +105,25 @@ function App() {
   );
 
   const normalizedPath = window.location.pathname.replace(/\/$/, '') || '/';
-  const salesLandingPath = '/venta-contenedores-maritimos-espana';
+  const salesLandingPath = PATHS.sales;
 
-  const isFaqPage = normalizedPath === '/preguntas-frecuentes';
+  const isFaqPage = normalizedPath === PATHS.faq;
   const isSalesLandingPage = normalizedPath === salesLandingPath;
-  const isLegalPage = normalizedPath === '/legal';
+  const isLegalPage = normalizedPath === PATHS.legal;
+  const isEditorialPage = normalizedPath === PATHS.editorial;
   const isPortfolioContenedoresCasaPage =
-    normalizedPath === portfolioContenedoresCasaPath;
+    normalizedPath === PATHS.portfolio;
 
-  const isBlogPage = normalizedPath === '/blog';
-  const isAnyBlogPath = normalizedPath.startsWith('/blog/');
+  const isBlogPage = normalizedPath === PATHS.blog;
+  const isAnyBlogPath = normalizedPath.startsWith(`${PATHS.blog}/`);
   const blogArticle = BLOG_ARTICLE_ROUTES[normalizedPath];
 
   const studioDetail = STUDIO_ROUTES[normalizedPath];
   const temporarilyClosedPages: Record<string, { title: string; description: string }> = {
-    '/estudio/piscina-infinity-box-contenedor': {
+    [PATHS.studioPool]: {
       title: 'Piscina Infinity Box de contenedor',
       description:
-        'Esta secciÃ³n estÃ¡ en actualizaciÃ³n. Estamos preparando nuevos materiales y detalles tÃ©cnicos.',
+        'Esta sección está en actualización. Estamos preparando nuevos materiales y detalles técnicos.',
     },
   };
   const temporarilyClosed = temporarilyClosedPages[normalizedPath];
@@ -160,7 +169,8 @@ function App() {
     <div className="min-h-screen selection:bg-orange-500 selection:text-white">
       <Navbar />
 
-      <main>
+      <main className={normalizedPath === '/' ? '' : 'relative pt-20 md:pt-12'}>
+        {normalizedPath !== '/' && <Breadcrumbs path={normalizedPath} />}
         {isFaqPage ? (
           <Suspense fallback={null}>
             <FaqSection />
@@ -168,6 +178,10 @@ function App() {
         ) : isLegalPage ? (
           <Suspense fallback={null}>
             <LegalPage />
+          </Suspense>
+        ) : isEditorialPage ? (
+          <Suspense fallback={null}>
+            <EditorialTeamPage />
           </Suspense>
         ) : isSalesLandingPage ? (
           <Suspense fallback={null}>
@@ -180,9 +194,7 @@ function App() {
         ) : blogArticle ? (
           <Suspense fallback={null}>{blogArticle}</Suspense>
         ) : isAnyBlogPath ? (
-          <Suspense fallback={null}>
-            <BlogIndex />
-          </Suspense>
+          <NotFoundPage />
         ) : isPortfolioContenedoresCasaPage ? (
           <Suspense fallback={null}>
             <PortfolioContenedoresCasaPageLazy />
@@ -197,7 +209,7 @@ function App() {
           <Suspense fallback={null}>
             <StudioProductPage {...studioDetail} />
           </Suspense>
-        ) : (
+        ) : normalizedPath === '/' ? (
           <>
             <Hero />
 
@@ -233,6 +245,8 @@ function App() {
               <QuoteForm />
             </Suspense>
           </>
+        ) : (
+          <NotFoundPage />
         )}
       </main>
 

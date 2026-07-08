@@ -1,147 +1,10 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../../seo';
-
-const SEO_TITLE =
-    'Catalunya: venta de contenedores marítimos 2026 | Medidas y precios';
-const SEO_DESCRIPTION =
-    'Guía 2026 con medidas ISO, diferencias 20/40 pies y High Cube, precios orientativos y checklist de compra.';
-const SEO_CANONICAL = canonicalForPath('/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026');
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertMetaByProperty = (property: string, content: string) => {
-  let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('property', property);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
-};
+import React from 'react';
+import { useRouteSeo } from '../../../seo';
+import { PATHS } from '../../../site.config.mjs';
+import { ArticleMeta, ArticleReferences } from './ArticleMeta';
 
 export const CatalunyaContainersArticle: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousRobots =
-      document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
-    const previousCanonical =
-      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMetaByName('description', SEO_DESCRIPTION);
-    upsertMetaByName('robots', 'index,follow,max-image-preview:large');
-
-    upsertMetaByProperty('og:type', 'article');
-    upsertMetaByProperty('og:title', SEO_TITLE);
-    upsertMetaByProperty('og:description', SEO_DESCRIPTION);
-    upsertMetaByProperty('og:url', SEO_CANONICAL);
-    upsertMetaByProperty('og:site_name', 'THE BOX CONTAINER DESIGN');
-
-    upsertMetaByName('twitter:card', 'summary_large_image');
-    upsertMetaByName('twitter:title', SEO_TITLE);
-    upsertMetaByName('twitter:description', SEO_DESCRIPTION);
-
-    upsertCanonical(SEO_CANONICAL);
-
-    const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: 'Catalunya — Venta de contenedores marítimos: medidas, tipos y guía de precios 2026',
-      description: SEO_DESCRIPTION,
-      datePublished: '2026-03-04',
-      dateModified: '2026-03-04',
-      author: {
-        '@type': 'Organization',
-        name: 'THE BOX CONTAINER DESIGN'
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'THE BOX CONTAINER DESIGN'
-      },
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': SEO_CANONICAL
-      }
-    };
-
-    const faqLd = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: '¿Cuánto cuesta un contenedor de 20 pies usado en Catalunya?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'De forma orientativa, entre 1.400 € y 2.200 €, según estado, certificación y ubicación del stock.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: '¿Qué diferencia hay entre un contenedor estándar y un High Cube?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'El High Cube ofrece mayor altura interior útil, lo que mejora la capacidad de almacenamiento vertical y los proyectos modulares con instalaciones interiores.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: '¿Es mejor comprar contenedor nuevo o usado?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Para almacenaje e industria suele ser más rentable el usado. Para proyectos premium o de imagen comercial, suele convenir un One Trip.'
-          }
-        }
-      ]
-    };
-
-    const articleSchemaScript = document.createElement('script');
-    articleSchemaScript.type = 'application/ld+json';
-    articleSchemaScript.setAttribute('data-schema', 'catalunya-containers-article');
-    articleSchemaScript.text = JSON.stringify(ld);
-    document.head.appendChild(articleSchemaScript);
-
-    const faqSchemaScript = document.createElement('script');
-    faqSchemaScript.type = 'application/ld+json';
-    faqSchemaScript.setAttribute('data-schema', 'catalunya-containers-faq');
-    faqSchemaScript.text = JSON.stringify(faqLd);
-    document.head.appendChild(faqSchemaScript);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      upsertMetaByName('robots', previousRobots);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-
-      const articleSchema = document.querySelector(
-        'script[data-schema="catalunya-containers-article"]'
-      );
-      if (articleSchema) articleSchema.remove();
-
-      const faqSchema = document.querySelector('script[data-schema="catalunya-containers-faq"]');
-      if (faqSchema) faqSchema.remove();
-    };
-  }, []);
+  useRouteSeo(PATHS.articleCatalunya);
 
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="catalunya-containers-title">
@@ -152,6 +15,8 @@ export const CatalunyaContainersArticle: React.FC = () => {
         >
           Catalunya — Venta de contenedores marítimos: medidas, tipos y guía de precios 2026
         </h1>
+
+        <ArticleMeta path={PATHS.articleCatalunya} />
 
         <p className="text-zinc-300 max-w-4xl mb-6 leading-relaxed">
           Si buscas venta de contenedores marítimos en Catalunya, comparar precios o elegir entre
@@ -441,6 +306,15 @@ export const CatalunyaContainersArticle: React.FC = () => {
             </p>
           </div>
         </div>
+
+        <ArticleReferences
+          items={[
+            {
+              name: 'ISO 668:2020 — Clasificación, dimensiones y masas brutas',
+              url: 'https://www.iso.org/standard/76912.html',
+            },
+          ]}
+        />
 
         <div className="rounded-2xl border border-orange-500/40 bg-zinc-900 p-7">
           <h2 className="text-2xl font-extrabold text-white mb-3">Conclusión y siguiente paso</h2>

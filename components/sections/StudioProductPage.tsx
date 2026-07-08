@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../seo';
+import React from 'react';
+import { useRouteSeo } from '../../seo';
 
 type StudioProductPageProps = {
   title: string;
@@ -7,38 +7,15 @@ type StudioProductPageProps = {
   price: string;
   heroImage: string;
   description: string;
-  seoTitle?: string;
-  seoDescription?: string;
   sections?: {
     heading: string;
     level?: 2 | 3;
     body: string[];
     bullets?: string[];
   }[];
-  schemaLd?: Record<string, unknown>;
   seoText: string[];
   highlights: string[];
   gallery: string[];
-};
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
 };
 
 export const StudioProductPage: React.FC<StudioProductPageProps> = ({
@@ -47,47 +24,12 @@ export const StudioProductPage: React.FC<StudioProductPageProps> = ({
   price,
   heroImage,
   description,
-  seoTitle,
-  seoDescription,
   sections,
-  schemaLd,
   seoText,
   highlights,
   gallery,
 }) => {
-  useEffect(() => {
-    const seoTitleValue = seoTitle || `${title} | ${category} | The Box`;
-    const seoDescriptionValue =
-      seoDescription ||
-      `${description} ${price}. Proyecto de ${category.toLowerCase()} en contenedor marítimo con opciones de personalización y entrega en España.`;
-    const canonical = canonicalForPath(window.location.pathname || '/');
-
-    const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousCanonical =
-      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = seoTitleValue;
-    upsertMetaByName('description', seoDescriptionValue);
-    upsertCanonical(canonical);
-
-    let schemaScript: HTMLScriptElement | null = null;
-    if (schemaLd) {
-      schemaScript = document.createElement('script');
-      schemaScript.type = 'application/ld+json';
-      schemaScript.setAttribute('data-schema', 'studio-page');
-      schemaScript.text = JSON.stringify(schemaLd);
-      document.head.appendChild(schemaScript);
-    }
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-      if (schemaScript) schemaScript.remove();
-    };
-  }, [title, category, description, price, seoTitle, seoDescription, schemaLd]);
+  useRouteSeo(window.location.pathname);
 
   return (
     <section className="bg-zinc-950 text-zinc-100 pt-36 pb-20">

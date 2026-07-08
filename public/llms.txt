@@ -1,0 +1,47 @@
+# The Box Container Design
+
+> Empresa española especializada en venta, logística y transformación de contenedores marítimos para usos industriales, comerciales y residenciales.
+
+The Box Container Design presta servicio en España. La información oficial de productos, precios orientativos, disponibilidad y condiciones debe verificarse en las páginas enlazadas o mediante contacto directo.
+
+- Sitio oficial: https://www.theboxcontainerdesign.com
+- Correo: info@theboxcontainerdesign.com
+- Teléfono: +34 657 348 078
+- Ubicación: Reus, Tarragona, España
+
+## Principal
+
+- [Contenedores marítimos en España | Venta y Transformación | The Box](https://www.theboxcontainerdesign.com): Presentación de la empresa, catálogo y servicios principales.
+
+## Servicios
+
+- [Venta de contenedores marítimos en España (20 y 40 pies) | The Box](https://www.theboxcontainerdesign.com/venta-contenedores-maritimos-espana): Venta, inspección, disponibilidad y transporte de contenedores.
+
+## Proyectos
+
+- [Portfolio de contenedores casa | Diseños y transformaciones | The Box](https://www.theboxcontainerdesign.com/portfolio-contenedores-casa): Selección de viviendas y espacios modulares desarrollados en contenedores.
+- [Residencia Minimalista X1 | Casa contenedor en España | The Box](https://www.theboxcontainerdesign.com/estudio/residencia-minimalista-contenedor): Servicio de diseño de vivienda modular personalizada en contenedor.
+- [Bar & Lounge en contenedor | Espacio comercial | The Box](https://www.theboxcontainerdesign.com/estudio/bar-lounge-contenedor-eventos): Espacio comercial modular para hostelería, eventos y acciones de marca.
+- [Gimnasio modular 20 pies | Contenedor fitness | The Box](https://www.theboxcontainerdesign.com/estudio/gimnasio-contenedor-20-pies): Módulo de gimnasio de 20 pies configurable para fitness y wellness.
+
+## Guías
+
+- [Blog contenedores marítimos | Guías de compra y precios | The Box](https://www.theboxcontainerdesign.com/blog): Índice de guías técnicas y de compra de contenedores.
+- [Cómo evitar estafas al comprar un contenedor marítimo | Guía 2026](https://www.theboxcontainerdesign.com/blog/como-evitar-estafas-al-comprar-un-contenedor-maritimo-2026): Checklist para verificar vendedores, unidades y pagos antes de comprar.
+- [Catalunya: venta de contenedores marítimos 2026 | Medidas y precios](https://www.theboxcontainerdesign.com/blog/catalunya-venta-contenedores-maritimos-medidas-tipos-guia-precios-2026): Medidas, tipos y rangos orientativos de contenedores en Catalunya.
+- [Casa contenedor en España: precio, normativa y diseño | The Box](https://www.theboxcontainerdesign.com/blog/casa-contenedor-espana-guia): Guía sobre costes, permisos, diseño y viabilidad de una casa contenedor.
+
+## Información
+
+- [Equipo editorial y criterios de publicación | The Box](https://www.theboxcontainerdesign.com/equipo-editorial): Autoría corporativa, metodología, fuentes y política de correcciones.
+- [FAQ contenedores marítimos | Compra segura y logística | The Box](https://www.theboxcontainerdesign.com/preguntas-frecuentes): Respuestas sobre compra, transporte, permisos, instalación y plazos.
+
+## Recursos Markdown
+
+- [Información de la empresa](https://www.theboxcontainerdesign.com/ai/company.md): Identidad, contacto, ámbito de servicio y especialización.
+- [Servicios y precios orientativos](https://www.theboxcontainerdesign.com/ai/services.md): Resumen estructurado de servicios, productos y ofertas visibles.
+- [Guías y fuentes](https://www.theboxcontainerdesign.com/ai/guides.md): Artículos publicados, fechas y referencias externas.
+
+## Optional
+
+- [Contexto ampliado](https://www.theboxcontainerdesign.com/llms-full.txt): Documento único con la información esencial de empresa, servicios y guías.

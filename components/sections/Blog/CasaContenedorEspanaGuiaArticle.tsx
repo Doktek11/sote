@@ -1,148 +1,10 @@
-import React, { useEffect } from 'react';
-import { canonicalForPath } from '../../../seo';
-
-const SEO_TITLE =
-    'Casa contenedor en España: precio, normativa y diseño | The Box';
-const SEO_DESCRIPTION =
-    'Guía práctica: costes orientativos, permisos y CTE, logística y errores comunes antes de empezar tu casa contenedor.';
-const SEO_CANONICAL = canonicalForPath('/blog/casa-contenedor-espana-guia');
-
-const upsertMetaByName = (name: string, content: string) => {
-  let meta = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('name', name);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertMetaByProperty = (property: string, content: string) => {
-  let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null;
-  if (!meta) {
-    meta = document.createElement('meta');
-    meta.setAttribute('property', property);
-    document.head.appendChild(meta);
-  }
-  meta.setAttribute('content', content);
-};
-
-const upsertCanonical = (href: string) => {
-  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!link) {
-    link = document.createElement('link');
-    link.setAttribute('rel', 'canonical');
-    document.head.appendChild(link);
-  }
-  link.setAttribute('href', href);
-};
+import React from 'react';
+import { useRouteSeo } from '../../../seo';
+import { PATHS } from '../../../site.config.mjs';
+import { ArticleMeta, ArticleReferences } from './ArticleMeta';
 
 export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
-  useEffect(() => {
-    const previousTitle = document.title;
-    const previousDescription =
-      document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
-    const previousRobots =
-      document.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '';
-    const previousCanonical =
-      document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
-
-    document.title = SEO_TITLE;
-    upsertMetaByName('description', SEO_DESCRIPTION);
-    upsertMetaByName('robots', 'index,follow,max-image-preview:large');
-
-    upsertMetaByProperty('og:type', 'article');
-    upsertMetaByProperty('og:title', SEO_TITLE);
-    upsertMetaByProperty('og:description', SEO_DESCRIPTION);
-    upsertMetaByProperty('og:url', SEO_CANONICAL);
-    upsertMetaByProperty('og:site_name', 'THE BOX CONTAINER DESIGN');
-
-    upsertMetaByName('twitter:card', 'summary_large_image');
-    upsertMetaByName('twitter:title', SEO_TITLE);
-    upsertMetaByName('twitter:description', SEO_DESCRIPTION);
-
-    upsertCanonical(SEO_CANONICAL);
-
-    const organizationAndAuthorLd = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.theboxcontainerdesign.com/#organization',
-          name: 'THE BOX CONTAINER DESIGN',
-          url: 'https://www.theboxcontainerdesign.com',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://www.theboxcontainerdesign.com/logo-theboxcontainerdesign4.svg'
-          }
-        }
-      ]
-    };
-
-    const faqLd = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: '¿Cuánto dura una casa contenedor?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Con tratamiento anticorrosión y mantenimiento periódico, puede superar los 50 años.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: '¿Necesita cimentación una casa contenedor?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sí. Puede resolverse con zapatas, losa o pilotes según estudio geotécnico y proyecto técnico.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: '¿Se puede ampliar una casa contenedor en el futuro?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Sí. Una de las ventajas del sistema modular es la ampliación por fases mediante nuevos módulos.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: '¿Son frías en invierno?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'No, siempre que el aislamiento y la envolvente se diseñen y ejecuten correctamente conforme al CTE.'
-          }
-        }
-      ]
-    };
-
-    const orgAuthorScript = document.createElement('script');
-    orgAuthorScript.type = 'application/ld+json';
-    orgAuthorScript.setAttribute('data-schema', 'casa-contenedor-org-author');
-    orgAuthorScript.text = JSON.stringify(organizationAndAuthorLd);
-    document.head.appendChild(orgAuthorScript);
-
-    const faqScript = document.createElement('script');
-    faqScript.type = 'application/ld+json';
-    faqScript.setAttribute('data-schema', 'casa-contenedor-faq');
-    faqScript.text = JSON.stringify(faqLd);
-    document.head.appendChild(faqScript);
-
-    return () => {
-      document.title = previousTitle;
-      upsertMetaByName('description', previousDescription);
-      upsertMetaByName('robots', previousRobots);
-      if (previousCanonical) upsertCanonical(previousCanonical);
-
-      const orgAuthor = document.querySelector('script[data-schema="casa-contenedor-org-author"]');
-      if (orgAuthor) orgAuthor.remove();
-
-      const faq = document.querySelector('script[data-schema="casa-contenedor-faq"]');
-      if (faq) faq.remove();
-    };
-  }, []);
+  useRouteSeo(PATHS.articleContainerHouse);
 
   return (
     <section className="bg-zinc-950 py-24 border-y border-zinc-900" aria-labelledby="casa-contenedor-title">
@@ -154,11 +16,20 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
           Guía completa de casa contenedor en España: diseño, precio y normativa
         </h1>
 
+        <ArticleMeta path={PATHS.articleContainerHouse} />
+
         <p className="text-zinc-300 max-w-4xl mb-10 leading-relaxed">
-          Publicado por THE BOX CONTAINER DESIGN — guía práctica y técnica para entender cuándo una
-          casa contenedor es una opción válida, cuánto cuesta orientativamente y qué permisos o
-          aspectos técnicos debes revisar antes de empezar.
+          Guía práctica y técnica para entender cuándo una casa contenedor es una opción válida,
+          cuánto cuesta orientativamente y qué permisos o aspectos técnicos debes revisar antes de
+          empezar.
         </p>
+
+        <img
+          src="/casacontenedor-40pies-disenofinal.webp"
+          alt="Diseño de vivienda modular construida con un contenedor marítimo"
+          className="mb-12 w-full rounded-2xl border border-zinc-800"
+          loading="eager"
+        />
 
         <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">Qué es una casa contenedor</h2>
         <p className="text-zinc-300 leading-relaxed mb-8">
@@ -406,11 +277,14 @@ export const CasaContenedorEspanaGuiaArticle: React.FC = () => {
           </div>
         </dl>
 
-        <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-3">Autor y credenciales</h2>
-        <p className="text-zinc-300 leading-relaxed">
-          Andrés — arquitecto técnico con experiencia en proyectos modulares y en
-          conversión de contenedores para vivienda y uso turístico.
-        </p>
+        <ArticleReferences
+          items={[
+            {
+              name: 'Marco reglamentario del Código Técnico de la Edificación',
+              url: 'https://www.codigotecnico.org/QueEsCTE/MarcoReglamentario.html',
+            },
+          ]}
+        />
       </div>
     </section>
   );

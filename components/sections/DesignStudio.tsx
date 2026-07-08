@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { TRANSFORMATIONS } from '../../constants';
 import { ArrowUpRight, Maximize2 } from 'lucide-react';
-import { portfolioContenedoresCasaPath } from './PortfolioContenedoresCasaPage';
+import { PATHS } from '../../site.config.mjs';
 
 type StudioCard = {
   id: string;
@@ -21,21 +21,21 @@ const STUDIO_PRODUCTS: StudioCard[] = [
     title: 'Residencia minimalista contenedor',
     category: 'Viviendas',
     description: '...',
-    imageUrl: '/casacontenedor-40pies-disenofinal.webp', // <-- reemplaza aquÃ­ si hace falta
+    imageUrl: '/casacontenedor-40pies-disenofinal.webp',
     features: ['Minimal escandinavo', '40 ft high-cube', 'Ventanal lateral', 'Acabado premium'],
-    href: '/estudio/residencia-minimalista-contenedor',
+    href: PATHS.studioResidence,
     isAvailable: true,
   },
   {
     ...TRANSFORMATIONS[1],
     imageUrl: '/contenedorbar-20pies-nuevo.webp',
-    href: '/estudio/bar-lounge-contenedor-eventos',
+    href: PATHS.studioBar,
     isAvailable: true,
   },
   {
     ...TRANSFORMATIONS[2],
     imageUrl: '/proximamentetbcd.webp',
-    href: '/estudio/piscina-infinity-box-contenedor',
+    href: PATHS.studioPool,
     isAvailable: false,
   },
   {
@@ -46,7 +46,7 @@ const STUDIO_PRODUCTS: StudioCard[] = [
       'Desde 13.625 € + IVA. Contenedor de 20 pies con fachada acristalada, interior aislado y configuración adaptable para fitness o wellness.',
     imageUrl: '/gym_20pies_tricarril.webp',
     features: ['Desde 13.625 € + IVA', '20 pies', 'Fachada acristalada', 'Interior aislado'],
-    href: '/estudio/gimnasio-contenedor-20-pies',
+    href: PATHS.studioGym,
     isAvailable: true,
   },
 ];
@@ -105,20 +105,20 @@ export const DesignStudio: React.FC = () => {
               ) : (
                 <div
                   className="block cursor-not-allowed"
-                  aria-label={`PrÃ³ximamente ${project.title}`}
+                  aria-label={`Próximamente ${project.title}`}
                   role="link"
                   aria-disabled="true"
                 >
                   <div className="relative aspect-[16/9] overflow-hidden rounded-sm border border-zinc-800">
                     <img
                       src={project.imageUrl}
-                      alt={`PrÃ³ximamente: ${project.title}`}
+                      alt={`Próximamente: ${project.title}`}
                       className="w-full h-full object-cover grayscale brightness-75"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70"></div>
                     <div className="absolute top-6 right-6 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-xs font-mono uppercase tracking-widest text-white">
-                      PrÃ³ximamente
+                      Próximamente
                     </div>
                     <div className="absolute bottom-10 left-10 right-10">
                       <span className="font-mono text-orange-500 text-xs mb-2 block uppercase tracking-widest">{project.category}</span>
@@ -144,7 +144,7 @@ export const DesignStudio: React.FC = () => {
 
         <div className="mt-20 text-center">
           <a
-            href={portfolioContenedoresCasaPath}
+            href={PATHS.portfolio}
             className="text-zinc-400 font-mono text-sm hover:text-white transition-colors group inline-flex items-center gap-4 mx-auto uppercase tracking-widest"
           >
             Ver Portafolio Completo
